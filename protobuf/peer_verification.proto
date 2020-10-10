@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "protobuf/digital_id.proto";
+import "protobuf/client.proto";
+
+message PeerVerificationRequest {
+
+    bytes digital_id = 1;
+    string owner_signature = 2; // calculate signature on hash of digital_id
+    string remark = 3;
+    string peer_address = 4;
+    string create_timestamp = 5;
+}
+
+message PeerVerificationResponse {
+    
+    // peer signs on each attribute verified, changes status to verified
+	//else if false, peer does not sign and changes status to INVALID
+	//else, peer does not sign and leaves the status unchanged
+    
+    bytes digital_id = 1;
+    string peer_signature = 2; //verifiable by transaction signer's public key
+    ClientAttributes peer_info = 3;
+    // int32 verification_reward = 4;
+}
+
+message PeerVerificationTransaction{
+    bytes payload = 1;
+    string action = 2;
+    string type = 3;
+    int32 total_peer_request_count = 4;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+import public "protobuf/id_attribute.proto";
+
+message PII_credential {
+    Status status = 1;
+    string id_owner_public_key = 2;
+    string enc_code_id = 3;
+    IdAttributeSet attribute_set = 4;
+
+}
+
+message learning_credential {
+    Status status = 1;
+    string id_owner_public_key = 2;
+    string enc_code_id = 3;
+    AttributeDataType course_attribute_set = 4;
+
+}
+
+message IdAttributeSet {
+
+    AttributeDataType name = 1;
+    AttributeDataType date_of_birth = 2;
+    AttributeDataType address_permanent = 3;
+    AttributeDataType nationality = 4;
+    AttributeDataType gender = 5;
+    AttributeDataType email = 6;
+    AttributeDataType phone = 7;
+    map<string, AttributeDataType> others = 8;
+
+}
+

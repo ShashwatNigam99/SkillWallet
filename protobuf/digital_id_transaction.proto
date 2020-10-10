@@ -1,0 +1,15 @@
+syntax = "proto3";
+import "protobuf/digital_id.proto";
+import "protobuf/client.proto";
+
+message DigitalIdTransaction {
+
+    bytes digital_id = 1;
+    string owner_signature = 2; // calculate signature on hash of digital_id
+    // new attribute 'status' added for verification by transaction family
+    Status status = 3;  //this specifies the action being taken or committed
+    string certifier_signature = 4;
+    repeated string receiver_group = 5;
+    ClientAttributes owner_info = 7; // can be verified by tp
+
+}

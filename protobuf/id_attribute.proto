@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+enum Status {
+        DEFAULT = 0;
+        REQUESTED = 1;
+        ON_VERIFICATION = 2;
+        ON_UPDATE = 3;
+        CONFIRMED = 4;
+        EXPIRED = 5;
+        ACK_CONFIRMED = 6;
+        INVALID = 7;
+        INVALID_ACK = 8;
+        RECOVERY_REQ = 9;
+        VERIFIER_UPDATE = 10;
+}
+message AttributeData{
+        bytes value = 1;
+        string signer_pub_key = 2;
+        string sign_timestamp = 3;
+        string valid_till = 4;
+        string enc_code = 5;
+}
+message AttributeDataType {
+    Status status = 1;
+    bytes attribute_data_enc = 2; //hash of the real value + code
+    string certificate = 3;  //sign on the hash of attribute_data_enc
+    int32 credibility_strength = 5; //only from peer_verification, out of 100
+    repeated bytes verifier_list = 6;
+
+}
+
+message CourseAttributeData {
+
+    string signer_pub_key = 1;
+    string sign_timestamp = 2;
+    string Course_ID = 3;
+    string course_name = 4;
+    string course_description = 5;
+    string course_start_date = 6;
+    string course_finish_date = 7;
+    string content_creator_list = 8;
+    string course_hash = 9;
+    string learner_name = 10;
+    string course_provider_name = 11;
+    string valid_till = 12;
+    string enc_code = 13;
+
+}

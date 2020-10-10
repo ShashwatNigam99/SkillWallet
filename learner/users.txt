@@ -1,0 +1,16 @@
+# DESCRIPTION: This file stores username : blockchain_address
+# not used in code
+
+{
+    user1: 27592e4500389a864640c617242d68c22af5dc62
+    certifier2: b2d2a0dc4835a301aed31735fc893222bf3d3651
+    certifier3: e8fbcdd5c15eb27e6f55ea4c5a278a05dbea50a7
+    user6: 6d7921973356addd55f3cf5aeef50758fcbab391
+    user12: 94aac9ecc6b6b376871d3346d369f0649e1be44f
+    user13: c9a5d603df43ba0e06ad360d458b35ca9abfa5a4
+    user15: 608f3dba2bc689b4d88038f5f8333f955fc23215
+    user16: 852f4c5edba9a17b719e9af7e215015076e2647c
+    user17:
+    user18: 825bd854c186c7955461b2930015b91574c17426
+    user19:
+}
