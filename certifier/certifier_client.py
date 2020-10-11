@@ -1,11 +1,14 @@
 #!usr/bin/env python3
 
 """
-This class contains code for creating certifier's wallet and creating and submitting transactions by interfacing with sawtooth through the REST API.
+This class contains code for creating certifier's wallet and creating and submitting transactions by interfacing with
+sawtooth through the REST API.
 It accepts input from a _client CLI interface.
 
 """
 import base64
+import json
+
 import logging
 import os
 import random
@@ -23,13 +26,14 @@ from sawtooth_signing import ParseError
 from sawtooth_signing import create_context
 from sawtooth_signing.secp256k1 import Secp256k1PrivateKey
 
+from certifier.id_share_module import DigitalIdSharingClass
+
 path.append(os.getcwd())
 from certifier import peer_verification_module
 from constants import digital_id_constants
 from protobuf import digital_id_pb2, id_attribute_pb2, client_pb2, digital_id_transaction_pb2, shared_id_pb2
 from protobuf.digital_id_transaction_pb2 import DigitalIdTransaction
 from util import hashing, chain_access_util
-from certifier.id_share_module import DigitalIdSharingClass
 # from certifier.certifier_events_cli import CertifierEventsClient
 from util.transaction_generator import TransactionGenerator
 
@@ -143,7 +147,7 @@ def _display_id(digital_id_msg):
             attribute_struct.ParseFromString(value_attr_data)
             print("\nDetails of field {}: \n".format(field_name.capitalize()))
             print("Status: {}".format(STATUS_ENUM[field_value.status]))
-            print("Value: {}".format(attribute_struct.value.decode('utf-8').capitalize()))
+            print("Value: {}".format(attribute_struct.value))
             print("Issuer's public key: {}".format(str(attribute_struct.signer_pub_key)))
             print("Issue Timestamp: {}".format(str(attribute_struct.sign_timestamp)))
             # print("Validity: {}".format(str(attribute_struct.valid_till)))
@@ -167,7 +171,7 @@ def _display_id(digital_id_msg):
                 attribute_struct.ParseFromString(value_attr_data)
                 print("\nDetails of field {}: \n".format(field_name.capitalize()))
                 print("Status: {}".format(STATUS_ENUM[field_value.status]))
-                print("Value: {}".format(str(attribute_struct.value.decode('utf-8').capitalize())))
+                print("Value: {}".format(attribute_struct.value))
                 print("Issuer's public key: {}".format(str(attribute_struct.signer_pub_key)))
                 print("Issue Timestamp: {}".format(str(attribute_struct.sign_timestamp)))
                 # print("Validity: {}".format(str(attribute_struct.valid_till)))
@@ -194,10 +198,69 @@ def review_disable_req(disabled_digital_id, owner_address, txn_id):
     return send_ack_resp.capitalize().strip()
 
 
+def _fill_details(field_name, attribute_data, symm_key, dec_key, status=None):
+    LOGGER.debug("inside _fill_details")
+
+    # dec_key = input("Enter decode key for field {}: ".format(field_name))
+    # find code for encoding data using enc_key and Id owner's public key
+    # r = hashing.get_code_from_key(symm_key=symm_key, dec_key=dec_key)  # TODO find code using dec_key
+    r = dec_key.to_bytes(32, 'big')
+    LOGGER.debug("r = {} has type {}".format(r, type(r)))
+    is_verified = False
+    if attribute_data.value is not None and attribute_data.value != b'':
+        # print('Existing value:')
+        # print('Existing value of {} : {}'.format(field_name, attribute_data.value.decode()))
+        print('\nExisting value of {} : {}'.format(field_name, attribute_data.value))
+        while True:
+            is_verified = hashing.verify_data_value(attribute_data.value, r)
+            if not is_verified:
+                print("Verification failed. Entered data does not match.\n")
+                resp = input("Press 'Y' Retry. To ignore press any other key\n")
+                if resp.strip().capitalize() != 'Y':
+                    return
+            else:
+                break
+
+    if not (is_verified and status == id_attribute_pb2.REQUESTED):
+        print("\nEnter plain_text value to update\n")
+        val = input("{}: ".format(field_name.capitalize()))
+        attribute_data.value = hashing.get_encoding(val.lower(), r)
+
+    LOGGER.debug("returning from _fill_details")
+    # if field_name == 'name':
+    #     name_val = input("Name: ")
+    #     # serialize to byte
+    #     # attribute_data.value = 'Suchira'.encode('utf-8')
+    #     attribute_data.value = name_val.encode('utf-8')
+    #     LOGGER.debug("name set to: {}".format(attribute_data.value))
+    # elif field_name == 'date_of_birth':
+    #     dob_val = input("Date of Birth: ")
+    #     # serialize to byte
+    #     # attribute_data.value = 'Jan 10, 1992'.encode('utf-8')
+    #     attribute_data.value = dob_val.encode('utf-8')
+    # elif field_name == 'address_permanent':
+    #     paddrs_val = input("Permanent address: ")
+    #     # attribute_data.value = 'Kolkata'.encode('utf-8')
+    #     attribute_data.value = paddrs_val.encode('utf-8')
+    # elif field_name == 'nationality':
+    #     nation_val = input("Nationality: ")
+    #     # attribute_data.value = 'Indian'.encode('utf-8')
+    #     attribute_data.value = nation_val.encode('utf-8')
+    # elif field_name == 'gender':
+    #     gender_val = input("Gender: ")
+    #     # attribute_data.value = 'Female'.encode('utf-8')
+    #     attribute_data.value = gender_val.encode('utf-8')
+    # else:
+    #     field_val = input("{}: ".format(field_name))
+    #     # attribute_data.value = 'Female'.encode('utf-8')
+    #     attribute_data.value = field_val.encode('utf-8')
+    # else create a map or add an entry to an existing map
+
+
 class CertifierWalletClient(object):
     """ Certifier Wallet class """
 
-    wait_time = 10
+    wait_time = 100
 
     def __init__(self, base_url, key_file_name=DEFAULT_KEY_FILE_NAME):
 
@@ -213,11 +276,11 @@ class CertifierWalletClient(object):
 
         try:
 
-            private_key = Secp256k1PrivateKey.from_hex(priv_key_str)
+            self._private_key = Secp256k1PrivateKey.from_hex(priv_key_str)
         except ParseError as err:
             raise Exception('Failed to load private key:{}'.format(str(err)))
 
-        self._signer = CryptoFactory(create_context('secp256k1')).new_signer(private_key)
+        self._signer = CryptoFactory(create_context('secp256k1')).new_signer(self._private_key)
         self.public_key = self._signer.get_public_key().as_hex()
         self._public_address = hashing.get_pub_key_hash(self.public_key)
         print("\nPublic Key of key profile {} : {}".format(key_file_name, self.public_key))
@@ -225,22 +288,13 @@ class CertifierWalletClient(object):
         self._self_state_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_CERTIFIER,
                                                                  key='self',
                                                                  pub_key_hash=self._public_address)
-        self._validity_in_years = 5
         user_dir = os.path.join(os.getcwd(), key_file_name)
         if os.path.isdir(user_dir) is False:
             os.mkdir(key_file_name)
         self.events_db_file = os.path.join(user_dir, EVENTS_DB)
-        # update from chain
-        self._trust_score = 0
-        # TODO
-        self.black_list = []
-        self.registry_db_file = os.path.join(os.getcwd(), REGISTRY_DB_FILE)
+        self.registry_db_file = os.path.join(os.getcwd(), 'shared', REGISTRY_DB_FILE)
         registry_db = db.DB()
         registry_db.open(self.registry_db_file, None, db.DB_HASH, db.DB_CREATE)
-        if registry_db.get('black_list'.encode()) is not None:
-            self.black_list = cbor.loads(registry_db.get('black_list'.encode()))
-        registry_db.close()
-
         self._refresh_state()
         self.txn_generator = TransactionGenerator(base_url=self.base_url,
                                                   public_key=self.public_key,
@@ -263,9 +317,10 @@ class CertifierWalletClient(object):
 
     def _refresh_state(self):
         # self.state_info_dict = {}
-
+        print("\n--refreshing state--\n")
         LOGGER.debug("Inside certifier_client._refresh_state()")
         state_response = chain_access_util.get_state(base_url=self.base_url, address=self._self_state_address)
+        LOGGER.debug("state_response: {}".format(state_response))
         if state_response == digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE:
             self._id_creation_state = digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE
             # self.state_info_dict['trust_score'] = 0
@@ -336,8 +391,8 @@ class CertifierWalletClient(object):
             raise Exception("Error while reading transaction data")
 
         digital_id_msg = self._get_digital_id(id_data, txn_status)
-        # if digital_id_msg is :
-        LOGGER.debug('digital_id_msg.name.attribute_data_enc : {}'
+        # if pii_credential_msg is :
+        LOGGER.debug('pii_credential_msg.name.attribute_data_enc : {}'
                      .format(digital_id_msg.attribute_set.name.attribute_data_enc))
         # send transaction to update state data
         action = ""
@@ -360,6 +415,9 @@ class CertifierWalletClient(object):
             status = yaml.safe_load(result)['data'][0]['status']
             if status == 'COMMITTED':
                 print("Successfully processed request")
+                return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
                 return True
             else:
                 print("Failed to process request")
@@ -536,7 +594,8 @@ class CertifierWalletClient(object):
                     if owner_info.trust_score == digital_id_constants.UNINITIATED_ID_TRUST_SCORE:
                         owner_info.trust_score = digital_id_constants.PRIMARY_CERTIFIED_TRUST_SCORE
 
-                    result = self._create_n_send_txn(action="issue_certificate", to_address_list=[req_state_address],
+                    result = self._create_n_send_txn(action="issue_certificate",
+                                                     to_address_list=[req_state_address, state_address],
                                                      digital_id_msg=recovered_digital_id,
                                                      dependency_txn_list=[req_txn_id], owner_signature=owner_signature,
                                                      owner_info=owner_info,
@@ -548,6 +607,9 @@ class CertifierWalletClient(object):
                         status = yaml.safe_load(result)['data'][0]['status']
                         if status == 'COMMITTED':
                             print("Recovered DigitalID successfully committed")
+                            return True
+                        elif status == 'UNKNOWN':
+                            print("Transaction status unknown")
                             return True
                         else:
                             print("Failed to recover digital ID")
@@ -562,37 +624,78 @@ class CertifierWalletClient(object):
         removal_list = []
         other_attr_map = None
         is_any_valid = False
+        # print("\nDecoder key file for learner {} to be uploaded".format(hashing.get_pub_key_hash(id_owner_public_key)))
+        code_file_path = input("Please enter the decoder key file path: \n")
+        file_handle = open(code_file_path, "r+")
+        code_str = file_handle.readline()
+        is_valid = False
         for attribute_field in attribute_fields:
+            code_dict = json.loads(code_str)
+
             if attribute_field[0].name != 'others':
+                dec_key = code_dict.get(attribute_field[0].name)
+                LOGGER.debug('dec_key {}'.format(dec_key))
+                r = dec_key.to_bytes(32, 'big')
                 field_name = attribute_field[0].name
                 attribute = attribute_field[1]
                 data = attribute.attribute_data_enc
                 attribute_data = id_attribute_pb2.AttributeData()
                 attribute_data.ParseFromString(data)
                 print('\n{}: {}\n'.format(field_name.capitalize(),
-                                          attribute_data.value.decode("utf-8").capitalize()))
-                is_valid = input('Is data valid? Y/N: ')
-                if is_valid.capitalize().strip() == 'Y':
+                                          attribute_data.value))
+                # is_valid = input('Is data valid? Y/N: ')
+                # if is_valid.capitalize().strip() == 'Y':
+
+                for i in range(3):
+                    is_valid = hashing.verify_data_value(attribute_data.value, r)
+                    if not is_valid:
+                        print("Verification failed. Entered data does not match.\n")
+                        if i < 3:
+                            resp = input("Press 'Y' Retry. To ignore press any other key\n")
+                            if resp.strip().capitalize() != 'Y':
+                                break
+                    else:
+                        break
+
+                if is_valid is True:
                     self._issue_certificate(id_attribute=attribute, attribute_data=attribute_data)
                     is_any_valid = True
-                elif is_valid.capitalize().strip() == 'N':
+                # elif is_valid.capitalize().strip() == 'N':
+                else:
                     # remove invalid data from the ID
                     removal_list.append(attribute_field[0].name)
             elif attribute_field[0].name == 'others':
                 other_attr_map = attribute_field[1]
                 for field_name in other_attr_map:
+                    dec_key = code_dict.get(field_name)
+                    LOGGER.debug('dec_key {}'.format(dec_key))
+                    r = dec_key.to_bytes(32, 'big')
                     attribute = other_attr_map[field_name]
                     value_attr_data = attribute.attribute_data_enc
                     # TODO decrypt data here
                     attribute_data = id_attribute_pb2.AttributeData()
                     attribute_data.ParseFromString(value_attr_data)
                     print('\n{}: {}\n'.format(field_name.capitalize(),
-                                              attribute_data.value.decode("utf-8").capitalize()))
-                    is_valid = input('Is data valid? Y/N: ')
-                    if is_valid.capitalize().strip() == 'Y':
+                                              attribute_data.value))
+                    # is_valid = input('Is data valid? Y/N: ')
+                    # if is_valid.capitalize().strip() == 'Y':
+
+                    for i in range(3):
+                        is_valid = hashing.verify_data_value(attribute_data.value, r)
+                        if not is_valid:
+                            print("Verification failed. Entered data does not match.\n")
+                            if i < 3:
+                                resp = input("Press 'Y' Retry. To ignore press any other key\n")
+                                if resp.strip().capitalize() != 'Y':
+                                    break
+                        else:
+                            break
+
+                    if is_valid is True:
                         self._issue_certificate(attribute, attribute_data)
                         is_any_valid = True
-                    elif is_valid.capitalize().strip() == 'N':
+                    # elif is_valid.capitalize().strip() == 'N':
+                    else:
                         # invalidate data
                         removal_list.append(attribute_field[0].name)
 
@@ -706,7 +809,7 @@ class CertifierWalletClient(object):
         # ---End of consistency check --
 
         digital_id_msg = self._get_digital_id(id_data, txn_status)
-        LOGGER.debug('digital_id_msg.name.attribute_data_enc : {}'
+        LOGGER.debug('pii_credential_msg.name.attribute_data_enc : {}'
                      .format(digital_id_msg.attribute_set.name.attribute_data_enc))
         # send transaction to update state data
         action = ""
@@ -747,6 +850,9 @@ class CertifierWalletClient(object):
                 except BaseException:
                     LOGGER.debug("Exception while updating database")
                     traceback.print_exc(file=sys.stderr)
+                return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
                 return True
             else:
                 print("Failed to process request")
@@ -814,7 +920,7 @@ class CertifierWalletClient(object):
         # removed the code for getting new digital-id.
         # Signing over the ID that is present in the requesting transaction.
 
-        # digital_id_msg = self._get_digital_id(id_data, txn_status)
+        # pii_credential_msg = self._get_digital_id(id_data, txn_status)
 
         # send transaction to update state data
         action = "ack_confirmation"
@@ -828,6 +934,9 @@ class CertifierWalletClient(object):
             status = yaml.safe_load(result)['data'][0]['status']
             if status == 'COMMITTED':
                 print("Acknowledgement successfully committed")
+                return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
                 return True
             else:
                 print("Failed to commit acknowledgement")
@@ -861,43 +970,7 @@ class CertifierWalletClient(object):
         id_attribute.credibility_strength = 0
         LOGGER.debug('id_attribute.attribute_data_enc : {}'.format(id_attribute.attribute_data_enc))
 
-    def _fill_details(self, field_name, attribute_data):
-        LOGGER.debug("inside _fill_details")
-        LOGGER.debug("field_name {}".format(field_name))
-
-        if attribute_data.value is not None and attribute_data.value != b'':
-            # print('Existing value:')
-            print('Existing value of {} : {}'.format(field_name, attribute_data.value.decode()))
-        if field_name == 'name':
-            name_val = input("Name: ")
-            # serialize to byte
-            # attribute_data.value = 'Suchira'.encode('utf-8')
-            attribute_data.value = name_val.encode('utf-8')
-            LOGGER.debug("name set to: {}".format(attribute_data.value))
-        elif field_name == 'date_of_birth':
-            dob_val = input("Date of Birth: ")
-            # serialize to byte
-            # attribute_data.value = 'Jan 10, 1992'.encode('utf-8')
-            attribute_data.value = dob_val.encode('utf-8')
-        elif field_name == 'address_permanent':
-            paddrs_val = input("Permanent address: ")
-            # attribute_data.value = 'Kolkata'.encode('utf-8')
-            attribute_data.value = paddrs_val.encode('utf-8')
-        elif field_name == 'nationality':
-            nation_val = input("Nationality: ")
-            # attribute_data.value = 'Indian'.encode('utf-8')
-            attribute_data.value = nation_val.encode('utf-8')
-        elif field_name == 'gender':
-            gender_val = input("Gender: ")
-            # attribute_data.value = 'Female'.encode('utf-8')
-            attribute_data.value = gender_val.encode('utf-8')
-        else:
-            field_val = input("{}: ".format(field_name))
-            # attribute_data.value = 'Female'.encode('utf-8')
-            attribute_data.value = field_val.encode('utf-8')
-        # else create a map or add an entry to an existing map
-
-    def _fill_and_sign_attributes(self, attribute_set_msg):
+    def _fill_and_sign_attributes(self, id_owner_public_key, attribute_set_msg):
 
         LOGGER.debug("Inside certifier_client._fill_and_sign_attributes")
         # TODO Currently not matching attribute status with ID status
@@ -907,107 +980,109 @@ class CertifierWalletClient(object):
         # else:
         #     LOGGER.debug("attribute_set_msg is not initialized")
 
-        # populate name
-        if attribute_set_msg.HasField('name'):  # if block will be taken in UPDATE flow
-            name_attribute = attribute_set_msg.name
-            LOGGER.debug("name_attribute is initialized")
-        else:  # else block is taken in REQUEST/UPDATE ID flow
-            name_attribute = id_attribute_pb2.AttributeDataType()
-            LOGGER.debug("name_attribute is not initialized")
+        self._process_user_id(id_owner_public_key, attribute_set_msg)
 
-        # Adding change for update
-        if name_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
-                name_attribute.status == id_attribute_pb2.REQUESTED or \
-                name_attribute.status == id_attribute_pb2.Status.DEFAULT:
-            LOGGER.debug("Populating name")
-            self._populate_attribute('name', name_attribute)
-            attribute_set_msg.name.CopyFrom(name_attribute)
-            LOGGER.debug('attribute_set_msg.name.attribute_data_enc : {}'
-                         .format(attribute_set_msg.name.attribute_data_enc))
+        # populate name
+        # if attribute_set_msg.HasField('name'):  # if block will be taken in UPDATE flow
+        #     name_attribute = attribute_set_msg.name
+        #     LOGGER.debug("name_attribute is initialized")
+        # else:  # else block is taken in REQUEST/UPDATE ID flow
+        #     name_attribute = id_attribute_pb2.AttributeDataType()
+        #     LOGGER.debug("name_attribute is not initialized")
+        #
+        # # Adding change for update
+        # if name_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
+        #         name_attribute.status == id_attribute_pb2.REQUESTED or \
+        #         name_attribute.status == id_attribute_pb2.Status.DEFAULT:
+        #     LOGGER.debug("Populating name")
+        #     self._populate_attribute('name', name_attribute)
+        #     attribute_set_msg.name.CopyFrom(name_attribute)
+        #     LOGGER.debug('attribute_set_msg.name.attribute_data_enc : {}'
+        #                  .format(attribute_set_msg.name.attribute_data_enc))
 
         # populate date of birth
-        if attribute_set_msg.HasField('date_of_birth'):
-            dob_attribute = attribute_set_msg.date_of_birth
-            LOGGER.debug("attribute_set_msg.date_of_birth is initialized")
-        else:
-            dob_attribute = id_attribute_pb2.AttributeDataType()
-            LOGGER.debug("attribute_set_msg.date_of_birth is not initialized")
+        # if attribute_set_msg.HasField('date_of_birth'):
+        #     dob_attribute = attribute_set_msg.date_of_birth
+        #     LOGGER.debug("attribute_set_msg.date_of_birth is initialized")
+        # else:
+        #     dob_attribute = id_attribute_pb2.AttributeDataType()
+        #     LOGGER.debug("attribute_set_msg.date_of_birth is not initialized")
+        #
+        # if dob_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
+        #         dob_attribute.status == id_attribute_pb2.REQUESTED or \
+        #         dob_attribute.status == id_attribute_pb2.Status.DEFAULT:
+        #     LOGGER.debug("populating date of birth")
+        #     self._populate_attribute('date_of_birth', dob_attribute)
+        #     attribute_set_msg.date_of_birth.CopyFrom(dob_attribute)
+        #     LOGGER.debug('attribute_set_msg.date_of_birth.attribute_data_enc : {}'
+        #                  .format(attribute_set_msg.date_of_birth.attribute_data_enc))
+        #
+        # # populate permanent address
+        # if attribute_set_msg.HasField('address_permanent'):
+        #     address_perm_attribute = attribute_set_msg.address_permanent
+        #     LOGGER.debug("attribute_set_msg.address_permanent is initialized")
+        # else:
+        #     address_perm_attribute = id_attribute_pb2.AttributeDataType()
+        #     LOGGER.debug("attribute_set_msg.address_permanent is not initialized")
+        # if address_perm_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
+        #         address_perm_attribute.status == id_attribute_pb2.REQUESTED or \
+        #         address_perm_attribute.status == id_attribute_pb2.Status.DEFAULT:
+        #     LOGGER.debug("populating permanent address")
+        #     self._populate_attribute('address_permanent', address_perm_attribute)
+        #     attribute_set_msg.address_permanent.CopyFrom(address_perm_attribute)
+        #     LOGGER.debug('attribute_set_msg.address_permanent.attribute_data_enc : {}'
+        #                  .format(attribute_set_msg.address_permanent.attribute_data_enc))
+        #
+        # # populate nationality
+        # if attribute_set_msg.HasField('nationality'):
+        #     nationality_attribute = attribute_set_msg.nationality
+        #     LOGGER.debug("attribute_set_msg.nationality is initialized")
+        # else:
+        #     nationality_attribute = id_attribute_pb2.AttributeDataType()
+        #     LOGGER.debug("attribute_set_msg.nationality is not initialized")
+        #
+        # if nationality_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
+        #         nationality_attribute.status == id_attribute_pb2.REQUESTED or \
+        #         nationality_attribute.status == id_attribute_pb2.Status.DEFAULT:
+        #     LOGGER.debug("populating nationality")
+        #     self._populate_attribute('nationality', nationality_attribute)
+        #     attribute_set_msg.nationality.CopyFrom(nationality_attribute)
+        #     LOGGER.debug('attribute_set_msg.nationality.attribute_data_enc : {}'
+        #                  .format(attribute_set_msg.nationality.attribute_data_enc))
+        #
+        # # populate gender
+        # if attribute_set_msg.HasField('gender'):
+        #     gender_attribute = attribute_set_msg.gender
+        #     LOGGER.debug("attribute_set_msg.gender is initialized")
+        # else:
+        #     gender_attribute = id_attribute_pb2.AttributeDataType()
+        #     LOGGER.debug("attribute_set_msg.gender is not initialized")
 
-        if dob_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
-                dob_attribute.status == id_attribute_pb2.REQUESTED or \
-                dob_attribute.status == id_attribute_pb2.Status.DEFAULT:
-            LOGGER.debug("populating date of birth")
-            self._populate_attribute('date_of_birth', dob_attribute)
-            attribute_set_msg.date_of_birth.CopyFrom(dob_attribute)
-            LOGGER.debug('attribute_set_msg.date_of_birth.attribute_data_enc : {}'
-                         .format(attribute_set_msg.date_of_birth.attribute_data_enc))
-
-        # populate permanent address
-        if attribute_set_msg.HasField('address_permanent'):
-            address_perm_attribute = attribute_set_msg.address_permanent
-            LOGGER.debug("attribute_set_msg.address_permanent is initialized")
-        else:
-            address_perm_attribute = id_attribute_pb2.AttributeDataType()
-            LOGGER.debug("attribute_set_msg.address_permanent is not initialized")
-        if address_perm_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
-                address_perm_attribute.status == id_attribute_pb2.REQUESTED or \
-                address_perm_attribute.status == id_attribute_pb2.Status.DEFAULT:
-            LOGGER.debug("populating permanent address")
-            self._populate_attribute('address_permanent', address_perm_attribute)
-            attribute_set_msg.address_permanent.CopyFrom(address_perm_attribute)
-            LOGGER.debug('attribute_set_msg.address_permanent.attribute_data_enc : {}'
-                         .format(attribute_set_msg.address_permanent.attribute_data_enc))
-
-        # populate nationality
-        if attribute_set_msg.HasField('nationality'):
-            nationality_attribute = attribute_set_msg.nationality
-            LOGGER.debug("attribute_set_msg.nationality is initialized")
-        else:
-            nationality_attribute = id_attribute_pb2.AttributeDataType()
-            LOGGER.debug("attribute_set_msg.nationality is not initialized")
-
-        if nationality_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
-                nationality_attribute.status == id_attribute_pb2.REQUESTED or \
-                nationality_attribute.status == id_attribute_pb2.Status.DEFAULT:
-            LOGGER.debug("populating nationality")
-            self._populate_attribute('nationality', nationality_attribute)
-            attribute_set_msg.nationality.CopyFrom(nationality_attribute)
-            LOGGER.debug('attribute_set_msg.nationality.attribute_data_enc : {}'
-                         .format(attribute_set_msg.nationality.attribute_data_enc))
-
-        # populate gender
-        if attribute_set_msg.HasField('gender'):
-            gender_attribute = attribute_set_msg.gender
-            LOGGER.debug("attribute_set_msg.gender is initialized")
-        else:
-            gender_attribute = id_attribute_pb2.AttributeDataType()
-            LOGGER.debug("attribute_set_msg.gender is not initialized")
-
-        if gender_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
-                gender_attribute.status == id_attribute_pb2.REQUESTED or \
-                gender_attribute.status == id_attribute_pb2.Status.DEFAULT:
-            LOGGER.debug("populating gender")
-            self._populate_attribute('gender', gender_attribute)
-            attribute_set_msg.gender.CopyFrom(gender_attribute)
-            LOGGER.debug('attribute_set_msg.nationality.attribute_data_enc : {}'
-                         .format(attribute_set_msg.gender.attribute_data_enc))
-
-        # populate others by iterating through the map and certify
-        # no else block : no need to populate if not set by the requester
-        try:
-            other_attributes_map = attribute_set_msg.others
-            for field_name in other_attributes_map:
-                field_value = other_attributes_map[field_name]
-                if field_value.status == id_attribute_pb2.Status.ON_UPDATE or \
-                        field_value.status == id_attribute_pb2.REQUESTED or \
-                        field_value.status == id_attribute_pb2.Status.DEFAULT:
-                    self._populate_attribute(field_name, field_value)
-                    # other_attributes_map[field_name] = field_value
-                    LOGGER.debug('others.{}.attribute_data_enc : {}'
-                                 .format(field_name, other_attributes_map.get(field_name).attribute_data_enc))
-        except AttributeError as err:
-            LOGGER.debug(err)
-            print("No additional attribute is requested")
+        # if gender_attribute.status == id_attribute_pb2.Status.ON_UPDATE or \
+        #         gender_attribute.status == id_attribute_pb2.REQUESTED or \
+        #         gender_attribute.status == id_attribute_pb2.Status.DEFAULT:
+        #     LOGGER.debug("populating gender")
+        #     self._populate_attribute('gender', gender_attribute)
+        #     attribute_set_msg.gender.CopyFrom(gender_attribute)
+        #     LOGGER.debug('attribute_set_msg.nationality.attribute_data_enc : {}'
+        #                  .format(attribute_set_msg.gender.attribute_data_enc))
+        #
+        # # populate others by iterating through the map and certify
+        # # no else block : no need to populate if not set by the requester
+        # try:
+        #     other_attributes_map = attribute_set_msg.others
+        #     for field_name in other_attributes_map:
+        #         field_value = other_attributes_map[field_name]
+        #         if field_value.status == id_attribute_pb2.Status.ON_UPDATE or \
+        #                 field_value.status == id_attribute_pb2.REQUESTED or \
+        #                 field_value.status == id_attribute_pb2.Status.DEFAULT:
+        #             self._populate_attribute(field_name, field_value)
+        #             # other_attributes_map[field_name] = field_value
+        #             LOGGER.debug('others.{}.attribute_data_enc : {}'
+        #                          .format(field_name, other_attributes_map.get(field_name).attribute_data_enc))
+        # except AttributeError as err:
+        #     LOGGER.debug(err)
+        #     print("No additional attribute is requested")
 
         return attribute_set_msg
 
@@ -1018,7 +1093,7 @@ class CertifierWalletClient(object):
         digital_id_msg = digital_id_pb2.DigitalId()
         digital_id_msg.ParseFromString(state_data)
         status = digital_id_msg.status
-        # owner_pub_key = digital_id_msg.id_owner_public_key
+        # owner_pub_key = pii_credential_msg.id_owner_public_key
         LOGGER.debug("Status = %s.", status)
         # verify the txn_status and signer public keys
         if txn_status != status:
@@ -1027,7 +1102,7 @@ class CertifierWalletClient(object):
 
             raise Exception("Invalid Request: "
                             "Transaction status does not match with Digital ID status ")
-        # TODO inappropriate logic. owner_pub_key == digital_id_msg.id_owner_public_key
+        # TODO inappropriate logic. owner_pub_key == pii_credential_msg.id_owner_public_key
         # if txn_signing_key != owner_pub_key:
         #     LOGGER.error("Invalid Request: "
         #                  "Transaction is not signed by the id owner")
@@ -1043,7 +1118,7 @@ class CertifierWalletClient(object):
             else:
                 attribute_set_msg = digital_id_pb2.IdAttributeSet()
                 LOGGER.debug("attribute_set has field false")
-            self._fill_and_sign_attributes(attribute_set_msg)
+            self._fill_and_sign_attributes(digital_id_msg.id_owner_public_key, attribute_set_msg)
             digital_id_msg.attribute_set.CopyFrom(attribute_set_msg)
             digital_id_msg.status = id_attribute_pb2.Status.ON_VERIFICATION
             return digital_id_msg
@@ -1054,32 +1129,85 @@ class CertifierWalletClient(object):
         if status == id_attribute_pb2.Status.ON_UPDATE:
             LOGGER.debug("Processing ID update request")
             attribute_set_msg = digital_id_msg.attribute_set
-            self._fill_and_sign_attributes(attribute_set_msg)
+            self._fill_and_sign_attributes(digital_id_msg.id_owner_public_key, attribute_set_msg)
             digital_id_msg.attribute_set.CopyFrom(attribute_set_msg)
             digital_id_msg.status = id_attribute_pb2.Status.ON_VERIFICATION
             return digital_id_msg
 
-    def _populate_attribute(self, field_name, field_attribute):
+    def _process_user_id(self, id_owner_public_key, attribute_set_msg):
+        LOGGER.debug("_process_user_id")
+        print("\nDecoder key file for learner {} to be uploaded".format(hashing.get_pub_key_hash(id_owner_public_key)))
+        code_file_path = input("Please enter the decoder key file path: \n")
+        file_handle = open(code_file_path, "r+")
+        code_str = file_handle.readline()
+        code_dict = json.loads(code_str)
+        # Find symmetric key
+        priv_bytes = self._private_key.as_bytes()
+        symm_key = hashing.get_symmetric_key(private_key_bytes=priv_bytes, public_key_bytes=id_owner_public_key)
+        # read file of name id_owner_public_key
+        if attribute_set_msg.name.status == id_attribute_pb2.Status.DEFAULT:
+            attribute_set_msg.name.status = id_attribute_pb2.REQUESTED
+        if attribute_set_msg.date_of_birth.status == id_attribute_pb2.Status.DEFAULT:
+            attribute_set_msg.date_of_birth.status = id_attribute_pb2.REQUESTED
+        if attribute_set_msg.address_permanent.status == id_attribute_pb2.Status.DEFAULT:
+            attribute_set_msg.address_permanent.status = id_attribute_pb2.REQUESTED
+        if attribute_set_msg.nationality.status == id_attribute_pb2.Status.DEFAULT:
+            attribute_set_msg.nationality.status = id_attribute_pb2.REQUESTED
+        if attribute_set_msg.gender.status == id_attribute_pb2.Status.DEFAULT:
+            attribute_set_msg.gender.status = id_attribute_pb2.REQUESTED
+
+        attribute_fields = attribute_set_msg.ListFields()
+        for attribute_field in attribute_fields:
+            field_name = attribute_field[0].name
+            if field_name != 'others':
+                field_value = attribute_field[1]
+                if field_value.status == id_attribute_pb2.Status.ON_UPDATE or \
+                        field_value.status == id_attribute_pb2.REQUESTED or \
+                        field_value.status == id_attribute_pb2.DEFAULT:
+                    LOGGER.debug("populating {}".format(field_name))
+                    dec_key = code_dict.get(field_name)
+                    self._populate_attribute(field_name=field_name, field_attribute=field_value,
+                                             symm_key=symm_key, dec_key=dec_key)
+                    LOGGER.debug('field_value.attribute_data_enc : {}'
+                                 .format(field_value.attribute_data_enc))
+            elif field_name == 'others':
+                others_map = attribute_field[1]
+                for field_name in others_map:
+                    field_value = others_map[field_name]
+                    if field_value.status == id_attribute_pb2.Status.ON_UPDATE or \
+                            field_value.status == id_attribute_pb2.REQUESTED or \
+                            field_value.status == id_attribute_pb2.DEFAULT:
+                        LOGGER.debug("populating {}".format(field_name))
+                        dec_key = code_dict.get(field_name)
+                        self._populate_attribute(field_name=field_name, field_attribute=field_value,
+                                                 symm_key=symm_key, dec_key=dec_key)
+                        LOGGER.debug('attribute_data.attribute_data_enc : {}'
+                                     .format(field_value.attribute_data_enc))
+
+    def _populate_attribute(self, field_name, field_attribute, symm_key, dec_key):
 
         LOGGER.debug("Inside certifier_client._populate_attribute()")
         # if attribute has no value and status is 0
         # then fill the attribute with learner input and issue certificate
         # else only verify and issue certificate
 
-        attribute_data = id_attribute_pb2.AttributeData()
         # Commenting out the _isfilled() check as data will be
         # always inserted/updated by the  certifier
         # if not self._isfilled(field_attribute):
 
-        if field_attribute.attribute_data_enc is not None and field_attribute.attribute_data_enc != b'':
+        attribute_data = id_attribute_pb2.AttributeData()
+        if field_attribute.attribute_data_enc is not None and \
+                field_attribute.attribute_data_enc != b'':
             LOGGER.debug("field_attribute.attribute_data_enc is present {}".format(field_attribute.attribute_data_enc))
             attribute_data.ParseFromString(field_attribute.attribute_data_enc)
 
-        print("\nPlease enter the following detail")
-        self._fill_details(field_name, attribute_data)
-
-        # else:
-        #     attribute_data.ParseFromString(field_attribute.attribute_data_enc)
+        if field_attribute.status == id_attribute_pb2.REQUESTED or \
+                field_attribute.status == id_attribute_pb2.ON_UPDATE or \
+                field_attribute.status == id_attribute_pb2.DEFAULT:
+            # field_attribute.status == id_attribute_pb2.DEFAULT:
+            print("\nPlease enter the following detail\n")
+            _fill_details(field_name=field_name, attribute_data=attribute_data, symm_key=symm_key,
+                          dec_key=dec_key, status=field_attribute.status)
 
         self._issue_certificate(field_attribute, attribute_data)
         LOGGER.debug('attribute_data.value : {}'.format(attribute_data.value))
@@ -1096,6 +1224,7 @@ class CertifierWalletClient(object):
         peer_verifier = peer_verification_module.PeerVerificationClass(base_url=self.base_url,
                                                                        events_db_file=self.events_db_file,
                                                                        signer=self._signer,
+                                                                       private_key=self._private_key,
                                                                        public_key=self.public_key,
                                                                        score=self._trust_score)
 
@@ -1300,6 +1429,9 @@ class CertifierWalletClient(object):
             if status == 'COMMITTED':
                 print("Acknowledgement successfully committed")
                 return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
+                return True
             else:
                 print("Failed to commit acknowledgement")
                 return False
@@ -1328,10 +1460,10 @@ class CertifierWalletClient(object):
             input_address_list.extend([self_address])
             output_address_list.extend([self_address])
 
-        # removing: payload = base64.b64encode(digital_id_msg.SerializeToString())
+        # removing: payload = base64.b64encode(pii_credential_msg.SerializeToString())
         # set payload as digital_id_transaction message
 
-        # ack_confirmation sends digital_id_bytes in the field digital_id_msg
+        # ack_confirmation sends digital_id_bytes in the field pii_credential_msg
         if action in ["ack_confirmation", "ack_invalidation"]:
             digital_id_bytes = digital_id_msg
         else:
@@ -1422,6 +1554,9 @@ class CertifierWalletClient(object):
             if status == 'COMMITTED':
                 print("Successfully processed request")
                 return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
+                return True
             else:
                 print("Failed to process request")
                 return False
@@ -1492,3 +1627,10 @@ class CertifierWalletClient(object):
             except BaseException as err:
                 LOGGER.error("Error while reading transaction data {}".format(err))
                 raise Exception("Error while reading transaction data")
+
+    # def get_symmetric_key(self, id_owner_public_key):
+    #     priv_bytes = self._private_key.as_bytes()
+    #     public_key = Secp256k1PublicKey.from_hex(id_owner_public_key)
+    #     pub_key_instance = public_key.secp256k1_public_key
+    #     symm_key = pub_key_instance.tweak_mul(priv_bytes)
+    #     return symm_key

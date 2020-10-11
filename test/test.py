@@ -24,9 +24,9 @@ def main():
     contract_b = b'\n\x15\n\x02\x08\x012\x0f\n\teducation\x12\x02\x08\x01\x10\x01\x1a\x1a2020-05-25T21:00:11.458955'
     # digital_id_transaction = DigitalIdTransaction()
     # digital_id_transaction.ParseFromString(msg)
-    # digital_id_msg = digital_id_pb2.DigitalId()
-    # digital_id_msg.ParseFromString(digital_id_transaction.digital_id)
-    # print(digital_id_msg.attribute_set.date_of_birth)
+    # pii_credential_msg = digital_id_pb2.DigitalId()
+    # pii_credential_msg.ParseFromString(digital_id_transaction.digital_id)
+    # print(pii_credential_msg.attribute_set.date_of_birth)
     #
     # removal_list_str = input('Please enter comma separated list of attribute to remove: ')
     # removal_list = removal_list_str.split(",")

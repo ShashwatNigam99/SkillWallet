@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x15protobuf/client.proto\"\x8a\x01\n\x10\x43lientAttributes\x12\x14\n\x0cuser_address\x18\x01 \x01(\t\x12\x13\n\x0btrust_score\x18\x02 \x01(\x05\x12\x1b\n\x13pointer_to_registry\x18\x03 \x01(\t\x12\x19\n\x11registration_link\x18\x04 \x01(\t\x12\x13\n\x0b\x66\x61mily_name\x18\x05 \x01(\t\"D\n\x1a\x43lientInfoSetupTransaction\x12&\n\x0b\x63lient_info\x18\x01 \x01(\x0b\x32\x11.ClientAttributes\"6\n\x16StateUpdateTransaction\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x62\x06proto3')
+  serialized_pb=_b('\n\x15protobuf/client.proto\"=\n\x10\x43lientAttributes\x12\x14\n\x0cuser_address\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x61mily_name\x18\x05 \x01(\t\"D\n\x1a\x43lientInfoSetupTransaction\x12&\n\x0b\x63lient_info\x18\x01 \x01(\x0b\x32\x11.ClientAttributes\"6\n\x16StateUpdateTransaction\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x62\x06proto3')
 )
 
 
@@ -41,28 +41,7 @@ _CLIENTATTRIBUTES = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='trust_score', full_name='ClientAttributes.trust_score', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='pointer_to_registry', full_name='ClientAttributes.pointer_to_registry', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='registration_link', full_name='ClientAttributes.registration_link', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='family_name', full_name='ClientAttributes.family_name', index=4,
+      name='family_name', full_name='ClientAttributes.family_name', index=1,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -80,8 +59,8 @@ _CLIENTATTRIBUTES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26,
-  serialized_end=164,
+  serialized_start=25,
+  serialized_end=86,
 )
 
 
@@ -111,8 +90,8 @@ _CLIENTINFOSETUPTRANSACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=166,
-  serialized_end=234,
+  serialized_start=88,
+  serialized_end=156,
 )
 
 
@@ -149,8 +128,8 @@ _STATEUPDATETRANSACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=236,
-  serialized_end=290,
+  serialized_start=158,
+  serialized_end=212,
 )
 
 _CLIENTINFOSETUPTRANSACTION.fields_by_name['client_info'].message_type = _CLIENTATTRIBUTES

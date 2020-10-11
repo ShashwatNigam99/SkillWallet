@@ -17,8 +17,6 @@ from sawtooth_signing import ParseError, CryptoFactory, create_context
 from sawtooth_signing.secp256k1 import Secp256k1PrivateKey
 
 sys.path.append(os.getcwd())
-from protobuf import id_attribute_pb2
-from util.crypto_keys import CryptoKeyManager
 from certifier.certifier_client import CertifierWalletClient
 from util import hashing
 
@@ -30,7 +28,7 @@ FAMILY_NAME_PEER_VERIFY = "peer_verification"
 EVENTS_DB_FILE = "certifier_events_db"
 DEFAULT_KEY_FILE_NAME = "certifier1"
 
-LOGGER = logging.getLogger('certifier_wallet')
+LOGGER = logging.getLogger('certifier-events-cli')
 LOGGER.setLevel(logging.INFO)
 
 
@@ -96,7 +94,7 @@ def create_console_handler(verbose_level=0):
 
 def create_file_handler():
     # configure logger
-    file_handler = logging.FileHandler('certifier_wallet.log')
+    file_handler = logging.FileHandler('certifier-events.log')
     file_handler.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     file_handler.setFormatter(formatter)
@@ -117,6 +115,7 @@ def setup_loggers(verbose_level):
         LOGGER.setLevel(logging.DEBUG)
     LOGGER.addHandler(create_console_handler(verbose_level))
     LOGGER.addHandler(create_file_handler())
+
 
 def _get_private_key_file(key_file_name):
     """Get the private key from key_file_name."""
@@ -157,7 +156,7 @@ class CertifierEventsClient(object):
         # self.events_db.open(EVENTS_DB_FILE, None, db.DB_HASH, db.DB_CREATE)
 
     def _send_ack_from_client(self, signer_address):  # signature,
-                             # address, signer_public_key, transaction_id):
+        # address, signer_public_key, transaction_id):
         # self.proc_event_listener.start()
         LOGGER.debug("Inside _send_ack_from_client()")
         # print("\nSending acknowledgement for {}".format(transaction_id))
@@ -236,7 +235,7 @@ class CertifierEventsClient(object):
         print("\nListening to events.")
         while True:
             msg = self._msg_stream.receive().result()
-            assert msg.message_type == Message.CLIENT_EVENTS
+            # assert msg.message_type == Message.CLIENT_EVENTS
 
             # Parse the response
             event_list = events_pb2.EventList()
@@ -250,7 +249,7 @@ class CertifierEventsClient(object):
                         or event.event_type == "digitalid/update":
                     # or event.event_type == "digitalid/recovery":
 
-                    LOGGER.debug(event.event_type)
+                    LOGGER.info(event.event_type)
                     print(event.event_type)
                     events_db = db.DB()
                     events_db.open(self.events_db_file, None, db.DB_HASH, db.DB_CREATE)
@@ -289,8 +288,14 @@ class CertifierEventsClient(object):
                         print("New request for ID registered from address {} in transaction {}".format(
                             hashing.get_pub_key_hash(event_attr['signer_public_key']),
                             event_attr['transaction_id']))
+                        LOGGER.info("New request for ID registered from address {} in transaction {}".format(
+                            hashing.get_pub_key_hash(event_attr['signer_public_key']),
+                            event_attr['transaction_id']))
                     elif event.event_type == "digitalid/update":
                         print("Request for ID update registered from address {} in transaction {}".format(
+                            hashing.get_pub_key_hash(event_attr['signer_public_key']),
+                            event_attr['transaction_id']))
+                        LOGGER.info("Request for ID update registered from address {} in transaction {}".format(
                             hashing.get_pub_key_hash(event_attr['signer_public_key']),
                             event_attr['transaction_id']))
                     # elif event.event_type == "digitalid/recovery":
@@ -305,7 +310,7 @@ class CertifierEventsClient(object):
                     continue
 
                 if event.event_type == "digitalid/recovery":
-                    LOGGER.debug(event.event_type)
+                    LOGGER.info(event.event_type)
                     print(event.event_type)
                     signer_public_key = None
                     transaction_id = ''
@@ -318,16 +323,17 @@ class CertifierEventsClient(object):
                     print("Request for ID recovery recieved from address {} in transaction {}".format(
                         hashing.get_pub_key_hash(signer_public_key),
                         transaction_id))
+                    LOGGER.info("Request for ID recovery recieved from address {} in transaction {}".format(
+                        hashing.get_pub_key_hash(signer_public_key),
+                        transaction_id))
                     continue
 
                 if event.event_type == "digitalid/confirm":
 
-                    LOGGER.debug("digitalid/confirm")
+                    LOGGER.info("digitalid/confirm")
                     print("digitalid/confirm")
-                    address = None
                     signer_public_key = None
                     transaction_id = None
-                    signature = None
                     # event_attr = {}
                     attribute_list = event.attributes
                     for event_attribute in attribute_list:
@@ -335,7 +341,6 @@ class CertifierEventsClient(object):
                         if event_attribute.key == 'address':
                             LOGGER.debug("event attribute address: {}".format(event_attribute.value))
                             # event_attr['address'] = event_attribute.value
-                            address = event_attribute.value
                         elif event_attribute.key == 'signer_public_key':
                             LOGGER.debug("event attribute signer_public_key: {}".format(event_attribute.value))
                             # event_attr['signer_public_key'] = event_attribute.value
@@ -352,6 +357,9 @@ class CertifierEventsClient(object):
                     print("ID confirmation received from address {} in transaction {}".format(
                         hashing.get_pub_key_hash(signer_public_key),
                         transaction_id))
+                    LOGGER.info("ID confirmation received from address {} in transaction {}".format(
+                        hashing.get_pub_key_hash(signer_public_key),
+                        transaction_id))
                     # event_attr['owner_signature'] = event.data.decode('utf-8')
                     # process_client = multiprocessing.Process(target=self._send_ack_from_client,
                     #                                          args=(address,  # signature,
@@ -364,6 +372,7 @@ class CertifierEventsClient(object):
                     process_client.join()
                     LOGGER.debug("Process for sending acknowledgement finished operation")
                     print("Process for sending acknowledgement finished operation")
+                    LOGGER.info("Process for sending acknowledgement finished operation")
                     LOGGER.debug("certifier_client is_alive {}".format(process_client.is_alive()))
                     if process_client.is_alive():
                         process_client.terminate()
@@ -378,7 +387,7 @@ class CertifierEventsClient(object):
 
                 if event.event_type == "shareid/response":
 
-                    LOGGER.debug("shareid/response")
+                    LOGGER.info("shareid/response")
                     received_from = None
                     transaction_id = None
 
@@ -404,12 +413,13 @@ class CertifierEventsClient(object):
                     # events_db.put(db_key.encode(), cbor.dumps(event_attr))
 
                     print("ID share response received from {} in transaction {}".format(received_from, transaction_id))
+                    LOGGER.info("ID share response received from {} in transaction {}".format(received_from, transaction_id))
                     continue
 
                 if event.event_type == "peer_verification/request" or \
                         event.event_type == "digitalid/invalidate":
 
-                    LOGGER.debug(event.event_type)
+                    LOGGER.info(event.event_type)
                     print(event.event_type)
                     events_db = db.DB()
                     events_db.open(self.events_db_file, None, db.DB_HASH, db.DB_CREATE)
@@ -478,8 +488,14 @@ class CertifierEventsClient(object):
                         print("ID attestation request received from address {} in transaction {}".format(
                             sent_from,
                             transaction_id))
+                        LOGGER.info("ID attestation request received from address {} in transaction {}".format(
+                            sent_from,
+                            transaction_id))
                     elif event.event_type == "digitalid/invalidate":
                         print("ID invalidation request received from address {} in transaction {}".format(
+                            sent_from,
+                            transaction_id))
+                        LOGGER.info("ID invalidation request received from address {} in transaction {}".format(
                             sent_from,
                             transaction_id))
                     continue

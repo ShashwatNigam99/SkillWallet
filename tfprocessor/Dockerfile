@@ -13,27 +13,32 @@ RUN \
  apt-get install software-properties-common -y; \
  apt-get update; \
  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8AA7AF1F1091A5FD \
- && apt-add-repository "deb [arch=amd64] http://repo.sawtooth.me/ubuntu/chime/stable bionic universe"\
- && apt-get update \
- && apt-get install -y -qq \
+ && apt-add-repository "deb [arch=amd64] http://repo.sawtooth.me/ubuntu/chime/stable bionic universe"
+
+RUN apt-get update; \
+    apt-get install -y -qq \
     apt-transport-https \
     build-essential \
     ca-certificates \
-    python3-requests \
+    python3-requests\
     python3-cbor; \
  apt-get update; \
- apt-get install -y -q python3-sawtooth-sdk \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ apt-get install -y -q sawtooth
+
+RUN apt-get update; \
+  apt-get install -y -q sawtooth sawtooth-pbft-engine; \
+  apt-get update; \
+  apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 4004/tcp
 EXPOSE 8008/tcp
 
-ENV PATH "$PATH:/project:/usr/lib/python3/dist-packages:/usr/lib/python2.7/dist-packages"
+ENV PATH "$PATH:/project:/usr/lib/python3/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/python3.6"
 
 
 COPY . /project
 WORKDIR /project
 
-CMD bash -c 'python3 ./tfprocessor/digitalid_tp.py'
+CMD echo "----build successful: digitalid_tp----"
 	

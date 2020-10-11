@@ -72,7 +72,7 @@ def create_file_handler():
     return file_handler
 
 
-def setup_loggers(verbose_level):
+def setup_loggers(verbose_level=0):
     """Setup logging."""
     # logger = logging.getLogger()
     if verbose_level == 0:
@@ -125,26 +125,20 @@ def create_parser(prog_name):
     subparsers.add_parser('process_pending_requests', help='Issue new digital id to requests in event db',
                           parents=[parent_parser])
 
-    verify_parser = subparsers.add_parser('verify', help='Verify new digital id', parents=[parent_parser])
-    verify_parser.add_argument('-a', '--address', dest='address', type=str, help="ID owner's public address")
+    confirm_parser = subparsers.add_parser('confirm', help='Confirm and attest validated credentials',
+                                           parents=[parent_parser])
+    confirm_parser.add_argument('-a', '--address', dest='address', type=str, help="ID owner's public address")
 
-    send_ack = subparsers.add_parser('send_ack', help='Acknowledge confirmed ID', parents=[parent_parser])
-    send_ack.add_argument('-a', '--address', dest='address', type=str, help="ID owner's public address")
+    # send_ack = subparsers.add_parser('send_ack', help='Acknowledge confirmed ID', parents=[parent_parser])
+    # send_ack.add_argument('-a', '--address', dest='address', type=str, help="ID owner's public address")
 
-    attest_peer_parser = subparsers.add_parser('attest_peer', help='Verify and attest peer data',
-                                               parents=[parent_parser])
+    # attest_peer_parser = subparsers.add_parser('attest_peer', help='Verify and attest peer data',
+    #                                            parents=[parent_parser])
     # attest_peer_parser.add_argument('-a', '--address', dest='address', type=str, help="ID owner's public address")
     # attest_peer_parser.add_argument('-p', '--peer', dest='peer', type=str, help='peer address')
-    attest_peer_parser.add_argument('-t', '--txn', dest='req_txn', type=str, help='requesting transaction id '
-                                                                                  'for verification')
-    ack_disable_parser = subparsers.add_parser('ack_disable_req', help='Process ID invalidation request',
-                                               parents=[parent_parser])
-    ack_disable_parser.add_argument('-t', '--txn', dest='req_txn', type=str, help='transaction id '
-                                                                                  'of invalidation request')
-    recover_id_parser = subparsers.add_parser('recover_id', help='Process ID recovery request',
-                                              parents=[parent_parser])
-    recover_id_parser.add_argument('-t', '--txn', dest='req_txn', type=str, help='transaction id '
-                                                                                 'of recovery request')
+    # attest_peer_parser.add_argument('-t', '--txn', dest='req_txn', type=str, help='requesting transaction id '
+    #                                                                               'for verification')
+
     share_req_parser = subparsers.add_parser('shareid_request', help='Request Digital-ID Sharing',
                                              parents=[parent_parser])
     share_req_parser.add_argument('-r', '--receiver', dest='receiver', type=str, help='Address of intended receiver')
@@ -312,8 +306,6 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
 
     # logging.basicConfig()
     # logging.getLogger().setLevel(logging.DEBUG)
-    verbose_level = 0
-
     try:
         if args is None:
             args = sys.argv[1:]

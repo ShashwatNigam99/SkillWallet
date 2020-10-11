@@ -34,6 +34,3 @@ class CryptoKeyManager(object):
         _signer = CryptoFactory(create_context('secp256k1')).new_signer(self.privateKey)
         self.public_key = _signer.get_public_key().as_hex()
         self.public_key_hash = get_pub_key_hash(self.public_key)
-
-
-

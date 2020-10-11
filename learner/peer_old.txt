@@ -1,9 +1,0 @@
-# DESCRIPTION: This file stores sl no : blockchain_address, trust-score
-
-certifier2: b2d2a0dc4835a301aed31735fc893222bf3d3651, trust-score = 40
-certifier3: e8fbcdd5c15eb27e6f55ea4c5a278a05dbea50a7, trust-score = 40
-user6: 6d7921973356addd55f3cf5aeef50758fcbab391, trust-score = 20
-user12: 94aac9ecc6b6b376871d3346d369f0649e1be44f, trust-score = 20
-user15: 608f3dba2bc689b4d88038f5f8333f955fc23215, trust-score = 20
-user16: 852f4c5edba9a17b719e9af7e215015076e2647c, trust-score = 20
-certifier4: 492f9b187a9c24bc78cb4347c809c13e55612e00, trust-score = 40

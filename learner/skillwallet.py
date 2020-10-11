@@ -9,21 +9,18 @@ import logging
 import os
 import sys
 import traceback
+from cmd import Cmd
 
 from colorlog import ColoredFormatter
-from cmd import Cmd
-from sawtooth_sdk.protobuf import events_pb2
 
 sys.path.append(os.getcwd())
-from learner.userwallet_client import UserWalletClient
-from learner.user_events_cli import UserEventsClient
-from util import hashing
+from learner.learnerwallet_client import LearnerWalletClient
 
-DEFAULT_KEY_FILE_NAME = 'digitalid'
+DEFAULT_KEY_FILE_NAME = 'skill_wallet'
 
 # hard-coded for simplicity (otherwise get the URL from the args in main):
 DEFAULT_URL = 'http://localhost:8008'
-LOGGER = logging.getLogger('userwallet')
+LOGGER = logging.getLogger('skillwallet')
 LOGGER.setLevel(logging.INFO)  # TODO was set to logging.INFO this may be default level
 # TODO OVERRIDDEN IN setup_loggers() what are different verbosity levels?
 FAMILY_NAME_DIGITALID = "digitalid"
@@ -69,7 +66,7 @@ def create_console_handler(verbose_level=0):
 
 def create_file_handler():
     # configure logger
-    file_handler = logging.FileHandler('userwallet.log')
+    file_handler = logging.FileHandler('learner_wallet.log')
     # file_handler.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     file_handler.setFormatter(formatter)
@@ -110,103 +107,25 @@ def create_parser(prog_name):
 
     subparsers = parser.add_subparsers(title='subcommands', dest='command')
     subparsers.required = True
-    subparsers.add_parser('id_wallet', help='Start wallet in interactive mode', parents=[parent_parser])
-    subparsers.add_parser('request', help='Request new digital id', parents=[parent_parser])
-    subparsers.add_parser('confirm', help='Confirm verified digital id', parents=[parent_parser])
+    subparsers.add_parser('skill_wallet', help='Start wallet in interactive mode', parents=[parent_parser])
+    subparsers.add_parser('register', help='Register personal details to setup profile', parents=[parent_parser])
+    subparsers.add_parser('request_validation', help='Send validation request for your registered personal details',
+                          parents=[parent_parser])
+    subparsers.add_parser('register_skill', help='Register a newly completed course',
+                          parents=[parent_parser])
     subparsers.add_parser('display', help='Display digital id', parents=[parent_parser])
-    subparsers.add_parser('peer_verify', help='Send digital id for peer verification', parents=[parent_parser])
-    subparsers.add_parser('credibility_inc', help='Send additional peer verification request', parents=[parent_parser])
     subparsers.add_parser('save_ack', help='Save digital id acknowledgement to self state', parents=[parent_parser])
-    subparsers.add_parser('update', help='Update attributes in digital id', parents=[parent_parser])
-    subparsers.add_parser('disable', help='Invalidate digital id', parents=[parent_parser])
-    ack_disable_parser = subparsers.add_parser('ack_disable_req', help='Process ID Invalidation request',
-                                               parents=[parent_parser])
-    ack_disable_parser.add_argument('-t', '--txn', dest='req_txn', type=str, help='transaction id '
-                                                                                  'of invalidation request')
-    subparsers.add_parser('request_recovery', help='Request for ID recovery', parents=[parent_parser])
-    attest_peer_parser = subparsers.add_parser('attest_peer', help='Verify and attest peer data',
-                                               parents=[parent_parser])
-    # attest_peer_parser.add_argument('-p', '--peer', dest='peer', type=str, help='peer address', required=True)
-    attest_peer_parser.add_argument('-t', '--txn', dest='req_txn', type=str, help='requesting transaction id '
-                                                                                  'for verification')
-    share_req_parser = subparsers.add_parser('shareid_request', help='Request Digital-ID Sharing',
-                                             parents=[parent_parser])
-    share_req_parser.add_argument('-r', '--receiver', dest='receiver', type=str, help='Address of intended receiver')
-    share_req_parser.add_argument('-d', '--add_data', dest='data_mode', required=False, action='store_const', const=True,
-                                  help='Option is True if ID attribute data is required')
-
-    share_res_parser = subparsers.add_parser('shareid_response', help='Share Digital-ID', parents=[parent_parser])
-    share_res_parser.add_argument('-r', '--receiver', dest='receiver', type=str, help='Address of sender')
-    share_res_parser.add_argument('-t', '--txn', dest='req_txn', type=str,
-                                  help='Transaction ID of the ID share response')
-
-    share_disp_parser = subparsers.add_parser('display_shareid_response', help='Display Shared Digital-ID',
-                                              parents=[parent_parser])
-    share_disp_parser.add_argument('-r', '--receiver', dest='receiver', type=str, help='Address of sender')
-    share_disp_parser.add_argument('-t', '--txn', dest='req_txn', type=str,
-                                   help='Transaction ID of the ID share response')
+    subparsers.add_parser('print_code_file', help='Print contents of saved code file', parents=[parent_parser])
+    gen_key_parser = subparsers.add_parser('generate_dec_key',
+                                           help='generate file containing decode key for each field',
+                                           parents=[parent_parser])
+    gen_key_parser.add_argument('-k', '--receiver_key', dest='receiver_key', type=str,
+                                help='public key of the receiver')
+    gen_key_parser.add_argument('-f', '--file', dest='code_file', type=str,
+                                help="File path of learner's ID code file")
+    subparsers.add_parser('share_code_file', help='upload code_file in share directory of peer',
+                          parents=[parent_parser])
     return parser
-
-
-def _get_certification_address_prefix():
-    """
-    Return the address of a digital id object from the digitalid TF.
-
-    The address is the first 6 hex characters from the hash SHA-512(TF name),
-    plus the FAMILY_NAME_CERTIFY.
-    """
-    return str(hashing.hash512(FAMILY_NAME_DIGITALID.encode('utf-8'))[0:6] + hashing.hash512(
-        CERTIFY_FAMILY_NAME.encode('utf-8'))[0:24])
-
-
-def _get_peer_verification_address_prefix():
-    """
-    Return the address of a digital id object from the digitalid TF.
-
-    The address is the first 6 hex characters from the hash SHA-512(TF name),
-    plus the FAMILY_NAME_CERTIFY.
-    """
-    return str(hashing.hash512(FAMILY_NAME_PEER_VERIFY.encode('utf-8'))[0:6])
-
-
-def _start_events_listener(public_key_hash):
-    LOGGER.debug("inside Userwallet._start_events_listener")
-    filter_dict = {}
-    # crypto_obj = CryptoKeyManager(DEFAULT_KEY_FILE_NAME)
-    certification_filters = [events_pb2.EventFilter(key="address",
-                                                    match_string=_get_certification_address_prefix() + '.*',
-                                                    filter_type=events_pb2.EventFilter.REGEX_ANY)
-                             ]
-    peer_filters = [
-        # filter to match prefix for peer_verification family
-        events_pb2.EventFilter(key="address",
-                               match_string=_get_peer_verification_address_prefix() + '.*',
-                               filter_type=events_pb2.EventFilter.REGEX_ANY),
-
-        # filter to receive verification requests coming to or verification responses received
-        # for requests that generated from the corresponding client
-
-        events_pb2.EventFilter(key="send_to",
-                               match_string=public_key_hash,  # get this information frm metadata
-                               filter_type=events_pb2.EventFilter.SIMPLE_ALL),
-    ]
-    filter_dict['certification_filters'] = certification_filters
-    filter_dict['peer_filters'] = peer_filters
-
-    events_client = UserEventsClient(filter_dict=filter_dict, )
-    try:
-        # listen to events
-        events_client.listen_events()
-    except KeyboardInterrupt:
-        sys.exit(1)
-    except SystemExit as err:
-        raise err
-    except BaseException as err:
-        LOGGER.error(err)
-        traceback.print_exc(file=sys.stderr)
-        sys.exit(1)
-    finally:
-        events_client.disconnect()
 
 
 def parse_param(parser, command, inp):
@@ -216,150 +135,63 @@ def parse_param(parser, command, inp):
     return parsed_args
 
 
-class SkillWallet(Cmd):
+class LearnerWallet(Cmd):
 
     def __init__(self, command, rest_api, user=None, parser=None):
         super().__init__()
         self.parser = parser
         if user is None:
-            self._client = UserWalletClient(base_url=rest_api, command=command, key_file_name=DEFAULT_KEY_FILE_NAME)
+            self._client = LearnerWalletClient(base_url=rest_api, command=command, key_file_name=DEFAULT_KEY_FILE_NAME)
         else:
-            self._client = UserWalletClient(base_url=rest_api, command=command, key_file_name=user)
-
-        # self.proc_event_listener = multiprocessing.Process(target=_start_events_listener,
-        #                                                    args=(self._client.public_address,))
-        # self.proc_event_listener.start()
-
-    # def __del__(self):
-    #     try:
-    #         self.proc_event_listener.terminate()
-    #         # pass
-    #     except AttributeError as err:
-    #         LOGGER.debug(err)
-    #         exit(0)
+            self._client = LearnerWalletClient(base_url=rest_api, command=command, key_file_name=user)
 
     def get_client(self):
         return self._client
 
-    def do_request(self, inp):
+    def do_register(self, inp):
         """ Sub command to request ID.  Calls userwallet_client class."""
-        response = self._client.request_id()
-        LOGGER.debug("Request ID Response: {}".format(response))
+        response = self._client.register_pii()
+        LOGGER.debug("Register Profile Response: {}".format(response))
 
-    def do_confirm(self, inp):
+    def do_register_skill(self, inp):
         """ Sub command to request ID.  Calls userwallet_client class."""
-        response = self._client.confirm_id()
-        LOGGER.debug("Confirm ID Response: {}".format(response))
+        response = self._client.register_skill()
+        LOGGER.debug("Register Profile Response: {}".format(response))
 
     def do_display(self, inp):
         """ Sub command to request ID.  Calls userwallet_client class."""
         LOGGER.debug("Display ID Response: ")
         self._client.display_id()
 
-    def do_peer_verify(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client.peer_verify"""
-        LOGGER.debug("Calling peer_verify()")
-        self._client.peer_verify()
 
-    def do_attest_peer(self, inp):
-        """ Sub command to process attestation request.
-                                 Calls userwallet_client.attest_peer"""
+    # def do_save_ack(self, inp):
+    #     """ Sub command to request ID.  Calls userwallet_client.save_ack_receipt"""
+    #     LOGGER.debug("Calling save_ack_receipt()")
+    #     response = self._client.save_ack_receipt()
+    #     LOGGER.debug("save_ack Response: {}".format(response))
+
+
+    def do_generate_dec_key(self, inp):
+        """ Sub command to generate ID data decode key files for the receiver public key.
+        Calls userwallet_client.generate_dec_key"""
+        LOGGER.debug("Calling do_share_response()")
         if self.parser is not None:
-            parsed_args = parse_param(self.parser, "attest_peer", inp)
-            req_txn = parsed_args.req_txn
+            parsed_args = parse_param(self.parser, "generate_dec_key", inp)
+            receiver_key = parsed_args.receiver_key
+            code_file = parsed_args.code_file
         else:
-            req_txn = inp
-        # LOGGER.debug("Peer address: {}".format(inp.peer))
-        LOGGER.debug("Requesting transaction ID: {}".format(req_txn))
-        # response = self._client.attest_peer(inp.peer, inp.req_txn)
-        response = self._client.attest_peer(req_txn)
+            receiver_key = inp.receiver_key
+            code_file = inp.code_file
+        LOGGER.debug("Receiver's Public Key: {}".format(receiver_key))
+        LOGGER.debug("code_file path: {}".format(code_file))
+        response = self._client.generate_dec_key(recvr_public_key=receiver_key, code_file_path=code_file)
+        LOGGER.debug("do_generate_dec_key Response: {}".format(response))
 
-        LOGGER.debug("attest_peer Response: {}".format(response))
+    def do_print_code_file(self, inp):
+        self._client.print_code_file()
 
-    def do_save_ack(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client.save_ack_receipt"""
-        LOGGER.debug("Calling save_ack_receipt()")
-        response = self._client.save_ack_receipt()
-        LOGGER.debug("save_ack Response: {}".format(response))
-
-    def do_shareid_request(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client.do_request_id_share"""
-        LOGGER.debug("Calling do_shareid_request()")
-        if self.parser is not None:
-            parsed_args = parse_param(self.parser, "shareid_request", inp)
-            receiver = parsed_args.receiver
-            data_mode = parsed_args.data_mode
-        else:
-            receiver = inp.receiver
-            data_mode = inp.data_mode
-        LOGGER.debug("Receiver Address: {}".format(receiver))
-        LOGGER.debug("data_mode: {}".format(data_mode))
-        response = self._client.do_request_id_share(to_address=receiver, data_mode=data_mode)
-        LOGGER.debug("shareid_request Response: {}".format(response))
-
-    def do_shareid_response(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client.do_respond_id_share"""
-        LOGGER.debug("Calling do_shareid_response()")
-        if self.parser is not None:
-            parsed_args = parse_param(self.parser, "shareid_response", inp)
-            receiver = parsed_args.receiver
-            req_txn = parsed_args.req_txn
-        else:
-            receiver = inp.receiver
-            req_txn = inp.req_txn
-        LOGGER.debug("Receiver Address: {}".format(receiver))
-        LOGGER.debug("Txn ID: {}".format(req_txn))
-        response = self._client.do_respond_id_share(to_address=receiver, txn_id=req_txn)
-        LOGGER.debug("shareid_response Response: {}".format(response))
-
-    def do_display_shareid_response(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client.show_share_response"""
-        LOGGER.debug("Calling do_display_shareid_response()")
-        if self.parser is not None:
-            parsed_args = parse_param(self.parser, "display_shareid_response", inp)
-            receiver = parsed_args.receiver
-            req_txn = parsed_args.req_txn
-        else:
-            receiver = inp.receiver
-            req_txn = inp.req_txn
-        LOGGER.debug("Receiver Address: {}".format(receiver))
-        LOGGER.debug("Txn ID: {}".format(req_txn))
-        response = self._client.show_share_response(receiver_address=receiver, resp_txn=req_txn)
-        LOGGER.debug("display_shareid_response Response: {}".format(response))
-
-    def do_update(self, inp):
-        """ Sub command to update ID.  Calls userwallet_client class."""
-        response = self._client.do_update_id()
-        LOGGER.debug("Update ID Response: {}".format(response))
-
-    def do_disable(self, inp):
-        """ Sub command to invalidate ID.  Calls userwallet_client class."""
-        response = self._client.invalidate_id()
-        LOGGER.debug("Disable ID Response: {}".format(response))
-
-    def do_ack_disable_req(self, inp):
-        """ Sub command to send acknowledgement to invalidation request of ID.
-        Calls userwallet_client class."""
-        if self.parser is not None:
-            parsed_args = parse_param(self.parser, "ack_disable_req", inp)
-            req_txn = parsed_args.req_txn
-        else:
-            req_txn = inp.req_txn
-        LOGGER.debug("Txn ID received: {}".format(req_txn))
-        response = self._client.serve_id_disable_requests(req_txn)
-        LOGGER.debug("ack_disable_req Response: {}".format(response))
-
-    def do_request_recovery(self, inp):
-        """ Sub command to send ID recovery request.
-        Calls userwallet_client class."""
-        response = self._client.recover_id()
-        LOGGER.debug("Recovery Request Response: {}".format(response))
-
-    def do_credibility_inc(self, inp):
-        """ Sub command to increment credibility of ID attributes.
-        Calls userwallet_client class."""
-        response = self._client.add_verifier()
-        LOGGER.debug("Recovery Request Response: {}".format(response))
+    def do_share_code_file(self, inp):
+        self._client.share_code_file()
 
 
 def main(prog_name=os.path.basename(sys.argv[0]), args=None):
@@ -388,53 +220,27 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
         LOGGER.debug("User name: %s", user_name)
         LOGGER.debug("REST-API URL: %s", rest_api_url)
 
-        if args.command == 'id_wallet':
-            wallet = SkillWallet(command='id_wallet', rest_api=rest_api_url, user=user_name, parser=parser)
+        if args.command == 'skill_wallet':
+            wallet = LearnerWallet(command='skill_wallet', rest_api=rest_api_url, user=user_name, parser=parser)
             wallet.cmdloop()
-        elif args.command == 'request':
-            wallet = SkillWallet('request', rest_api_url, user_name)
-            wallet.do_request("")
-        elif args.command == 'confirm':
-            wallet = SkillWallet('confirm', rest_api_url, user_name)
-            wallet.do_confirm("")
+        elif args.command == 'register':
+            wallet = LearnerWallet('register', rest_api_url, user_name)
+            wallet.do_register("")
+        elif args.command == 'register_skill':
+            wallet = LearnerWallet('register_skill', rest_api_url, user_name)
+            wallet.do_register_skill("")
         elif args.command == 'display':
-            wallet = SkillWallet('display', rest_api_url, user_name)
+            wallet = LearnerWallet('display', rest_api_url, user_name)
             wallet.do_display("")
-        elif args.command == 'peer_verify':
-            wallet = SkillWallet('request_peer_verification', rest_api_url, user_name)
-            wallet.do_peer_verify("")
-        elif args.command == 'attest_peer':
-            wallet = SkillWallet('attest_peer', rest_api_url, user_name)
-            req_txn = args.req_txn
-            LOGGER.debug("txn id {}".format(req_txn))
-            wallet.do_attest_peer(req_txn)
-        elif args.command == 'save_ack':
-            wallet = SkillWallet('save_ack', rest_api_url, user_name)
-            wallet.do_save_ack(args)
-        elif args.command == 'update':
-            wallet = SkillWallet('update', rest_api_url, user_name)
-            wallet.do_update(args)
-        elif args.command == 'disable':
-            wallet = SkillWallet('disable', rest_api_url, user_name)
-            wallet.do_disable(args)
-        elif args.command == 'ack_disable_req':
-            wallet = SkillWallet('ack_disable_req', rest_api_url, user_name)
-            wallet.do_ack_disable_req(args)
-        elif args.command == 'request_recovery':
-            wallet = SkillWallet('request_recovery', rest_api_url, user_name)
-            wallet.do_request_recovery(args)
-        elif args.command == 'credibility_inc':
-            wallet = SkillWallet('credibility_inc', rest_api_url, user_name)
-            wallet.do_credibility_inc(args)
-        elif args.command == 'shareid_request':
-            wallet = SkillWallet('shareid_request', rest_api_url, user_name)
-            wallet.do_shareid_request(args)
-        elif args.command == 'shareid_response':
-            wallet = SkillWallet('shareid_response', rest_api_url, user_name)
-            wallet.do_shareid_response(args)
-        elif args.command == 'display_shareid_response':
-            wallet = SkillWallet('display_shareid_response', rest_api_url, user_name)
-            wallet.do_display_shareid_response(args)
+        elif args.command == 'print_code_file':
+            wallet = LearnerWallet('print_code_file', rest_api_url, user_name)
+            wallet.do_print_code_file(args)
+        elif args.command == 'generate_dec_key':
+            wallet = LearnerWallet('generate_dec_key', rest_api_url, user_name)
+            wallet.do_generate_dec_key(args)
+        elif args.command == 'share_code_file':
+            wallet = LearnerWallet('share_code_file', rest_api_url, user_name)
+            wallet.do_share_code_file(args)
         else:
             raise Exception("Invalid command: {}".format(args.command))
 

@@ -82,6 +82,9 @@ class DigitalIdSharingClass(object):
             if status == 'COMMITTED':
                 print("Request successfully committed")
                 return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
+                return True
             else:
                 print("Failed to commit request")
                 return False
@@ -155,9 +158,11 @@ class DigitalIdSharingClass(object):
             if status == 'COMMITTED':
                 print("Response successfully committed")
                 return True
+            elif status == 'UNKNOWN':
+                print("Transaction status unknown")
+                return True
             else:
                 print("Failed to commit response")
                 return False
         else:
             return False
-

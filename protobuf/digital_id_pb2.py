@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x19protobuf/digital_id.proto\x1a\x1bprotobuf/id_attribute.proto\"\x99\x01\n\tDigitalId\x12\x17\n\x06status\x18\x01 \x01(\x0e\x32\x07.Status\x12\x1b\n\x13id_owner_public_key\x18\x02 \x01(\t\x12\x19\n\x11validity_in_years\x18\x03 \x01(\x05\x12\x13\n\x0b\x65nc_code_id\x18\x04 \x01(\t\x12&\n\rattribute_set\x18\x05 \x01(\x0b\x32\x0f.IdAttributeSet\"\xc9\x02\n\x0eIdAttributeSet\x12 \n\x04name\x18\x01 \x01(\x0b\x32\x12.AttributeDataType\x12)\n\rdate_of_birth\x18\x02 \x01(\x0b\x32\x12.AttributeDataType\x12-\n\x11\x61\x64\x64ress_permanent\x18\x03 \x01(\x0b\x32\x12.AttributeDataType\x12\'\n\x0bnationality\x18\x04 \x01(\x0b\x32\x12.AttributeDataType\x12\"\n\x06gender\x18\x05 \x01(\x0b\x32\x12.AttributeDataType\x12+\n\x06others\x18\x06 \x03(\x0b\x32\x1b.IdAttributeSet.OthersEntry\x1a\x41\n\x0bOthersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12!\n\x05value\x18\x02 \x01(\x0b\x32\x12.AttributeDataType:\x02\x38\x01P\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x19protobuf/digital_id.proto\x1a\x1bprotobuf/id_attribute.proto\"\x83\x01\n\x0ePII_credential\x12\x17\n\x06status\x18\x01 \x01(\x0e\x32\x07.Status\x12\x1b\n\x13id_owner_public_key\x18\x02 \x01(\t\x12\x13\n\x0b\x65nc_code_id\x18\x03 \x01(\t\x12&\n\rattribute_set\x18\x04 \x01(\x0b\x32\x0f.IdAttributeSet\"\x81\x02\n\x13learning_credential\x12\x17\n\x06status\x18\x01 \x01(\x0e\x32\x07.Status\x12\x1b\n\x13id_owner_public_key\x18\x02 \x01(\t\x12\x13\n\x0b\x65nc_code_id\x18\x03 \x01(\t\x12J\n\x14\x63ourse_attribute_set\x18\x04 \x03(\x0b\x32,.learning_credential.CourseAttributeSetEntry\x1aS\n\x17\x43ourseAttributeSetEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.CourseAttributeDataType:\x02\x38\x01\"\x8f\x03\n\x0eIdAttributeSet\x12 \n\x04name\x18\x01 \x01(\x0b\x32\x12.AttributeDataType\x12)\n\rdate_of_birth\x18\x02 \x01(\x0b\x32\x12.AttributeDataType\x12-\n\x11\x61\x64\x64ress_permanent\x18\x03 \x01(\x0b\x32\x12.AttributeDataType\x12\'\n\x0bnationality\x18\x04 \x01(\x0b\x32\x12.AttributeDataType\x12\"\n\x06gender\x18\x05 \x01(\x0b\x32\x12.AttributeDataType\x12!\n\x05\x65mail\x18\x06 \x01(\x0b\x32\x12.AttributeDataType\x12!\n\x05phone\x18\x07 \x01(\x0b\x32\x12.AttributeDataType\x12+\n\x06others\x18\x08 \x03(\x0b\x32\x1b.IdAttributeSet.OthersEntry\x1a\x41\n\x0bOthersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12!\n\x05value\x18\x02 \x01(\x0b\x32\x12.AttributeDataType:\x02\x38\x01P\x00\x62\x06proto3')
   ,
   dependencies=[protobuf_dot_id__attribute__pb2.DESCRIPTOR,],
   public_dependencies=[protobuf_dot_id__attribute__pb2.DESCRIPTOR,])
@@ -30,44 +30,37 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 
 
-_DIGITALID = _descriptor.Descriptor(
-  name='DigitalId',
-  full_name='DigitalId',
+_PII_CREDENTIAL = _descriptor.Descriptor(
+  name='PII_credential',
+  full_name='PII_credential',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='status', full_name='DigitalId.status', index=0,
+      name='status', full_name='PII_credential.status', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='id_owner_public_key', full_name='DigitalId.id_owner_public_key', index=1,
+      name='id_owner_public_key', full_name='PII_credential.id_owner_public_key', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='validity_in_years', full_name='DigitalId.validity_in_years', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='enc_code_id', full_name='DigitalId.enc_code_id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='enc_code_id', full_name='PII_credential.enc_code_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='attribute_set', full_name='DigitalId.attribute_set', index=4,
-      number=5, type=11, cpp_type=10, label=1,
+      name='attribute_set', full_name='PII_credential.attribute_set', index=3,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -85,7 +78,96 @@ _DIGITALID = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=59,
-  serialized_end=212,
+  serialized_end=190,
+)
+
+
+_LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY = _descriptor.Descriptor(
+  name='CourseAttributeSetEntry',
+  full_name='learning_credential.CourseAttributeSetEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='learning_credential.CourseAttributeSetEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='learning_credential.CourseAttributeSetEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=367,
+  serialized_end=450,
+)
+
+_LEARNING_CREDENTIAL = _descriptor.Descriptor(
+  name='learning_credential',
+  full_name='learning_credential',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='learning_credential.status', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='id_owner_public_key', full_name='learning_credential.id_owner_public_key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='enc_code_id', full_name='learning_credential.enc_code_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_attribute_set', full_name='learning_credential.course_attribute_set', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=193,
+  serialized_end=450,
 )
 
 
@@ -122,8 +204,8 @@ _IDATTRIBUTESET_OTHERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=479,
-  serialized_end=544,
+  serialized_start=787,
+  serialized_end=852,
 )
 
 _IDATTRIBUTESET = _descriptor.Descriptor(
@@ -169,8 +251,22 @@ _IDATTRIBUTESET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='others', full_name='IdAttributeSet.others', index=5,
-      number=6, type=11, cpp_type=10, label=3,
+      name='email', full_name='IdAttributeSet.email', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='phone', full_name='IdAttributeSet.phone', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='others', full_name='IdAttributeSet.others', index=7,
+      number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -187,12 +283,16 @@ _IDATTRIBUTESET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=215,
-  serialized_end=544,
+  serialized_start=453,
+  serialized_end=852,
 )
 
-_DIGITALID.fields_by_name['status'].enum_type = protobuf_dot_id__attribute__pb2._STATUS
-_DIGITALID.fields_by_name['attribute_set'].message_type = _IDATTRIBUTESET
+_PII_CREDENTIAL.fields_by_name['status'].enum_type = protobuf_dot_id__attribute__pb2._STATUS
+_PII_CREDENTIAL.fields_by_name['attribute_set'].message_type = _IDATTRIBUTESET
+_LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY.fields_by_name['value'].message_type = protobuf_dot_id__attribute__pb2._COURSEATTRIBUTEDATATYPE
+_LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY.containing_type = _LEARNING_CREDENTIAL
+_LEARNING_CREDENTIAL.fields_by_name['status'].enum_type = protobuf_dot_id__attribute__pb2._STATUS
+_LEARNING_CREDENTIAL.fields_by_name['course_attribute_set'].message_type = _LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY
 _IDATTRIBUTESET_OTHERSENTRY.fields_by_name['value'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
 _IDATTRIBUTESET_OTHERSENTRY.containing_type = _IDATTRIBUTESET
 _IDATTRIBUTESET.fields_by_name['name'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
@@ -200,17 +300,35 @@ _IDATTRIBUTESET.fields_by_name['date_of_birth'].message_type = protobuf_dot_id__
 _IDATTRIBUTESET.fields_by_name['address_permanent'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
 _IDATTRIBUTESET.fields_by_name['nationality'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
 _IDATTRIBUTESET.fields_by_name['gender'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
+_IDATTRIBUTESET.fields_by_name['email'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
+_IDATTRIBUTESET.fields_by_name['phone'].message_type = protobuf_dot_id__attribute__pb2._ATTRIBUTEDATATYPE
 _IDATTRIBUTESET.fields_by_name['others'].message_type = _IDATTRIBUTESET_OTHERSENTRY
-DESCRIPTOR.message_types_by_name['DigitalId'] = _DIGITALID
+DESCRIPTOR.message_types_by_name['PII_credential'] = _PII_CREDENTIAL
+DESCRIPTOR.message_types_by_name['learning_credential'] = _LEARNING_CREDENTIAL
 DESCRIPTOR.message_types_by_name['IdAttributeSet'] = _IDATTRIBUTESET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-DigitalId = _reflection.GeneratedProtocolMessageType('DigitalId', (_message.Message,), {
-  'DESCRIPTOR' : _DIGITALID,
+PII_credential = _reflection.GeneratedProtocolMessageType('PII_credential', (_message.Message,), {
+  'DESCRIPTOR' : _PII_CREDENTIAL,
   '__module__' : 'protobuf.digital_id_pb2'
-  # @@protoc_insertion_point(class_scope:DigitalId)
+  # @@protoc_insertion_point(class_scope:PII_credential)
   })
-_sym_db.RegisterMessage(DigitalId)
+_sym_db.RegisterMessage(PII_credential)
+
+learning_credential = _reflection.GeneratedProtocolMessageType('learning_credential', (_message.Message,), {
+
+  'CourseAttributeSetEntry' : _reflection.GeneratedProtocolMessageType('CourseAttributeSetEntry', (_message.Message,), {
+    'DESCRIPTOR' : _LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY,
+    '__module__' : 'protobuf.digital_id_pb2'
+    # @@protoc_insertion_point(class_scope:learning_credential.CourseAttributeSetEntry)
+    })
+  ,
+  'DESCRIPTOR' : _LEARNING_CREDENTIAL,
+  '__module__' : 'protobuf.digital_id_pb2'
+  # @@protoc_insertion_point(class_scope:learning_credential)
+  })
+_sym_db.RegisterMessage(learning_credential)
+_sym_db.RegisterMessage(learning_credential.CourseAttributeSetEntry)
 
 IdAttributeSet = _reflection.GeneratedProtocolMessageType('IdAttributeSet', (_message.Message,), {
 
@@ -228,5 +346,6 @@ _sym_db.RegisterMessage(IdAttributeSet)
 _sym_db.RegisterMessage(IdAttributeSet.OthersEntry)
 
 
+_LEARNING_CREDENTIAL_COURSEATTRIBUTESETENTRY._options = None
 _IDATTRIBUTESET_OTHERSENTRY._options = None
 # @@protoc_insertion_point(module_scope)

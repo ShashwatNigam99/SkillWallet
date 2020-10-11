@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1bprotobuf/id_attribute.proto\"t\n\rAttributeData\x12\r\n\x05value\x18\x01 \x01(\x0c\x12\x16\n\x0esigner_pub_key\x18\x02 \x01(\t\x12\x16\n\x0esign_timestamp\x18\x03 \x01(\t\x12\x12\n\nvalid_till\x18\x04 \x01(\t\x12\x10\n\x08\x65nc_code\x18\x05 \x01(\t\"\xaf\x01\n\x11\x41ttributeDataType\x12\x17\n\x06status\x18\x01 \x01(\x0e\x32\x07.Status\x12\x1a\n\x12\x61ttribute_data_enc\x18\x02 \x01(\x0c\x12\x13\n\x0b\x63\x65rtificate\x18\x03 \x01(\t\x12\x1b\n\x13verification_quorum\x18\x04 \x01(\x05\x12\x1c\n\x14\x63redibility_strength\x18\x05 \x01(\x05\x12\x15\n\rverifier_list\x18\x06 \x03(\x0c*\xbc\x01\n\x06Status\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\r\n\tREQUESTED\x10\x01\x12\x13\n\x0fON_VERIFICATION\x10\x02\x12\r\n\tON_UPDATE\x10\x03\x12\r\n\tCONFIRMED\x10\x04\x12\x0b\n\x07\x45XPIRED\x10\x05\x12\x11\n\rACK_CONFIRMED\x10\x06\x12\x0b\n\x07INVALID\x10\x07\x12\x0f\n\x0bINVALID_ACK\x10\x08\x12\x10\n\x0cRECOVERY_REQ\x10\t\x12\x13\n\x0fVERIFIER_UPDATE\x10\nb\x06proto3')
+  serialized_pb=_b('\n\x1bprotobuf/id_attribute.proto\"t\n\rAttributeData\x12\r\n\x05value\x18\x01 \x01(\x0c\x12\x16\n\x0esigner_pub_key\x18\x02 \x01(\t\x12\x16\n\x0esign_timestamp\x18\x03 \x01(\t\x12\x12\n\nvalid_till\x18\x04 \x01(\t\x12\x10\n\x08\x65nc_code\x18\x05 \x01(\t\"\x93\x01\n\x11\x41ttributeDataType\x12\x17\n\x06status\x18\x01 \x01(\x0e\x32\x07.Status\x12\x1a\n\x12\x61ttribute_data_enc\x18\x02 \x01(\x0c\x12\x13\n\x0b\x63\x65rtificate\x18\x03 \x01(\t\x12\x1c\n\x14\x63redibility_strength\x18\x05 \x01(\x05\x12\x16\n\x0evalidator_list\x18\x06 \x03(\x0c\"\x81\x02\n\rCourseDetails\x12\x10\n\x08\x65nc_code\x18\x01 \x01(\t\x12\x11\n\tcourse_ID\x18\x02 \x01(\t\x12\x1c\n\x14\x63ourse_provider_name\x18\x03 \x01(\t\x12\x13\n\x0b\x63ourse_name\x18\x04 \x01(\t\x12\x1a\n\x12\x63ourse_description\x18\x05 \x01(\t\x12\x19\n\x11\x63ourse_start_date\x18\x06 \x01(\t\x12\x1a\n\x12\x63ourse_finish_date\x18\x07 \x01(\t\x12\x1c\n\x14\x63ontent_creator_list\x18\x08 \x01(\t\x12\r\n\x05score\x18\t \x01(\t\x12\x18\n\x10\x63ourse_cert_hash\x18\n \x01(\t\"\xa2\x01\n\x17\x43ourseAttributeDataType\x12\x16\n\x0e\x63ourse_details\x18\x01 \x01(\x0c\x12\x18\n\x10\x61ttestor_pub_key\x18\x02 \x01(\t\x12\x16\n\x0esign_timestamp\x18\x03 \x01(\t\x12\x12\n\nvalid_till\x18\x04 \x01(\t\x12\x14\n\x0clearner_name\x18\x05 \x01(\t\x12\x13\n\x0bskill_point\x18\x06 \x01(\t*\xc3\x01\n\x06Status\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\x0e\n\nREGISTERED\x10\x01\x12\x12\n\x0ePII_REGISTERED\x10\x02\x12\x14\n\x10SKILL_REGISTERED\x10\x03\x12\r\n\tCONFIRMED\x10\x04\x12\x0b\n\x07\x45XPIRED\x10\x05\x12\x11\n\rACK_CONFIRMED\x10\x06\x12\x0b\n\x07INVALID\x10\x07\x12\x0f\n\x0bINVALID_ACK\x10\x08\x12\x10\n\x0cRECOVERY_REQ\x10\t\x12\x13\n\x0fVERIFIER_UPDATE\x10\nb\x06proto3')
 )
 
 _STATUS = _descriptor.EnumDescriptor(
@@ -35,15 +35,15 @@ _STATUS = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='REQUESTED', index=1, number=1,
+      name='REGISTERED', index=1, number=1,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='ON_VERIFICATION', index=2, number=2,
+      name='PII_REGISTERED', index=2, number=2,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='ON_UPDATE', index=3, number=3,
+      name='SKILL_REGISTERED', index=3, number=3,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
@@ -77,16 +77,16 @@ _STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=328,
-  serialized_end=516,
+  serialized_start=725,
+  serialized_end=920,
 )
 _sym_db.RegisterEnumDescriptor(_STATUS)
 
 Status = enum_type_wrapper.EnumTypeWrapper(_STATUS)
 DEFAULT = 0
-REQUESTED = 1
-ON_VERIFICATION = 2
-ON_UPDATE = 3
+REGISTERED = 1
+PII_REGISTERED = 2
+SKILL_REGISTERED = 3
 CONFIRMED = 4
 EXPIRED = 5
 ACK_CONFIRMED = 6
@@ -185,21 +185,14 @@ _ATTRIBUTEDATATYPE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='verification_quorum', full_name='AttributeDataType.verification_quorum', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='credibility_strength', full_name='AttributeDataType.credibility_strength', index=4,
+      name='credibility_strength', full_name='AttributeDataType.credibility_strength', index=3,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='verifier_list', full_name='AttributeDataType.verifier_list', index=5,
+      name='validator_list', full_name='AttributeDataType.validator_list', index=4,
       number=6, type=12, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -218,12 +211,174 @@ _ATTRIBUTEDATATYPE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=150,
-  serialized_end=325,
+  serialized_end=297,
+)
+
+
+_COURSEDETAILS = _descriptor.Descriptor(
+  name='CourseDetails',
+  full_name='CourseDetails',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='enc_code', full_name='CourseDetails.enc_code', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_ID', full_name='CourseDetails.course_ID', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_provider_name', full_name='CourseDetails.course_provider_name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_name', full_name='CourseDetails.course_name', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_description', full_name='CourseDetails.course_description', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_start_date', full_name='CourseDetails.course_start_date', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_finish_date', full_name='CourseDetails.course_finish_date', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='content_creator_list', full_name='CourseDetails.content_creator_list', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='CourseDetails.score', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='course_cert_hash', full_name='CourseDetails.course_cert_hash', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=300,
+  serialized_end=557,
+)
+
+
+_COURSEATTRIBUTEDATATYPE = _descriptor.Descriptor(
+  name='CourseAttributeDataType',
+  full_name='CourseAttributeDataType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='course_details', full_name='CourseAttributeDataType.course_details', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='attestor_pub_key', full_name='CourseAttributeDataType.attestor_pub_key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sign_timestamp', full_name='CourseAttributeDataType.sign_timestamp', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='valid_till', full_name='CourseAttributeDataType.valid_till', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='learner_name', full_name='CourseAttributeDataType.learner_name', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='skill_point', full_name='CourseAttributeDataType.skill_point', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=560,
+  serialized_end=722,
 )
 
 _ATTRIBUTEDATATYPE.fields_by_name['status'].enum_type = _STATUS
 DESCRIPTOR.message_types_by_name['AttributeData'] = _ATTRIBUTEDATA
 DESCRIPTOR.message_types_by_name['AttributeDataType'] = _ATTRIBUTEDATATYPE
+DESCRIPTOR.message_types_by_name['CourseDetails'] = _COURSEDETAILS
+DESCRIPTOR.message_types_by_name['CourseAttributeDataType'] = _COURSEATTRIBUTEDATATYPE
 DESCRIPTOR.enum_types_by_name['Status'] = _STATUS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -240,6 +395,20 @@ AttributeDataType = _reflection.GeneratedProtocolMessageType('AttributeDataType'
   # @@protoc_insertion_point(class_scope:AttributeDataType)
   })
 _sym_db.RegisterMessage(AttributeDataType)
+
+CourseDetails = _reflection.GeneratedProtocolMessageType('CourseDetails', (_message.Message,), {
+  'DESCRIPTOR' : _COURSEDETAILS,
+  '__module__' : 'protobuf.id_attribute_pb2'
+  # @@protoc_insertion_point(class_scope:CourseDetails)
+  })
+_sym_db.RegisterMessage(CourseDetails)
+
+CourseAttributeDataType = _reflection.GeneratedProtocolMessageType('CourseAttributeDataType', (_message.Message,), {
+  'DESCRIPTOR' : _COURSEATTRIBUTEDATATYPE,
+  '__module__' : 'protobuf.id_attribute_pb2'
+  # @@protoc_insertion_point(class_scope:CourseAttributeDataType)
+  })
+_sym_db.RegisterMessage(CourseAttributeDataType)
 
 
 # @@protoc_insertion_point(module_scope)

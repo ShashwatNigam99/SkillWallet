@@ -2,11 +2,7 @@ syntax = "proto3";
 
 message ClientAttributes {
 
-    // string username = 1;
     string user_address = 1;
-    int32 trust_score = 2;
-    string pointer_to_registry = 3;
-    string registration_link = 4;
     string family_name = 5;
 }
 

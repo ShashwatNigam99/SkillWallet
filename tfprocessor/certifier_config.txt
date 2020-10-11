@@ -1,2 +1,0 @@
-# primary_certifier_pubkey: 021f36fe23cfe09e25431903a7aa3cb71a211e74d701600ed91aa0ee413dbd8ac9
-primary_certifier_pubkey: certifier1

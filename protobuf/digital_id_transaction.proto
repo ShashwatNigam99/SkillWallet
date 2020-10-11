@@ -9,7 +9,6 @@ message DigitalIdTransaction {
     // new attribute 'status' added for verification by transaction family
     Status status = 3;  //this specifies the action being taken or committed
     string certifier_signature = 4;
-    repeated string receiver_group = 5;
-    ClientAttributes owner_info = 7; // can be verified by tp
+    ClientAttributes owner_client_info = 5; // can be verified by tp
 
 }

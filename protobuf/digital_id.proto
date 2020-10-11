@@ -13,8 +13,8 @@ message learning_credential {
     Status status = 1;
     string id_owner_public_key = 2;
     string enc_code_id = 3;
-    AttributeDataType course_attribute_set = 4;
-
+    map<string, CourseAttributeDataType> course_attribute_set = 4;
+    // map key: courseTitle_CourseProvider
 }
 
 message IdAttributeSet {

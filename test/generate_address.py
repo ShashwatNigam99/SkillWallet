@@ -45,7 +45,7 @@ def main():
     # pub_certifier2 = '03b345ab9ed3d7cdee0960f57e8bb3fe078a1d13adb00d60bce2f6a9715a8314cc'
     # pub_certifier3 = '03b93cae9c1223758714ce2eb95d374555840de8020a76a5c5f995419e10d7d47f'
     # pub_user1 = '0309745d3f8a1f21538d2e9fb331269992e23bacf45da25c504b506dc61a72c638'
-    # address = _generate_address(FAMILY_NAME_DIGITALID, 'self', _get_pub_key_hash(pub_digital_id))
+    # address = _generate_address(FAMILY_NAME_LEARNER, 'self', _get_pub_key_hash(pub_digital_id))
     # user6 = '03fe529659cf495a2e94ac236ed50334769936ebc8fc42d3223eccb9a5b19399cf'
     # address = _get_pub_key_hash(user6)
 

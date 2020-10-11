@@ -33,7 +33,7 @@ class TransactionGenerator(object):
         LOGGER.debug("Inside make_transaction")
         if dependency_list is None:
             dependency_list = []
-        LOGGER.debug("inside UserWalletClient._make_transaction")
+        LOGGER.debug("inside LearnerWalletClient._make_transaction")
         # create a TransactionHeader. referring transaction.proto
 
         header = TransactionHeader(

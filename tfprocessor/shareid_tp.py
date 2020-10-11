@@ -20,7 +20,7 @@ from sawtooth_signing.secp256k1 import Secp256k1PublicKey
 
 path.append(os.getcwd())
 from constants import digital_id_constants
-from protobuf import shared_id_pb2
+from protobuf import shared_id_pb2, id_attribute_pb2
 from protobuf.digital_id_transaction_pb2 import DigitalIdTransaction
 from util import hashing, chain_access_util
 
@@ -160,7 +160,7 @@ class ShareIdTransactionHandler(TransactionHandler):
     @classmethod
     def _share_request(cls, context, transactor, shared_id_request, to_address, transaction_id, signer_pub_key_hex):
         LOGGER.debug("Inside _share_request")
-        recv_from = shared_id_request.recv_id_from_address
+        recv_from = shared_id_request.recv_id_from_address  # anonymize this
         # verify the self state address
         # TODO have to directly use the ouput address when recv_id_from_address not present
         state_address = hashing.get_digitalid_address(family_name=FAMILY_SHARED_ID,
@@ -180,7 +180,7 @@ class ShareIdTransactionHandler(TransactionHandler):
             contract_sig = shared_id_request.contract_signature
             if contract_sig is None or contract_sig == b'':
                 raise InvalidTransaction("shared_id_request.contract_signature can not be empty if data requested")
-
+            # signer_pub_key_hex is transactor's public key
             is_verified = _verify_message_signature(hashing.get_hash_from_bytes(contract_bytes),
                                                     contract_sig,
                                                     signer_pub_key_hex)
@@ -203,7 +203,7 @@ class ShareIdTransactionHandler(TransactionHandler):
                         transaction_id):
         LOGGER.debug("Inside _share_response")
         send_to = shared_id_response.send_to_address
-        owner_address = hashing.get_pub_key_hash(signer_pub_key_hex)
+        owner_address = hashing.get_pub_key_hash(signer_pub_key_hex)  # cannot be hidden
         # verify the self state address
         # TODO may use alternative way to verify the output address is derived from the signer_pub_key
         share_state_address = hashing.get_digitalid_address(family_name=FAMILY_SHARED_ID,
@@ -214,68 +214,33 @@ class ShareIdTransactionHandler(TransactionHandler):
             LOGGER.debug("not in to_address {}".format(to_address))
             raise InvalidTransaction("Invalid transaction output address")
 
-        # TODO remove digital_id_hash verification
-        # is_verified = _verify_message_signature(shared_id_response.digital_id_hash,
-        #                                         shared_id_response.digital_signature,
-        #                                         signer_pub_key)
-
-        # TODO remove id_info, take the required info directly from the saved_state
-        # save the info in the shared state space
-        # id_info = shared_id_pb2.Id_info()
-        # id_info.ParseFromString(shared_id_response.Id_info)
-        # conf_txn = id_info.id_confirmation_txn
-        # creating_pub_key = id_info.id_creating_pub_key
-
-        # if creating_pub_key != signer_pub_key:
-        #     LOGGER.debug("Expected public key {}".format(creating_pub_key))
-        #     raise InvalidTransaction("Invalid owner {}".format(signer_pub_key))
-
-        # fetch self-state of the ID owner
         self_state_address = hashing.get_digitalid_address(family_name=FAMILY_DIGITAL_ID,
                                                            pub_key_hash=owner_address,
                                                            key='self')
         if self_state_address not in input_address_list:
             raise InvalidTransaction("Self State input Address not valid")
 
-        id_response = chain_access_util.get_state(base_url=DEFAULT_REST_API_URL, address=self_state_address)
+        id_response = chain_access_util.get_state(base_url=cls.rest_api_url, address=self_state_address)
         LOGGER.debug("Existing ID state_data : {}".format(id_response))
 
         if id_response == digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE:
             LOGGER.debug("ID data does not exist at address {}".format(self_state_address))
             raise InvalidTransaction("ID data does not exist")
 
-        # if id_response['ack_number'] != conf_txn:
-        #     LOGGER.debug("expected acknowledgement : {}".format(id_response['ack_number']))
-        #     raise InvalidTransaction("Invalid dependency given")
-
         stored_id = id_response['digital_id']
-        # stored_id_hash = hashing.get_hash_from_bytes(id_response['digital_id'])
-
-        # match the id hashes
-        # if stored_id_hash != shared_id_response.digital_id_hash:
-        #     LOGGER.debug("expected hash : {}".format(stored_id_hash))
-        #     raise InvalidTransaction("Invalid digital id hash")
 
         conf_txn = id_response['ack_number']
         # Checking validity of the self-state data
-        txn_response = chain_access_util.get_transaction(base_url=DEFAULT_REST_API_URL, requesting_txn_id=conf_txn)
+        txn_response = chain_access_util.get_transaction(base_url=cls.rest_api_url, requesting_txn_id=conf_txn)
         try:
             # txn_header = txn_response['header']
             # certifier_pub_key_hex = txn_header['signer_public_key']
             txn_payload = txn_response['payload']
             digital_id_transaction = DigitalIdTransaction()
             digital_id_transaction.ParseFromString(base64.b64decode(txn_payload))
-            owner_signature = digital_id_transaction.owner_signature
-            # certifier_signature = digital_id_transaction.certifier_signature
-            # This check may fail
-            # if stored_id != digital_id_transaction.digital_id:
-            #     LOGGER.error("id data not same in state and transaction")
-            #     raise Exception("Invalid digital ID or transaction for ID request")
-
-            # txn_id_hash = hashing.get_hash_from_bytes(digital_id_transaction.digital_id)
-            # if txn_id_hash != shared_id_response.digital_id_hash:
-            #     LOGGER.debug("expected hash : {}".format(txn_id_hash))
-            #     raise InvalidTransaction("Invalid digital id hash")
+            if digital_id_transaction.status != id_attribute_pb2.ACK_CONFIRMED:
+                raise InvalidTransaction(
+                    "The saved acknowledgement transaction does not have a valid state")
 
             is_verified = _verify_message_signature(hashing.get_hash_from_bytes(stored_id),
                                                     shared_id_response.digital_signature,
@@ -350,7 +315,7 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
             api_url = DEFAULT_REST_API_URL
         LOGGER.debug("Validator URL: %s", validator_url)
         LOGGER.debug("REST API URL: %s", api_url)
-        tp_processor = TransactionProcessor(url=DEFAULT_VALIDATOR_URL)
+        tp_processor = TransactionProcessor(url=validator_url)
         app_namespace = hashing.hash512(FAMILY_SHARED_ID.encode('utf-8'))[0:6]
         tp_handler = ShareIdTransactionHandler([app_namespace])
         ShareIdTransactionHandler.rest_api_url = api_url
