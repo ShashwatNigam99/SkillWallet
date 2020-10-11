@@ -5,15 +5,13 @@ DigitalIdTransactionHandler class interfaces for digitalid Transaction Family.
 
 """
 import argparse
-import base64
 import logging
-import math
 import os
 import sys
 import traceback
-import cbor
 from sys import path
 
+import cbor
 from colorlog import ColoredFormatter
 from sawtooth_sdk.processor.core import TransactionProcessor
 from sawtooth_sdk.processor.exceptions import InternalError
@@ -22,10 +20,8 @@ from sawtooth_sdk.processor.handler import TransactionHandler
 from sawtooth_signing import create_context
 from sawtooth_signing.secp256k1 import Secp256k1PublicKey
 
-
 path.append(os.getcwd())
-from constants import digital_id_constants
-from protobuf import digital_id_transaction_pb2, digital_id_pb2, id_attribute_pb2, client_pb2
+from protobuf import digital_id_transaction_pb2, digital_id_pb2, id_attribute_pb2
 from util import chain_access_util, hashing
 
 DEFAULT_VALIDATOR_URL = 'tcp://localhost:4004'
@@ -327,7 +323,7 @@ class DigitalIdTransactionHandler(TransactionHandler):
         """This implements the apply function for the TransactionHandler class.
 
            The apply function does most of the work for this class by
-           processing a transaction for the digitalid transaction family.
+           processing a transaction for the 'learner' transaction family.
         """
 
         # Get the payload
@@ -362,191 +358,114 @@ class DigitalIdTransactionHandler(TransactionHandler):
 
         digital_id_byte = digital_id_transaction.digital_id
         LOGGER.debug("digital_id_byte = %s.", digital_id_byte)
-
+        status = digital_id_transaction.status
+        digital_id = None
         # verify the digital_id status and owner's public key with the transaction level information
         try:
-            digital_id = digital_id_pb2.DigitalId()
-            # TODO de-compress digital_id_bytes
+            if status == id_attribute_pb2.PII_REGISTERED:
+                digital_id = digital_id_pb2.PII_credential()
+            elif status == id_attribute_pb2.SKILL_REGISTERED:
+                digital_id = digital_id_pb2.learning_credential()
+
             digital_id.ParseFromString(digital_id_byte)
 
+            if signer_pub_key_hex != digital_id.id_owner_public_key:
+                raise InvalidTransaction("ID owner's public key not matching with transaction signer's")
         except BaseException as err:
             raise Exception(err)
 
-        # if signer_pub_key != digital_id.id_owner_public_key:
-        #     raise InvalidTransaction("ID owner's public key not matching with transaction signer's")
+        owner_sig_str = digital_id_transaction.owner_signature
+        LOGGER.debug("owner_sig_str = %s.", owner_sig_str)
 
-        # retrieve owner_info
-        client_info = digital_id_transaction.owner_info
-        client_trust_score = client_info.trust_score
-        LOGGER.debug('client_trust_score {}'.format(client_trust_score))
-        status = digital_id_transaction.status
+        is_verified = _verify_message_signature(digital_id_byte, owner_sig_str, signer_pub_key_hex)
+        if is_verified == 0:
+            LOGGER.error('DigitalIdTransaction.owner_signature invalid')
+            raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
 
-        # verify the digital id status and signatures
-        if status == id_attribute_pb2.Status.INVALID_ACK:
-            LOGGER.debug("digital_id.status {}".format(digital_id.status))
-            if id_attribute_pb2.Status.INVALID != digital_id.status:
-                raise InvalidTransaction("The digital id status is not valid for the transaction status INVALID_ACK")
-            try:
-                certifier_sig_str = digital_id_transaction.certifier_signature
-                LOGGER.debug("certifier_signature = %s.", certifier_sig_str)
-                is_verified = _verify_message_signature(digital_id_byte, certifier_sig_str, signer_pub_key_hex)
-                if is_verified == 0:
-                    LOGGER.error('DigitalIdTransaction.certifier_signature invalid')
-                    raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
-            except AttributeError:
-                raise InvalidTransaction("Invalid message structure for DigitalIdTransaction: "
-                                         "certifier_signature not set")
-            try:
-                owner_sig_str = digital_id_transaction.owner_signature
-                LOGGER.debug("owner_signature = %s.", owner_sig_str)
-                is_verified = _verify_message_signature(digital_id_byte, owner_sig_str, digital_id.id_owner_public_key)
-                if is_verified == 0:
-                    LOGGER.error('DigitalIdTransaction.owner_signature invalid')
-                    raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
+        if status == id_attribute_pb2.PII_REGISTERED:
+            self._register_pii(context, to_address_list, transaction_id,
+                               digital_id_byte,  # owner_sig_str,
+                               signer_pub_key_hex)
 
-            except AttributeError:
-                raise InvalidTransaction("Invalid message structure for DigitalIdTransaction: "
-                                         "certifier_signature not set")
-        else:
-            if status != id_attribute_pb2.Status.VERIFIER_UPDATE and \
-                    digital_id_transaction.status != digital_id.status:
-                LOGGER.debug("digital_id.status {}".format(digital_id.status))
-                raise InvalidTransaction("The digital id status is not valid for the transaction status {}".format(
-                    digital_id_transaction.status))
+        elif status == id_attribute_pb2.SKILL_REGISTERED:
+            certifier_address = digital_id_transaction.receiver_address
 
-            if status != id_attribute_pb2.RECOVERY_REQ and \
-                    signer_pub_key_hex != digital_id.id_owner_public_key:
-                raise InvalidTransaction("ID owner's public key not matching with transaction signer's")
-
-            owner_sig_str = digital_id_transaction.owner_signature
-            LOGGER.debug("owner_sig_str = %s.", owner_sig_str)
-
-            # Moved the code to new method _verify_message_signature
-            is_verified = _verify_message_signature(digital_id_byte, owner_sig_str, signer_pub_key_hex)
-            if is_verified == 0:
-                LOGGER.error('DigitalIdTransaction.owner_signature invalid')
-                raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
-
-            # removed code to intercept digital_id_pb2.DigitalId()
-            # pii_credential_msg cannot be intercepted at this stage as the id
-            # is encrypted
-
-        if status == id_attribute_pb2.Status.REQUESTED:
-            self._register_id(context, to_address_list, transaction_id,
-                              digital_id_byte,  # owner_sig_str,
-                              signer_pub_key_hex, client_trust_score)
-
-        elif status == id_attribute_pb2.Status.ON_UPDATE:
-            if len(header.dependencies) != 1:
-                raise InvalidTransaction("Invalid transaction dependency list")
-
-            dependent_txn = header.dependencies[0]
-            self._update_id(context, to_address_list, transaction_id,
-                            digital_id_byte,  # owner_sig_str,
-                            signer_pub_key_hex, client_trust_score, dependent_txn)
-
-        elif status == id_attribute_pb2.Status.CONFIRMED:
-
-            if len(header.dependencies) != 1:
-                raise InvalidTransaction("Invalid transaction dependency list")
-
-            dependent_txn = header.dependencies[0]
-            peer_response_txns = digital_id_transaction.peer_verification_txns
-            self._confirm_id(context, to_address_list, transaction_id, digital_id_byte,  # owner_sig_str,
-                             signer_pub_key_hex, client_trust_score, dependent_txn,
-                             peer_response_txns)
-
-        elif status == id_attribute_pb2.Status.VERIFIER_UPDATE:
-
-            if len(header.dependencies) != 1:
-                raise InvalidTransaction("Invalid transaction dependency list")
-
-            dependent_txn = header.dependencies[0]
-            peer_response_txns = digital_id_transaction.peer_verification_txns
-            self._update_id_verifier(context, to_address_list, transaction_id, digital_id_byte,  # owner_sig_str,
-                                     signer_pub_key_hex, client_trust_score, dependent_txn,
-                                     peer_response_txns)
-
-        elif status == id_attribute_pb2.Status.INVALID:
-            if len(header.dependencies) != 1:
-                raise InvalidTransaction("Invalid transaction dependency list")
-
-            dependent_txn = header.dependencies[0]
-            try:
-                receiver_grp = digital_id_transaction.receiver_group
-            except AttributeError:
-                raise InvalidTransaction("Invalid message structure for DigitalIdTransaction: "
-                                         "receiver_group not set")
-
-            self._invalidate_id(context, to_address_list, transaction_id,
-                                digital_id_byte, signer_pub_key_hex,
-                                dependent_txn, receiver_grp)
-
-        elif status == id_attribute_pb2.Status.INVALID_ACK:
-            if len(header.dependencies) != 1:
-                raise InvalidTransaction("Invalid transaction dependency list")
-
-            dependent_txn = header.dependencies[0]
-
-            self._invalidate_acks(context, to_address_list, transaction_id,
-                                  signer_pub_key_hex, dependent_txn)
-
-        elif status == id_attribute_pb2.Status.RECOVERY_REQ:
-            if len(header.dependencies) != 1:
-                raise InvalidTransaction("Invalid transaction dependency list")
-
-            dependent_txn = header.dependencies[0]
-            from_address_list = header.inputs
-            self._recover_id(context, to_address_list, from_address_list, transaction_id,
-                             digital_id_byte, signer_pub_key_hex, client_trust_score, dependent_txn)
-        else:
-            LOGGER.debug("Unhandled action. Action should be request or confirm or update")
-            raise InvalidTransaction('Unhandled action: {}'.format(status))
+            self._register_skill(context, to_address_list, transaction_id,
+                                 digital_id_byte, signer_pub_key_hex, certifier_address)
 
     @classmethod
-    def _register_id(cls, context, to_address_list, transaction_id, digital_id_byte,  # owner_sig_str,
-                     signer_pub_key_hex, trust_score):
+    def _register_pii(cls, context, to_address_list, transaction_id, digital_id_byte,
+                      signer_pub_key_hex):
 
         LOGGER.debug("Inside _register_id method")
 
-        # Verify if the requested address is valid for REQUEST action
+        # Verify if the output state address is valid for PII_REGISTER action
+
         signer_pub_key_hash = hashing.get_pub_key_hash(signer_pub_key_hex)
-        request_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
-                                                        pub_key_hash=signer_pub_key_hash,
-                                                        key=FAMILY_NAME_CERTIFY)
-        LOGGER.debug("request_address : {}".format(request_address))
-        if request_address not in to_address_list:
+        self_state_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
+                                                           pub_key_hash=signer_pub_key_hash,
+                                                           key='self')
+        LOGGER.debug("self_state_address : {}".format(self_state_address))
+        if self_state_address not in to_address_list:
             raise InvalidTransaction("Output Address not valid")
 
-        # saving trust_score in state
-        LOGGER.debug("trust_score : {}".format(trust_score))
-        if trust_score != digital_id_constants.UNINITIATED_ID_TRUST_SCORE:
-            InvalidTransaction("Invalid ID owner trust score")
-
         state_data = cbor.dumps({
-            'digital_id': digital_id_byte,
-            'acting_transaction_id': transaction_id,
-            'trust_score': trust_score
+            'pii_credential': digital_id_byte,
+            'acting_transaction_id': transaction_id
         })
         LOGGER.debug("State-data : {}".format(state_data))
-        addresses = context.set_state({request_address: state_data})
+        addresses = context.set_state({self_state_address: state_data})
 
         if len(addresses) < 1:
             raise InternalError("State Error")
         LOGGER.debug("state updated")
 
         context.add_event(
-            event_type='digitalid/request',
+            event_type='learner/pii_register',
             attributes=[
-                ('address', str(request_address)),
-                ('signer_public_key', str(signer_pub_key_hex)),  # why send with event?
+                ('address', str(self_state_address)),
                 ('transaction_id', str(transaction_id)),
-                ('send_to', str(cls.primary_certifier_address))
+                ('send_to', str(signer_pub_key_hash))
             ]
-            # data=owner_sig_str.encode('utf-8')
         )
 
-    # _invalidate_id method same as _update_id method, only events are different
+    @classmethod
+    def _register_skill(cls, context, to_address_list, transaction_id, digital_id_byte,
+                        signer_pub_key_hex, certifier_address):
+
+        LOGGER.debug("Inside _register_id method")
+
+        # TODO verify if the certifier_address is authorized using global registry
+
+        # Verify if the output state address is valid for this action
+        signer_pub_key_hash = hashing.get_pub_key_hash(signer_pub_key_hex)
+        output_state_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
+                                                             pub_key_hash=signer_pub_key_hash,
+                                                             key=certifier_address)
+        LOGGER.debug("request_address : {}".format(output_state_address))
+        if output_state_address not in to_address_list:
+            raise InvalidTransaction("Output Address not valid")
+        id_state_data = chain_access_util.get_state(cls.rest_api_url, output_state_address)
+        LOGGER.debug("Existing ID state_data : {}".format(id_state_data))
+        id_state_data['skill_credential'] = digital_id_byte
+        id_state_data['acting_transaction_id'] = transaction_id
+        state_data = cbor.dumps(id_state_data)
+        LOGGER.debug("State-data : {}".format(state_data))
+        addresses = context.set_state({output_state_address: state_data})
+
+        if len(addresses) < 1:
+            raise InternalError("State Error")
+        LOGGER.debug("state updated")
+
+        context.add_event(
+            event_type='learner/skill_register',
+            attributes=[
+                ('address', str(output_state_address)),
+                ('sent_from', str(signer_pub_key_hash)),
+                ('transaction_id', str(transaction_id)),
+                ('send_to', str(certifier_address))
+            ]
+        )
 
 
 def create_parser(prog_name):
@@ -564,28 +483,6 @@ def create_parser(prog_name):
 
 
 def main(prog_name=os.path.basename(sys.argv[0]), args=None):
-    # Setup logging for this class.
-    # logging.basicConfig()
-    # logging.getLogger().setLevel(logging.DEBUG)
-    # setup_loggers(verbose_level=0)
-    # pwd = os.path.expanduser(".")
-    # config_dir = os.path.join(pwd, "tfprocessor")
-    # config_file = '{}/{}.txt'.format(config_dir, digital_id_constants.CERTIFIER_CONFIG_FILE)
-    #
-    # try:
-    #     with open(config_file) as fd:
-    #         for line in fd:
-    #             line = line.strip()
-    #             if line.startswith('#') or line == '':
-    #                 continue
-    #             (key, value) = line.split(': ')
-    #             certifier_dict[key] = value.strip()
-    # except OSError as err:
-    #     raise Exception('Failed to read certifier config file {}: {}'.format(config_file, str(err)))
-    # if certifier_dict.get('primary_certifier_pubkey') is None:
-    #     raise Exception("Invalid certifier configuration: 'primary_certifier_pubkey' not set")
-    # LOGGER.debug("primary_certifier_pubkey : {}".format(certifier_dict.get('primary_certifier_pubkey')))
-    # TODO test this block
     try:
         # key_file_name = sys.argv[1]
         if args is None:
@@ -605,20 +502,13 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
             api_url = DEFAULT_REST_API_URL
         LOGGER.debug("Validator URL: %s", validator_url)
         LOGGER.debug("REST API URL: %s", api_url)
-        # TODO adding code to parse cmd arguments
         tp_processor = TransactionProcessor(url=validator_url)
-        id_generation_namespace = hashing.hash512(FAMILY_NAME_LEARNER.encode('utf-8'))[0:6] + \
-                                  hashing.hash512(FAMILY_NAME_CERTIFY.encode('utf-8'))[0:24]
         app_namespace = hashing.hash512(FAMILY_NAME_LEARNER.encode('utf-8'))[0:6]
-        client_app_namespace = hashing.hash512(FAMILY_NAME_CLIENT.encode('utf-8'))[0:6]
         # creating Handler classes
-        id_app_handler = DigitalIdTransactionHandler([app_namespace, id_generation_namespace])
-        client_app_handler = DigitalIdClientTransactionHandler([app_namespace, client_app_namespace])
+        id_app_handler = DigitalIdTransactionHandler([app_namespace])
         # Setting field rest_api_url
         DigitalIdTransactionHandler.rest_api_url = api_url
-        DigitalIdClientTransactionHandler.rest_api_url = api_url
         tp_processor.add_handler(id_app_handler)
-        tp_processor.add_handler(client_app_handler)
         tp_processor.start()
     except KeyboardInterrupt:
         pass

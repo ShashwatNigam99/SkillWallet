@@ -500,7 +500,7 @@ class LearnerWalletClient(object):
 
             digital_id_transaction.digital_id = digital_id_bytes
             digital_id_transaction.owner_signature = self._signer.sign(hashing.get_hash_from_bytes(digital_id_bytes))
-
+            digital_id_transaction.receiver_address = certifier_address
             input_address_list.append(self._self_state_address)
             output_address_list.append(shared_certifier_address)
 

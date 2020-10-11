@@ -4,42 +4,12 @@
     <list default="true" id="68ab66ad-5f54-4375-a707-75d2fe0a0691" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certifier/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certifier/certifier_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/certifier_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certifier/certifier_events_cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/certifier_events_cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certifier/certifier_wallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/certifier_wallet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certifier/id_share_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/id_share_module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/certifier/peer_verification_module.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/digital_id_constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/learner/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/id_share_module.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/peer.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/peer_old.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/peer_verification_module.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/skillwallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/skillwallet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/user_events_cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learner_events_cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/users.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/userwallet_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learnerwallet_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/client.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/client.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/client_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/client_pb2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/digital_id.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/digital_id_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id_pb2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learner/learner_events_cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learner_events_cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learner/learnerwallet_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learnerwallet_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learner/skillwallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learnerwallet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/protobuf/digital_id_transaction.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id_transaction.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/protobuf/digital_id_transaction_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id_transaction_pb2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/id_attribute.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/id_attribute.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/id_attribute_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/id_attribute_pb2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/peer_verification.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/peer_verification_pb2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/generate_address.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/generate_address.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfprocessor/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/tfprocessor/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfprocessor/certifier_config.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tfprocessor/digitalid_tp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tfprocessor/digitalid_tp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfprocessor/peer_verification_tp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfprocessor/shareid_tp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tfprocessor/shareid_tp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/crypto_keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/crypto_keys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/hashing.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/hashing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/transaction_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/transaction_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

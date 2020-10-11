@@ -10,5 +10,6 @@ message DigitalIdTransaction {
     Status status = 3;  //this specifies the action being taken or committed
     string certifier_signature = 4;
     ClientAttributes owner_client_info = 5; // can be verified by tp
+    string receiver_address = 6;
 
 }
