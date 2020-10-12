@@ -22,7 +22,6 @@ from sawtooth_signing.secp256k1 import Secp256k1PrivateKey
 path.append(os.getcwd())
 from protobuf import id_attribute_pb2, digital_id_pb2
 from protobuf.digital_id_transaction_pb2 import DigitalIdTransaction
-from protobuf.client_pb2 import ClientAttributes
 from util import hashing, chain_access_util
 from constants import digital_id_constants
 from util.transaction_generator import TransactionGenerator
@@ -31,7 +30,6 @@ from util.transaction_generator import TransactionGenerator
 
 
 FAMILY_NAME_LEARNER = 'learner'
-FAMILY_NAME_CERTIFY = "certifier"
 DEFAULT_KEY_FILE_NAME = 'skill_wallet'
 FAMILY_NAME_CLIENT = 'client_info'
 # FAMILY_NAME_SHAREDID = 'shared_id'
@@ -41,7 +39,6 @@ LOGGER = logging.getLogger("learnerwallet.client")
 # LOGGER.setLevel(logging.INFO)
 LEARNER_DB_FILE = 'learner_wallet_db'
 EVENTS_DB_FILE = 'learner_events_db'
-REGISTRY_DB_FILE = 'user_registry_db'
 STATUS_ENUM = {0: 'DEFAULT',
                1: 'REGISTERED',
                2: 'PII_REGISTERED',
@@ -189,7 +186,6 @@ class LearnerWalletClient(object):
             os.mkdir(key_file_name)
         self.events_db_file = os.path.join(self.user_dir, EVENTS_DB_FILE)
         self.learner_db_file = os.path.join(self.user_dir, LEARNER_DB_FILE)
-        self.registry_db_file = os.path.join(pwd, 'shared', REGISTRY_DB_FILE)
 
         # if the flags exist in the db read and initialize from the db
 
@@ -222,19 +218,20 @@ class LearnerWalletClient(object):
         if state_response == digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE:
             self._id_creation_state = digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE
             self._enable_register = True
+            self.state_info_dict['enable_register'] = True
             self._enable_skill_register = False
         else:  # data
             self._id_creation_state = state_response
+            self._enable_skill_register = True
+            self.state_info_dict['enable_skill_register'] = True
 
         LOGGER.debug("_id_creation_state {}".format(self._id_creation_state))
         if self._enable_register is True:
             self.register_pii()
-            self._enable_register = False  # TODO
-
-        LOGGER.debug("enable_request: {}".format(self.state_info_dict['enable_request']))
 
     def register_pii(self):
         LOGGER.debug("inside LearnerWalletClient.register_pii")
+        LOGGER.debug("self.refresh_exit {}".format(self.refresh_exit))
         if self.command == 'skill_wallet' and self.refresh_exit:
             self._refresh_state()
         if self.state_info_dict['enable_register'] is True:
@@ -306,8 +303,7 @@ class LearnerWalletClient(object):
             print("ID not found")
         return
 
-
-    def _send_digital_id_txn(self, action, owner_info=None):
+    def _send_digital_id_txn(self, action):
         LOGGER.debug("inside LearnerWalletClient._send_digital_id_txn")
         # Generate payload as digital_id protobuf encoded string
         digital_id_transaction = DigitalIdTransaction()
@@ -316,26 +312,18 @@ class LearnerWalletClient(object):
         output_address_list = []
         dependency_list = []
 
-        # set client_info
-        client_info = ClientAttributes()
-        if owner_info is not None:
-            client_info.CopyFrom(owner_info)
-        else:
-            client_info.user_address = self.public_address
-            # client_info.family_name = FAMILY_NAME_LEARNER
-
         if "register_pii" == action:
             pii_msg = digital_id_pb2.PII_credential()
-            resp = input("Press 'Y' to include additional attributes. To ignore, press any other key: ")
-            if resp.capitalize().strip() == 'Y':
-                attr_list = input("Please enter additional attribute list : ")
-                attr_list = attr_list.split(',')
-                others_map = pii_msg.attribute_set.others
-                for attr in attr_list:
-                    LOGGER.debug("Initializing {} ".format(attr.strip()))
-                    others_map.get_or_create(attr.strip())
-                    attr_value = others_map[attr.strip()]
-                    attr_value.status = id_attribute_pb2.REGISTERED
+            # resp = input("Press 'Y' to include additional attributes. To ignore, press any other key: ")
+            # if resp.capitalize().strip() == 'Y':
+            #     attr_list = input("Please enter additional attribute list : ")
+            #     attr_list = attr_list.split(',')
+            #     others_map = pii_msg.attribute_set.others
+            #     for attr in attr_list:
+            #         LOGGER.debug("Initializing {} ".format(attr.strip()))
+            #         others_map.get_or_create(attr.strip())
+            #         attr_value = others_map[attr.strip()]
+            #         attr_value.status = id_attribute_pb2.REGISTERED
             print("Please fill the following detail: ")
             self._set_user_id(pii_msg.attribute_set)
             pii_msg.status = id_attribute_pb2.REGISTERED
@@ -344,7 +332,7 @@ class LearnerWalletClient(object):
 
             digital_id_bytes = pii_msg.SerializeToString()
             digital_id_transaction.status = id_attribute_pb2.PII_REGISTERED
-            digital_id_transaction.owner_info.CopyFrom(client_info)
+            # digital_id_transaction.owner_info.CopyFrom(client_info)
 
             digital_id_transaction.digital_id = digital_id_bytes
             digital_id_transaction.owner_signature = self._signer.sign(hashing.get_hash_from_bytes(digital_id_bytes))
@@ -354,7 +342,6 @@ class LearnerWalletClient(object):
 
         if "register_skill" == action:
             learning_cred = digital_id_pb2.learning_credential()
-            print("Please input the following details: ")
             self._set_learning_credentials(learning_cred.course_attribute_set)
             certifier_address = input("Please enter course provider's skill-wallet address: ")
             shared_certifier_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
@@ -365,7 +352,7 @@ class LearnerWalletClient(object):
 
             digital_id_bytes = learning_cred.SerializeToString()
             digital_id_transaction.status = id_attribute_pb2.SKILL_REGISTERED
-            digital_id_transaction.owner_info.CopyFrom(client_info)
+            # digital_id_transaction.owner_info.CopyFrom(client_info)
 
             digital_id_transaction.digital_id = digital_id_bytes
             digital_id_transaction.owner_signature = self._signer.sign(hashing.get_hash_from_bytes(digital_id_bytes))
@@ -409,7 +396,6 @@ class LearnerWalletClient(object):
         user_wallet_db.close()
         self.refresh_exit = True
 
-
     def _set_learning_credentials(self, course_attribute_set):
         LOGGER.debug("inside _set_learning_credentials")
         code_dict = {}
@@ -420,39 +406,39 @@ class LearnerWalletClient(object):
 
         course_details_struct.enc_code = random.random().hex().encode()
 
-        val = input("{}: ".format('course_ID: '))
+        val = input("{} ".format('course_ID: '))
         val = val.strip()
         course_details_struct.course_ID = val.lower().encode('utf-8')
 
-        course_provider_name = input("{}: ".format('course provider name: '))
+        course_provider_name = input("{} ".format('course provider name: '))
         course_provider_name = course_provider_name.strip()
         course_details_struct.course_provider_name = course_provider_name.lower().encode('utf-8')
 
-        course_name_val = input("{}: ".format('course name: '))
+        course_name_val = input("{} ".format('course name: '))
         course_name_val = course_name_val.strip()
         course_details_struct.course_name = course_name_val.lower().encode('utf-8')
 
-        val = input("{}: ".format('course description: '))
+        val = input("{} ".format('course description: '))
         val = val.strip()
         course_details_struct.course_description = val.lower().encode('utf-8')
 
-        val = input("{}: ".format('course start date: '))
+        val = input("{} ".format('course start date: '))
         val = val.strip()
         course_details_struct.course_start_date = val.lower().encode('utf-8')
 
-        val = input("{}: ".format('course finish date: '))
+        val = input("{} ".format('course finish date: '))
         val = val.strip()
         course_details_struct.course_finish_date = val.lower().encode('utf-8')
 
-        val = input("{}: ".format('content creators: '))
+        val = input("{} ".format('content creators: '))
         val = val.strip()
         course_details_struct.content_creator_list = val.lower().encode('utf-8')
 
-        val = input("{}: ".format('score: '))
+        val = input("{} ".format('score: '))
         val = val.strip()
         course_details_struct.score = val.lower().encode('utf-8')
 
-        val = input("{}: ".format('course_cert_hash: '))
+        val = input("{} ".format('course_cert_hash: '))
         val = val.strip()
         course_details_struct.course_cert_hash = val.lower().encode('utf-8')
 
@@ -461,8 +447,10 @@ class LearnerWalletClient(object):
         # populate course data
         course_attribute_set.get_or_create(course_key)
         course_data = course_attribute_set[course_key]
-        course_data.course_details = course_details_struct.SerializeToString()
+        # course_attribute = id_attribute_pb2.CourseAttributeDataType()
         course_data.status = id_attribute_pb2.SKILL_REGISTERED
+        course_data.course_details = course_details_struct.SerializeToString()
+        # course_attribute_set[course_key] = course_attribute.SerializeToString()
 
     def _set_user_id(self, id_attribute_set):
         LOGGER.debug("inside _set_user_id")

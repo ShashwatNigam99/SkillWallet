@@ -1,6 +1,5 @@
 syntax = "proto3";
 import "protobuf/digital_id.proto";
-import "protobuf/client.proto";
 
 message DigitalIdTransaction {
 
@@ -9,7 +8,6 @@ message DigitalIdTransaction {
     // new attribute 'status' added for verification by transaction family
     Status status = 3;  //this specifies the action being taken or committed
     string certifier_signature = 4;
-    ClientAttributes owner_client_info = 5; // can be verified by tp
     string receiver_address = 6;
 
 }

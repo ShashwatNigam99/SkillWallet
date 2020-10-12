@@ -9,3 +9,75 @@
 2020-10-11 19:55:55,454 - learner-events-cli - DEBUG - REST API URL: http://localhost:8008
 2020-10-11 19:55:55,588 - learner-events-cli - DEBUG - Listening to events.
 2020-10-11 20:03:45,053 - learner-events-cli - DEBUG - inside UserEventsCli.disconnect
+2020-10-12 08:40:38,172 - learner-events-cli - DEBUG - results: Namespace(rest_api_url=None, user='user1', validator_url=None, verbosity=3)
+2020-10-12 08:40:38,172 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-12 08:40:38,173 - learner-events-cli - DEBUG - User name: user1
+2020-10-12 08:40:38,173 - learner-events-cli - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 08:40:38,173 - learner-events-cli - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 08:40:38,244 - learner-events-cli - DEBUG - Listening to events.
+2020-10-12 08:49:59,726 - learner-events-cli - DEBUG - inside UserEventsCli.disconnect
+2020-10-12 08:50:39,408 - learner-events-cli - DEBUG - results: Namespace(rest_api_url=None, user='learner1', validator_url=None, verbosity=3)
+2020-10-12 08:50:39,408 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-12 08:50:39,408 - learner-events-cli - DEBUG - User name: learner1
+2020-10-12 08:50:39,409 - learner-events-cli - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 08:50:39,409 - learner-events-cli - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 08:50:39,415 - learner-events-cli - DEBUG - Listening to events.
+2020-10-12 09:08:28,852 - learner-events-cli - INFO - Received the following events: ----------
+2020-10-12 09:08:28,852 - learner-events-cli - DEBUG - event_type: "learner/pii_register"
+attributes {
+  key: "address"
+  value: "cce1af58208c7ed34b6df4aa60c52ec248434a17795ec9ae926e5068dc32189e67e37f"
+}
+attributes {
+  key: "transaction_id"
+  value: "d948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7"
+}
+attributes {
+  key: "send_to"
+  value: "c248434a17795ec9ae926e5068dc32189e67e37f"
+}
+
+2020-10-12 09:08:28,852 - learner-events-cli - DEBUG - learner/pii_register
+2020-10-12 09:08:28,853 - learner-events-cli - DEBUG - event attribute address: cce1af58208c7ed34b6df4aa60c52ec248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:08:28,853 - learner-events-cli - DEBUG - event attribute transaction_id: d948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7
+2020-10-12 09:08:28,853 - learner-events-cli - DEBUG - event attribute send_to: c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:08:28,853 - learner-events-cli - INFO - PII credential successfully registered.
+2020-10-12 09:28:31,551 - learner-events-cli - DEBUG - results: Namespace(rest_api_url=None, user='learner1', validator_url=None, verbosity=3)
+2020-10-12 09:28:31,552 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-12 09:28:31,552 - learner-events-cli - DEBUG - User name: learner1
+2020-10-12 09:28:31,552 - learner-events-cli - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 09:28:31,552 - learner-events-cli - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 09:28:31,557 - learner-events-cli - DEBUG - Listening to events.
+2020-10-12 10:17:12,675 - learner-events-cli - DEBUG - results: Namespace(rest_api_url=None, user='learner1', validator_url=None, verbosity=3)
+2020-10-12 10:17:12,676 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-12 10:17:12,676 - learner-events-cli - DEBUG - User name: learner1
+2020-10-12 10:17:12,676 - learner-events-cli - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 10:17:12,677 - learner-events-cli - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 10:17:12,681 - learner-events-cli - DEBUG - Listening to events.
+2020-10-12 10:18:52,083 - learner-events-cli - INFO - Received the following events: ----------
+2020-10-12 10:18:52,083 - learner-events-cli - DEBUG - event_type: "learner/skill_attest"
+attributes {
+  key: "address"
+  value: "cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f"
+}
+attributes {
+  key: "sent_from"
+  value: "5edeec8c12a521eab2621f27a790270d65bb0704"
+}
+attributes {
+  key: "transaction_id"
+  value: "a1a412854679a2f1fb30695c6591a98f3934acbc9e4a71dbdea8b1c86a60e7737f0864c942430ee83aa7846367367b43af3c4be172b80540c89ba859d9d90e5e"
+}
+attributes {
+  key: "send_to"
+  value: "c248434a17795ec9ae926e5068dc32189e67e37f"
+}
+
+2020-10-12 10:18:52,084 - learner-events-cli - DEBUG - learner/skill_attest
+2020-10-12 10:18:52,144 - learner-events-cli - DEBUG - event of type learner/skill_attest received
+2020-10-12 10:18:52,145 - learner-events-cli - DEBUG - event attribute address: cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:18:52,146 - learner-events-cli - DEBUG - event attribute transaction_id: a1a412854679a2f1fb30695c6591a98f3934acbc9e4a71dbdea8b1c86a60e7737f0864c942430ee83aa7846367367b43af3c4be172b80540c89ba859d9d90e5e
+2020-10-12 10:18:52,148 - learner-events-cli - INFO - Digital ID successfully registered. Please peer verify.
+2020-10-12 10:33:33,092 - learner-events-cli - DEBUG - inside UserEventsCli.disconnect
+2020-10-12 10:47:04,776 - learner-events-cli - CRITICAL - verbose_level: 1
+2020-10-12 10:53:15,169 - learner-events-cli - CRITICAL - verbose_level: 1

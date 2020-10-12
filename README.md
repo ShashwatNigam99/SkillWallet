@@ -15,13 +15,11 @@ Skill-Wallet implementation using Hyperledger-Sawtooth blockchain platform
 ## Commands to run Skill-wallet application Processes
 Change directory to the project folder using "cd <project-folder-name>" command
 1. sudo ./tfprocessor/digitalid_tp.py --url [-l] rest-api-url --connect [-C] validator-url [-v/-vv/-vvv]
-1. sudo ./tfprocessor/digitalid_certifier_tp.py --url [-l] rest-api-url --connect [-C] validator-url
 1. sudo ./certifier/certifier_events_cli.py --url [-l] rest-api-url --connect [-C] validator-url -u [--user] certifier-name
 1. sudo ./learner/learner_events_cli.py --url [-l] rest-api-url --connect [-C] validator-url -u [--user] user-name
-1. sudo ./learner/learnerwallet.py [skill_wallet, register, register_skill] --user [-u] user 
+1. sudo ./learner/learnerwallet.py [skill_wallet, register, register_skill, display] --user [-u] user 
     --url [-l] rest-api-url
-1. sudo ./certifier/certifier_wallet.py [certifier_wallet, send_ack, attest_peer, process_request --address [-a] address , 
-                                        process_pending_requests, ack_disable_req] 
+1. sudo ./certifier/certifier_wallet.py [certifier_wallet, attest_skill [-t] request_transaction_id] 
                                         --user [-u] user
                                         --url [-l] rest-api-url 
                                         [-v/-vv/-vvv]

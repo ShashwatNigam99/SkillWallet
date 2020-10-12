@@ -51,6 +51,6 @@ message CourseAttributeDataType {
     Status status = 1;
     bytes course_details = 2;
     string certificate = 3;
-    string skill_point = 4;
+    int32 skill_point = 4;
 
 }

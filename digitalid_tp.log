@@ -2,3 +2,1498 @@
 2020-10-11 19:48:36,583 - digitalid_tp - CRITICAL - verbose_level: 3
 2020-10-11 19:48:36,583 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
 2020-10-11 19:48:36,584 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 08:39:38,961 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 08:39:38,961 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 08:39:38,962 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 08:39:38,962 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 09:08:27,356 - digitalid_tp - DEBUG - to-address: ['cce1af58208c7ed34b6df4aa60c52ec248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:08:27,356 - digitalid_tp - DEBUG - transaction id: d948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7
+2020-10-12 09:08:27,356 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:08:27,357 - digitalid_tp - DEBUG - digital_id_byte = b'\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"'.
+2020-10-12 09:08:27,357 - digitalid_tp - DEBUG - digital_sig_str = 59de8b0269f71fb0f7386bd49b072beb9efe019fe55f3789c246295cb97b47b02516eb2ea61a6e1e6a4f95c5b3812d57390ef066353a7cf4a81f43f552227dba.
+2020-10-12 09:08:27,357 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 09:08:27,358 - digitalid_tp - DEBUG - Inside _register_id method
+2020-10-12 09:08:27,358 - digitalid_tp - DEBUG - self_state_address : cce1af58208c7ed34b6df4aa60c52ec248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:08:27,358 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x80d948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7npii_credentialY\x01#\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"'
+2020-10-12 09:08:27,360 - digitalid_tp - DEBUG - state updated
+2020-10-12 09:08:28,232 - digitalid_tp - DEBUG - to-address: ['cce1af58208c7ed34b6df4aa60c52ec248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:08:28,232 - digitalid_tp - DEBUG - transaction id: d948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7
+2020-10-12 09:08:28,232 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:08:28,233 - digitalid_tp - DEBUG - digital_id_byte = b'\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"'.
+2020-10-12 09:08:28,234 - digitalid_tp - DEBUG - digital_sig_str = 59de8b0269f71fb0f7386bd49b072beb9efe019fe55f3789c246295cb97b47b02516eb2ea61a6e1e6a4f95c5b3812d57390ef066353a7cf4a81f43f552227dba.
+2020-10-12 09:08:28,234 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 09:08:28,234 - digitalid_tp - DEBUG - Inside _register_id method
+2020-10-12 09:08:28,234 - digitalid_tp - DEBUG - self_state_address : cce1af58208c7ed34b6df4aa60c52ec248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:08:28,239 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x80d948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7npii_credentialY\x01#\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"'
+2020-10-12 09:08:28,244 - digitalid_tp - DEBUG - state updated
+2020-10-12 09:16:19,003 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:16:19,004 - digitalid_tp - DEBUG - transaction id: e65e8acb88b08b55cace4887d6f66b1320d56825cea74892fb6cf50762649dde1ca9c0e348366f8bb93d1f2e0e330a3821f4b8440940b41d6a5ad237319a9a2e
+2020-10-12 09:16:19,006 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:16:19,007 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.46bee1ed112cep-1\x1a]\n\x13blockchain_coursera\x12F\x08\x03\x12B\n\x140x1.8ee93fa404cb0p-2\x12\x03123\x1a\x08coursera"\nblockchain2\x0211:\x0278B\x03adfJ\x0267'.
+2020-10-12 09:16:19,007 - digitalid_tp - DEBUG - digital_sig_str = 317145fdafcc674911915513050958b6acc4043918852d47bc544a4ff89b49b6784a643c3e0c1db4a61aa2e2487cb0f9e7c1e7bb8356fad54271359125ac0842.
+2020-10-12 09:16:19,008 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 09:16:19,008 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 09:16:19,009 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:16:19,155 - digitalid_tp - DEBUG - Existing ID state_data : 75
+2020-10-12 09:19:55,764 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 09:19:55,765 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 09:19:55,765 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 09:19:55,765 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 09:21:53,430 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 09:21:53,431 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 09:21:53,431 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 09:21:53,431 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 09:23:15,280 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:23:15,281 - digitalid_tp - DEBUG - transaction id: 7875b1c55d0f60f5ba2ceee8e4ecd9394578b5f40e45056f113a2044fcb78dac45725a13570a1dc9b382b16eb6d47cbb7bd6331e5535bfce35c6b8548f132045
+2020-10-12 09:23:15,281 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:23:15,282 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.0211280fcc2aap-2\x1aY\n\x13blockchain_coursera\x12B\x08\x03\x12>\n\x140x1.a0c3cbf6c8730p-2\x12\x03134\x1a\x08coursera"\nblockchain2\x0212:\x0234J\x03456'.
+2020-10-12 09:23:15,282 - digitalid_tp - DEBUG - digital_sig_str = 040f7cff6d9279715b37a4dda3dc7fc2fca0fb613ba0dac9a53e922468b75954217ff34c370abdc137d2ee2e5abf38f639c61217b8864a1f35e61b88986b7007.
+2020-10-12 09:23:15,282 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 09:23:15,283 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 09:23:15,283 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:23:15,382 - digitalid_tp - DEBUG - Existing ID state_data : 75
+2020-10-12 09:24:47,890 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 09:24:47,891 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 09:24:47,891 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 09:24:47,892 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 09:26:56,736 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:26:56,736 - digitalid_tp - DEBUG - transaction id: 7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1
+2020-10-12 09:26:56,736 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:26:56,737 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256'.
+2020-10-12 09:26:56,737 - digitalid_tp - DEBUG - digital_sig_str = e839a12f357d190ca56dfee78f95213db033a44a9255d798ee7d013066cc20e700791be42bf3d8bf11a52be138babaf67fba8f4a9193cf5a0e652651fcb1168d.
+2020-10-12 09:26:56,737 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 09:26:56,738 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 09:26:56,738 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:26:56,842 - digitalid_tp - DEBUG - Existing ID state_data : 75
+2020-10-12 09:26:56,842 - digitalid_tp - DEBUG - State-data : b'\xa2pskill_credentialX\xbb\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256uacting_transaction_idx\x807889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1'
+2020-10-12 09:26:56,847 - digitalid_tp - DEBUG - state updated
+2020-10-12 09:26:57,711 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:26:57,711 - digitalid_tp - DEBUG - transaction id: 7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1
+2020-10-12 09:26:57,712 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:26:57,712 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256'.
+2020-10-12 09:26:57,713 - digitalid_tp - DEBUG - digital_sig_str = e839a12f357d190ca56dfee78f95213db033a44a9255d798ee7d013066cc20e700791be42bf3d8bf11a52be138babaf67fba8f4a9193cf5a0e652651fcb1168d.
+2020-10-12 09:26:57,713 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 09:26:57,715 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 09:26:57,722 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:26:57,845 - digitalid_tp - DEBUG - Existing ID state_data : 75
+2020-10-12 09:26:57,845 - digitalid_tp - DEBUG - State-data : b'\xa2pskill_credentialX\xbb\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256uacting_transaction_idx\x807889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1'
+2020-10-12 09:26:57,847 - digitalid_tp - DEBUG - state updated
+2020-10-12 09:53:41,552 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:41,552 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:41,552 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:41,552 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:41,553 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:41,553 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:42,248 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:42,249 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:42,250 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:42,253 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:42,256 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:42,257 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:43,291 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:43,293 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:43,294 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:43,297 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:43,297 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:43,297 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:44,323 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:44,325 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:44,326 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:44,329 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:44,332 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:44,333 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:45,353 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:45,355 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:45,356 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:45,362 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:45,363 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:45,364 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:46,375 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:46,375 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:46,376 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:46,377 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:46,378 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:46,378 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:47,403 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:47,405 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:47,406 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:47,408 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:47,408 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:47,410 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:48,430 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:48,431 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:48,432 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:48,435 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:48,435 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:48,438 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:49,468 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:49,469 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:49,470 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:49,472 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:49,477 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:49,477 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:50,497 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:50,498 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:50,498 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:50,499 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:50,500 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:50,500 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:51,523 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:51,524 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:51,525 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:51,526 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:51,526 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:51,526 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:52,551 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:52,552 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:52,552 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:52,553 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:52,553 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:52,553 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:53,560 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:53,561 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:53,562 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:53,563 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:53,563 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:53,563 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:54,594 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:54,595 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:54,596 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:54,598 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:54,599 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:54,601 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:55,620 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:55,621 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:55,622 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:55,624 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:55,625 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:55,627 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:56,641 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:56,642 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:56,645 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:56,647 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:56,647 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:56,648 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:57,659 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:57,659 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:57,659 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:57,660 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:57,660 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:57,660 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:58,675 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:58,677 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:58,678 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:58,680 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:58,681 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:58,684 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:53:59,690 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:53:59,690 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:53:59,691 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:53:59,691 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:53:59,692 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:53:59,692 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:00,703 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:00,703 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:00,704 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:00,705 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:00,705 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:00,705 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:01,711 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:01,712 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:01,712 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:01,712 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:01,713 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:01,713 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:02,721 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:02,722 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:02,722 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:02,722 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:02,722 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:02,722 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:03,729 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:03,729 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:03,730 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:03,730 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:03,730 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:03,730 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:04,745 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:04,745 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:04,746 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:04,746 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:04,747 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:04,747 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:05,765 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:05,766 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:05,767 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:05,769 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:05,770 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:05,771 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:06,781 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:06,782 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:06,782 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:06,782 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:06,783 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:06,783 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:07,790 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:07,791 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:07,791 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:07,792 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:07,792 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:07,793 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:08,816 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:08,819 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:08,822 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:08,827 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:08,829 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:08,830 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:09,847 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:09,847 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:09,848 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:09,849 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:09,849 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:09,850 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:10,865 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:10,866 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:10,866 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:10,866 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:10,867 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:10,867 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:11,883 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:11,885 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:11,886 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:11,887 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:11,888 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:11,888 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:12,902 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:12,902 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:12,903 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:12,903 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:12,903 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:12,903 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:13,926 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:13,927 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:13,927 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:13,928 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:13,928 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:13,928 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:14,936 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:14,937 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:14,937 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:14,937 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:14,937 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:14,938 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:15,950 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:15,951 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:15,951 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:15,952 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:15,952 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:15,952 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:16,967 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:16,968 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:16,969 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:16,969 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:16,970 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:16,970 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:17,989 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:17,990 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:17,990 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:17,990 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:17,990 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:17,991 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:19,023 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:19,025 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:19,027 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:19,028 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:19,028 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:19,028 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:20,049 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:20,050 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:20,051 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:20,053 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:20,056 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:20,057 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:21,078 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:21,080 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:21,081 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:21,086 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:21,087 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:21,088 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:22,096 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:22,097 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:22,098 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:22,101 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:22,102 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:22,103 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:23,106 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:23,107 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:23,108 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:23,109 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:23,110 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:23,112 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:24,119 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:24,120 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:24,121 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:24,122 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:24,123 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:24,123 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:25,137 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:25,138 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:25,140 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:25,145 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:25,146 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:25,147 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:26,150 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:26,150 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:26,151 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:26,151 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:26,151 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:26,151 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:27,166 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:27,166 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:27,167 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:27,167 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:27,168 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:27,168 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:28,179 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:28,179 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:28,180 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:28,180 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:28,181 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:28,181 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:29,187 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:29,187 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:29,187 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:29,188 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:29,189 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:29,189 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:30,192 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:30,192 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:30,192 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:30,193 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:30,193 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:30,193 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:31,204 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:31,205 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:31,205 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:31,205 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:31,205 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:31,206 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:32,216 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:32,217 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:32,217 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:32,217 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:32,218 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:32,218 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:33,229 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:33,229 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:33,230 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:33,232 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:33,232 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:33,233 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:34,246 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:34,247 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:34,247 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:34,247 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:34,247 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:34,247 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:35,260 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:35,260 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:35,261 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:35,261 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:35,261 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:35,261 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:36,277 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:36,278 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:36,278 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:36,280 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:36,280 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:36,280 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:37,296 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:37,296 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:37,297 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:37,298 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:37,298 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:37,298 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:38,314 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:38,314 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:38,314 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:38,315 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:38,315 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:38,315 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:39,332 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:39,334 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:39,335 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:39,337 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:39,339 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:39,339 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:40,357 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:40,358 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:40,358 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:40,360 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:40,360 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:40,361 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:41,382 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:41,382 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:41,383 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:41,383 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:41,383 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:41,383 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:42,406 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:42,407 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:42,408 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:42,409 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:42,410 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:42,410 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:43,429 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:43,431 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:43,431 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:43,432 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:43,433 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:43,433 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:44,449 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:44,450 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:44,450 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:44,451 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:44,451 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:44,451 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:45,458 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:45,458 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:45,458 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:45,459 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:45,459 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:45,459 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:46,481 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:46,482 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:46,482 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:46,483 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:46,484 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:46,484 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:47,511 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:47,512 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:47,513 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:47,515 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:47,515 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:47,516 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:48,549 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:48,549 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:48,550 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:48,550 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:48,551 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:48,551 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:49,571 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:49,572 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:49,573 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:49,574 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:49,574 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:49,575 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:50,601 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:50,603 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:50,605 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:50,610 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:50,610 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:50,611 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:51,629 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:51,631 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:51,632 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:51,637 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:51,638 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:51,639 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:52,655 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:52,656 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:52,657 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:52,660 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:52,661 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:52,662 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:53,688 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:53,689 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:53,689 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:53,690 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:53,690 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:53,690 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:54,697 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:54,697 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:54,697 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:54,698 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:54,699 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:54,699 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:55,713 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:55,714 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:55,715 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:55,717 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:55,718 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:55,718 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:56,727 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:56,727 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:56,728 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:56,728 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:56,729 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:56,729 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:57,739 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:57,739 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:57,739 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:57,740 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:57,740 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:57,741 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:58,763 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:58,764 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:58,765 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:58,768 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:58,771 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:58,772 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:54:59,773 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:54:59,774 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:54:59,774 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:54:59,775 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:54:59,775 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:54:59,775 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:00,778 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:00,778 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:00,778 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:00,779 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:00,779 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:00,779 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:01,789 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:01,790 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:01,790 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:01,791 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:01,791 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:01,791 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:02,794 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:02,795 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:02,795 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:02,795 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:02,796 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:02,796 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:03,804 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:03,805 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:03,806 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:03,807 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:03,808 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:03,808 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:04,830 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:04,831 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:04,832 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:04,833 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:04,833 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:04,833 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:05,863 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:05,864 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:05,864 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:05,866 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:05,866 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:05,867 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:06,878 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:06,879 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:06,879 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:06,879 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:06,880 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:06,880 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:07,891 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:07,891 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:07,892 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:07,892 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:07,893 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:07,893 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:08,904 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:08,904 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:08,905 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:08,906 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:08,906 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:08,906 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:09,909 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:09,909 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:09,909 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:09,910 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:09,910 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:09,911 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:10,933 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:10,934 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:10,934 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:10,935 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:10,935 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:10,935 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:11,952 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:11,953 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:11,954 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:11,957 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:11,960 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:11,961 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:12,973 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:12,974 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:12,974 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:12,975 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:12,975 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:12,975 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:13,986 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:13,986 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:13,987 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:13,988 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:13,989 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:13,989 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:14,992 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:14,992 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:14,993 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:14,993 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:14,993 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:14,993 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:15,999 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:15,999 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:16,000 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:16,001 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:16,001 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:16,001 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:17,006 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:17,010 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:17,012 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:17,013 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:17,013 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:17,013 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:18,015 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:18,016 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:18,016 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:18,017 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:18,017 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:18,017 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:19,053 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:19,053 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:19,053 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:19,054 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:19,054 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:19,054 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:20,067 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:20,068 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:20,069 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:20,069 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:20,070 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:20,070 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:21,079 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:21,081 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:21,082 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:21,084 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:21,084 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:21,088 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:22,104 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:22,106 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:22,107 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:22,108 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:22,109 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:22,109 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:23,132 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:23,134 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:23,135 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:23,137 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:23,138 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:23,142 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:24,150 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:24,151 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:24,152 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:24,154 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:24,154 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:24,155 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:25,174 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:25,174 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:25,175 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:25,175 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:25,176 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:25,176 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:26,184 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:26,185 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:26,185 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:26,186 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:26,186 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:26,187 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:27,203 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:27,204 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:27,206 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:27,210 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:27,210 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:27,211 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:28,213 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:28,213 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:28,214 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:28,215 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:28,216 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:28,216 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:29,239 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:29,241 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:29,242 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:29,245 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:29,248 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:29,249 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:30,266 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:30,267 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:30,268 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:30,281 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:30,282 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:30,285 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:31,288 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:31,289 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:31,289 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:31,290 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:31,290 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:31,290 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:32,315 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:32,316 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:32,317 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:32,317 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:32,317 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:32,317 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:33,348 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:33,350 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:33,351 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:33,356 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:33,359 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:33,360 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:34,360 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:34,363 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:34,367 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:34,368 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:34,368 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:34,368 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:35,367 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:35,368 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:35,368 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:35,368 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:35,368 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:35,369 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:36,374 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:36,374 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:36,375 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:36,375 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:36,376 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:36,376 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:37,390 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:37,390 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:37,391 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:37,392 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:37,392 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:37,393 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:38,412 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:38,413 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:38,414 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:38,416 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:38,419 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:38,420 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:39,435 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:39,437 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:39,439 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:39,441 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:39,442 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:39,445 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:40,462 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:40,464 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:40,465 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:40,467 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:40,470 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:40,471 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:41,490 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:41,491 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:41,492 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:41,494 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:41,497 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:41,499 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:42,519 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:42,520 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:42,520 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:42,521 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:42,521 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:42,521 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:43,547 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:43,548 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:43,549 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:43,551 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:43,552 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:43,555 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:44,586 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:44,587 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:44,588 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:44,589 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:44,590 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:44,590 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:45,616 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:45,617 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:45,619 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:45,624 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:45,625 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:45,626 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:46,637 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:46,638 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:46,639 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:46,641 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:46,642 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:46,645 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:47,651 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:47,651 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:47,651 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:47,652 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:47,652 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:47,652 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:48,656 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:48,658 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:48,659 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:48,660 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:48,660 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:48,660 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:49,664 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:49,664 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:49,665 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:49,668 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:49,669 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:49,669 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:50,685 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:50,687 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:50,688 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:50,700 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:50,705 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:50,706 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:51,706 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:51,706 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:51,706 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:51,707 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:51,707 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:51,707 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:52,733 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:52,733 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:52,734 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:52,737 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:52,737 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:52,737 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:53,751 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:53,753 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:53,770 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:53,771 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:53,771 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:53,771 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:54,791 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:54,794 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:54,795 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:54,801 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:54,805 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:54,806 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:55,815 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:55,817 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:55,818 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:55,824 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:55,828 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:55,829 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:56,855 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:56,857 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:56,858 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:56,860 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:56,861 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:56,863 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:57,886 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:57,886 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:57,886 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:57,887 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:57,887 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:57,887 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:58,906 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:58,908 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:58,909 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:58,912 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:58,915 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:58,916 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:55:59,938 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:55:59,940 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:55:59,941 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:55:59,943 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:55:59,944 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:55:59,944 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:00,940 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:00,940 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:00,941 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:00,941 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:00,941 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:00,942 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:01,961 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:01,961 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:01,962 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:01,963 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:01,964 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:01,964 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:02,982 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:02,982 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:02,983 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:02,984 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:02,985 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:02,985 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:04,005 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:04,006 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:04,007 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:04,009 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:04,012 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:04,013 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:05,033 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:05,035 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:05,036 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:05,041 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:05,042 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:05,043 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:06,063 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:06,065 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:06,066 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:06,068 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:06,071 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:06,071 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:07,097 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:07,099 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:07,100 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:07,102 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:07,104 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:07,105 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:08,114 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:08,116 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:08,117 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:08,123 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:08,124 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:08,125 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:09,142 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:09,144 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:09,146 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:09,151 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:09,152 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:09,153 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:10,171 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:10,173 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:10,174 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:10,180 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:10,180 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:10,181 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:11,201 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:11,201 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:11,202 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:11,203 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:11,204 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:11,205 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:12,231 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:12,233 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:12,234 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:12,239 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:12,240 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:12,241 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:13,260 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:13,262 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:13,263 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:13,267 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:13,269 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:13,270 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:14,290 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:14,291 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:14,292 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:14,294 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:14,294 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:14,295 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:15,319 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:15,322 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:15,323 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:15,328 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:15,329 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:15,333 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:16,345 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:16,346 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:16,347 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:16,350 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:16,351 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:16,354 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:17,375 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:17,377 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:17,379 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:17,382 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:17,382 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:17,383 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:18,403 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:18,405 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:18,406 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:18,411 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:18,413 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:18,414 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:19,435 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:19,437 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:19,438 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:19,442 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:19,444 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:19,445 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:20,465 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:20,468 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:20,469 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:20,471 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:20,472 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:20,473 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:21,494 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:21,495 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:21,497 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:21,501 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:21,503 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:21,504 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:22,521 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:22,523 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:22,525 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:22,531 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:22,532 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:22,536 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:23,550 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:23,552 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:23,554 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:23,558 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:23,560 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:23,560 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:24,565 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:24,566 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:24,566 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:24,570 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:24,571 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:24,571 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:25,570 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:25,571 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:25,571 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:25,571 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:25,571 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:25,571 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:26,584 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:26,584 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:26,585 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:26,585 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:26,585 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:26,585 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:27,590 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:27,590 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:27,591 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:27,591 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:27,592 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:27,592 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:28,603 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:28,603 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:28,603 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:28,604 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:28,604 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:28,604 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:29,615 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:29,616 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:29,616 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:29,617 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:29,617 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:29,617 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:30,640 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:30,642 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:30,644 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:30,645 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:30,646 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:30,646 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:31,666 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:31,668 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:31,668 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:31,671 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:31,671 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:31,674 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:32,695 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:32,696 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:32,698 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:32,700 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:32,703 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:32,704 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:33,711 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:33,711 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:33,712 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:33,712 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:33,712 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:33,713 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:34,729 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:34,731 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:34,732 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:34,734 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:34,737 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:34,738 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:35,751 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:35,753 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:35,754 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:35,756 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:35,760 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:35,761 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:36,772 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:36,773 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:36,774 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:36,777 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:36,780 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:36,781 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:37,796 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:37,796 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:37,797 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:37,797 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:37,798 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:37,799 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:38,803 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:38,803 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:38,803 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:38,804 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:38,804 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:38,805 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:39,820 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:39,822 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:39,823 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:39,825 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:39,827 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:39,828 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:40,848 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:40,850 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:40,851 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:40,853 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:40,855 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:40,858 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:41,865 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:41,866 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:41,867 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:41,868 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:41,869 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:41,869 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:42,886 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:42,887 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:42,887 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:42,887 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:42,887 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:42,888 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:43,908 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:43,909 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:43,910 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:43,910 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:43,910 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:43,911 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:44,927 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:44,927 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:44,927 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:44,928 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:44,929 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:44,929 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:45,931 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:45,932 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:45,932 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:45,932 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:45,933 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:45,933 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:46,939 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:46,939 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:46,940 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:46,941 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:46,941 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:46,942 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:47,946 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:47,947 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:47,947 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:47,948 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:47,948 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:47,948 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:48,955 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:48,955 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:48,955 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:48,956 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:48,956 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:48,957 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:49,968 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:49,969 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:49,969 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:49,970 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:49,970 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:49,970 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:50,988 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:50,990 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:50,991 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:50,993 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:50,994 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:50,997 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:52,015 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:52,016 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:52,017 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:52,019 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:52,022 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:52,023 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:53,053 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:53,054 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:53,055 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:53,056 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:53,057 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:53,057 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:54,066 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:54,066 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:54,067 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:54,067 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:54,068 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:54,068 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:55,076 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:55,076 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:55,077 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:55,077 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:55,077 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:55,078 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:56,096 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:56,097 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:56,097 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:56,098 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:56,098 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:56,098 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:57,101 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:57,102 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:57,102 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:57,103 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:57,103 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:57,103 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:58,113 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:58,114 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:58,115 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:58,117 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:58,118 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:58,120 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:56:59,135 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:56:59,136 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:56:59,136 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:56:59,137 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:56:59,138 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:56:59,138 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:00,142 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:00,143 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:00,143 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:00,143 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:00,144 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:00,144 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:01,158 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:01,159 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:01,160 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:01,163 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:01,163 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:01,167 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:02,189 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:02,190 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:02,191 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:02,194 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:02,197 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:02,199 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:03,219 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:03,220 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:03,221 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:03,223 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:03,223 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:03,223 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:04,246 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:04,248 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:04,249 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:04,251 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:04,252 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:04,255 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:05,275 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:05,277 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:05,279 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:05,281 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:05,283 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:05,290 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:06,312 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:06,313 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:06,313 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:06,314 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:06,314 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:06,315 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:07,342 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:07,343 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:07,346 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:07,353 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:07,354 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:07,355 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:08,355 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:08,355 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:08,355 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:08,356 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:08,356 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:08,356 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:09,372 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:09,373 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:09,374 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:09,376 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:09,377 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:09,378 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:10,400 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:10,402 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:10,403 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:10,405 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:10,408 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:10,409 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:11,420 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:11,421 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:11,422 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:11,423 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:11,424 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:11,424 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:12,447 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:12,449 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:12,450 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:12,456 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:12,457 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:12,458 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:13,473 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:13,474 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:13,475 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:13,478 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:13,481 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:13,482 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:14,489 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:14,490 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:14,490 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:14,490 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:14,490 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:14,490 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:15,508 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:15,511 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:15,512 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:15,515 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:15,519 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:15,522 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:16,534 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:16,536 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:16,537 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:16,542 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:16,543 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:16,543 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:17,569 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:17,574 - digitalid_tp - DEBUG - transaction id: dfdc8f2ad6d80fe9f0cab86b48fd0e4111c7a137c20fbcf29b0951968e06711701c06a1b5c0bdab1f89971a5b870bbac0343834f54c79994077e192c77d0318e
+2020-10-12 09:57:17,576 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:17,581 - digitalid_tp - ERROR - digital_id_transaction.status is empty
+2020-10-12 09:57:17,583 - digitalid_tp - DEBUG - Flag value: False
+2020-10-12 09:57:17,586 - digitalid_tp - ERROR - Invalid digital_id_transaction
+2020-10-12 09:57:17,738 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 09:57:17,739 - digitalid_tp - DEBUG - transaction id: f2ea096a433db6108ac3afe2dce7447e003a4e6b8722f85d275b73b7fac218d218fd072e77811148fa9da102d108276e19d55b913f127d32750d929b3f0bd3cf
+2020-10-12 09:57:17,739 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 09:57:17,740 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.c03dab3bad821p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.6775d2295645cp-1\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T09:57:17.664032\x1a\x80\x019b412845baeb585587887c50097462a3ecc2001414c2ffbec212b5052412afff7478208c03aa35f663d9d85411be9d14612fc42e28e65ad59b80f4c74eb777e4 2'.
+2020-10-12 09:59:01,911 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 09:59:01,912 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 09:59:01,912 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 09:59:01,912 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 10:00:45,376 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 10:00:45,377 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 10:00:45,377 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 10:00:45,377 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 10:01:38,576 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:01:38,577 - digitalid_tp - DEBUG - transaction id: be3c0407ce4868e841cb6b66496ce40603761589cde5bc370d0da784f5180ec454f39ea5ade0802dffd0b5f8677ba3c76b61991dc6484a6105e110d9328aaefe
+2020-10-12 10:01:38,577 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:01:38,577 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.6f27a1ea1e43ep-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.cb8ccf66e9529p-1\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:01:38.406610\x1a\x80\x0141ac0634026e66b1430cae9c3e0513d6b2fce49acbb18f118aa9a647a2168db6382b577742640f8e157f1d5f57e58b20f61d0ec3e886acb1e3ea63cb48dbd8fb 2'.
+2020-10-12 10:01:38,578 - digitalid_tp - DEBUG - digital_sig_str = f0eea36ec83a5e98f1523d0bfcffbac689a7f693df04635673b1da89859810783761e9f00dfa470aeeb514bdca30ff60327ae8413653844ca53342e46f143364.
+2020-10-12 10:01:38,578 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:01:38,578 - digitalid_tp - DEBUG - header.dependencies: ['7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1']
+2020-10-12 10:01:38,578 - digitalid_tp - DEBUG - Inside _attest_skill method
+2020-10-12 10:01:38,666 - digitalid_tp - DEBUG - output_state_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:01:38,748 - digitalid_tp - DEBUG - Existing ID state_data : {'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256', 'acting_transaction_id': '7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1'}
+2020-10-12 10:04:08,787 - digitalid_tp - DEBUG - results: Namespace(rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-12 10:04:08,787 - digitalid_tp - CRITICAL - verbose_level: 3
+2020-10-12 10:04:08,787 - digitalid_tp - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-12 10:04:08,788 - digitalid_tp - DEBUG - REST API URL: http://localhost:8008
+2020-10-12 10:04:53,432 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:04:53,433 - digitalid_tp - DEBUG - transaction id: ccb65bf37df079a6501021361b964833cf1f191007075689bdb0f7025d0bda441dc0e2f44e8add50930ab50a3abcdfa11a82e6bdc58939723fbf2e2b84206562
+2020-10-12 10:04:53,433 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:04:53,433 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.9eae9e0dd8eb0p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.999ed01c1dc30p-5\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:04:53.276019\x1a\x80\x0120280bf458dcb76c67057efef52f6f29ef5f68a3fbce9ec4499993910698ab502a5409e81a9e16070565d906b407db8b607b6462ebace2a3d7deed1b10607c3f 2'.
+2020-10-12 10:04:53,434 - digitalid_tp - DEBUG - digital_sig_str = 2f2c5f70236142e43d8ca00562fff6742b011d43df7ecbafa6d6b67bfb1f6062286c48e99e62f4ccd0cc94c869dc19247c643115c6e78d8567a575cc838df514.
+2020-10-12 10:04:53,434 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:04:53,434 - digitalid_tp - DEBUG - header.dependencies: ['7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1']
+2020-10-12 10:04:53,434 - digitalid_tp - DEBUG - Inside _attest_skill method
+2020-10-12 10:04:53,518 - digitalid_tp - DEBUG - output_state_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:04:53,602 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256'}
+2020-10-12 10:04:53,603 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x80ccb65bf37df079a6501021361b964833cf1f191007075689bdb0f7025d0bda441dc0e2f44e8add50930ab50a3abcdfa11a82e6bdc58939723fbf2e2b84206562pskill_credentialY\x01\xa3\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.9eae9e0dd8eb0p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.999ed01c1dc30p-5\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:04:53.276019\x1a\x80\x0120280bf458dcb76c67057efef52f6f29ef5f68a3fbce9ec4499993910698ab502a5409e81a9e16070565d906b407db8b607b6462ebace2a3d7deed1b10607c3f 2'
+2020-10-12 10:04:53,607 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:04:53,657 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:04:53,658 - digitalid_tp - DEBUG - transaction id: ccb65bf37df079a6501021361b964833cf1f191007075689bdb0f7025d0bda441dc0e2f44e8add50930ab50a3abcdfa11a82e6bdc58939723fbf2e2b84206562
+2020-10-12 10:04:53,658 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:04:53,659 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.9eae9e0dd8eb0p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.999ed01c1dc30p-5\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:04:53.276019\x1a\x80\x0120280bf458dcb76c67057efef52f6f29ef5f68a3fbce9ec4499993910698ab502a5409e81a9e16070565d906b407db8b607b6462ebace2a3d7deed1b10607c3f 2'.
+2020-10-12 10:04:53,659 - digitalid_tp - DEBUG - digital_sig_str = 2f2c5f70236142e43d8ca00562fff6742b011d43df7ecbafa6d6b67bfb1f6062286c48e99e62f4ccd0cc94c869dc19247c643115c6e78d8567a575cc838df514.
+2020-10-12 10:04:53,659 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:04:53,660 - digitalid_tp - DEBUG - header.dependencies: ['7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1']
+2020-10-12 10:04:53,661 - digitalid_tp - DEBUG - Inside _attest_skill method
+2020-10-12 10:04:53,754 - digitalid_tp - DEBUG - output_state_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:04:53,838 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '7889008f11b705edb3f0c984ee1104539b1697c288a54921080e3763e4595afe714fd3b636a847da90b942fdf1f71266b325a2cb2b1541207d7200b133c763b1', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.8520860232149p-1\x1a_\n\x13blockchain_coursera\x12H\x08\x03\x12D\n\x140x1.3fb0d6c96b5f0p-2\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256'}
+2020-10-12 10:04:53,839 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x80ccb65bf37df079a6501021361b964833cf1f191007075689bdb0f7025d0bda441dc0e2f44e8add50930ab50a3abcdfa11a82e6bdc58939723fbf2e2b84206562pskill_credentialY\x01\xa3\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.9eae9e0dd8eb0p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.999ed01c1dc30p-5\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:04:53.276019\x1a\x80\x0120280bf458dcb76c67057efef52f6f29ef5f68a3fbce9ec4499993910698ab502a5409e81a9e16070565d906b407db8b607b6462ebace2a3d7deed1b10607c3f 2'
+2020-10-12 10:04:53,841 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:10:07,468 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:10:07,468 - digitalid_tp - DEBUG - transaction id: 1eb02a1e2c1553d3c8768cde2f85aaf38477354d74443c4930f3e67be14763dc3eda53da31231ebe9bafc67b97aed091612f1b5e7c606079f7e6aaa805fba7ab
+2020-10-12 10:10:07,468 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:10:07,469 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.092c39b680f74p-1\x1aL\n\x0cabc_coursera\x12<\x08\x03\x128\n\x140x1.271ff92b172dfp-1\x12\x0513414\x1a\x08coursera"\x03abc2\x0234:\x0234J\x0245'.
+2020-10-12 10:10:07,469 - digitalid_tp - DEBUG - digital_sig_str = 570fcd65c5a6b1ef324fd4d0adc8ca6f64d93f09ff25dc95c871058aab13ff3b3a34f4ffe80222c113420f636dcf6d8c3bd382a6efab2b7cb2762fdfba2401c8.
+2020-10-12 10:10:07,470 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:10:07,470 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 10:10:07,470 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:10:07,552 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': 'ccb65bf37df079a6501021361b964833cf1f191007075689bdb0f7025d0bda441dc0e2f44e8add50930ab50a3abcdfa11a82e6bdc58939723fbf2e2b84206562', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.9eae9e0dd8eb0p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.999ed01c1dc30p-5\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:04:53.276019\x1a\x80\x0120280bf458dcb76c67057efef52f6f29ef5f68a3fbce9ec4499993910698ab502a5409e81a9e16070565d906b407db8b607b6462ebace2a3d7deed1b10607c3f 2'}
+2020-10-12 10:10:07,552 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x801eb02a1e2c1553d3c8768cde2f85aaf38477354d74443c4930f3e67be14763dc3eda53da31231ebe9bafc67b97aed091612f1b5e7c606079f7e6aaa805fba7abpskill_credentialX\xa8\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.092c39b680f74p-1\x1aL\n\x0cabc_coursera\x12<\x08\x03\x128\n\x140x1.271ff92b172dfp-1\x12\x0513414\x1a\x08coursera"\x03abc2\x0234:\x0234J\x0245'
+2020-10-12 10:10:07,555 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:10:08,343 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:10:08,344 - digitalid_tp - DEBUG - transaction id: 1eb02a1e2c1553d3c8768cde2f85aaf38477354d74443c4930f3e67be14763dc3eda53da31231ebe9bafc67b97aed091612f1b5e7c606079f7e6aaa805fba7ab
+2020-10-12 10:10:08,344 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:10:08,344 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.092c39b680f74p-1\x1aL\n\x0cabc_coursera\x12<\x08\x03\x128\n\x140x1.271ff92b172dfp-1\x12\x0513414\x1a\x08coursera"\x03abc2\x0234:\x0234J\x0245'.
+2020-10-12 10:10:08,345 - digitalid_tp - DEBUG - digital_sig_str = 570fcd65c5a6b1ef324fd4d0adc8ca6f64d93f09ff25dc95c871058aab13ff3b3a34f4ffe80222c113420f636dcf6d8c3bd382a6efab2b7cb2762fdfba2401c8.
+2020-10-12 10:10:08,345 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:10:08,345 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 10:10:08,345 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:10:08,452 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': 'ccb65bf37df079a6501021361b964833cf1f191007075689bdb0f7025d0bda441dc0e2f44e8add50930ab50a3abcdfa11a82e6bdc58939723fbf2e2b84206562', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.9eae9e0dd8eb0p-1\x1a\xc6\x02\n\x13blockchain_coursera\x12\xae\x02\x08\x04\x12\xa4\x01\n\x140x1.999ed01c1dc30p-5\x12\x06134134\x1a\x08coursera"\nblockchain:\x045254B\x04fdafJ\x0256ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:04:53.276019\x1a\x80\x0120280bf458dcb76c67057efef52f6f29ef5f68a3fbce9ec4499993910698ab502a5409e81a9e16070565d906b407db8b607b6462ebace2a3d7deed1b10607c3f 2'}
+2020-10-12 10:10:08,453 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x801eb02a1e2c1553d3c8768cde2f85aaf38477354d74443c4930f3e67be14763dc3eda53da31231ebe9bafc67b97aed091612f1b5e7c606079f7e6aaa805fba7abpskill_credentialX\xa8\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.092c39b680f74p-1\x1aL\n\x0cabc_coursera\x12<\x08\x03\x128\n\x140x1.271ff92b172dfp-1\x12\x0513414\x1a\x08coursera"\x03abc2\x0234:\x0234J\x0245'
+2020-10-12 10:10:08,456 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:16:05,026 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:16:05,027 - digitalid_tp - DEBUG - transaction id: 0536de45c59728698b1890cc8700cd8c3205312a9cfeda97b662c86d3646110863231a0d8bd3382aa70555590976449e67fc5600bb6da66c0253fc0895558acf
+2020-10-12 10:16:05,028 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:16:05,031 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.a53c591f32d9cp-2\x1aO\n\tafd_afadf\x12B\x08\x03\x12>\n\x140x1.b0636d0e68368p-1\x12\x071234234\x1a\x05afadf"\x03afd2\x0234:\x03234B\x03afaJ\x03234'.
+2020-10-12 10:16:05,032 - digitalid_tp - DEBUG - digital_sig_str = b7d2dc0cce0f2761e6e36ded30f8d7c03c4a24160931ccdecebb85d4f349a6a734b7a5011673485faa0f9e8918826f63dbfa4ae0ca8e53bd12a41d721967b11c.
+2020-10-12 10:16:05,032 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:16:05,032 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 10:16:05,032 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:16:05,172 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '1eb02a1e2c1553d3c8768cde2f85aaf38477354d74443c4930f3e67be14763dc3eda53da31231ebe9bafc67b97aed091612f1b5e7c606079f7e6aaa805fba7ab', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.092c39b680f74p-1\x1aL\n\x0cabc_coursera\x12<\x08\x03\x128\n\x140x1.271ff92b172dfp-1\x12\x0513414\x1a\x08coursera"\x03abc2\x0234:\x0234J\x0245'}
+2020-10-12 10:16:05,173 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x800536de45c59728698b1890cc8700cd8c3205312a9cfeda97b662c86d3646110863231a0d8bd3382aa70555590976449e67fc5600bb6da66c0253fc0895558acfpskill_credentialX\xab\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.a53c591f32d9cp-2\x1aO\n\tafd_afadf\x12B\x08\x03\x12>\n\x140x1.b0636d0e68368p-1\x12\x071234234\x1a\x05afadf"\x03afd2\x0234:\x03234B\x03afaJ\x03234'
+2020-10-12 10:16:05,175 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:16:05,199 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:16:05,199 - digitalid_tp - DEBUG - transaction id: 0536de45c59728698b1890cc8700cd8c3205312a9cfeda97b662c86d3646110863231a0d8bd3382aa70555590976449e67fc5600bb6da66c0253fc0895558acf
+2020-10-12 10:16:05,202 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:16:05,206 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.a53c591f32d9cp-2\x1aO\n\tafd_afadf\x12B\x08\x03\x12>\n\x140x1.b0636d0e68368p-1\x12\x071234234\x1a\x05afadf"\x03afd2\x0234:\x03234B\x03afaJ\x03234'.
+2020-10-12 10:16:05,206 - digitalid_tp - DEBUG - digital_sig_str = b7d2dc0cce0f2761e6e36ded30f8d7c03c4a24160931ccdecebb85d4f349a6a734b7a5011673485faa0f9e8918826f63dbfa4ae0ca8e53bd12a41d721967b11c.
+2020-10-12 10:16:05,206 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:16:05,207 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 10:16:05,207 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:16:05,300 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '1eb02a1e2c1553d3c8768cde2f85aaf38477354d74443c4930f3e67be14763dc3eda53da31231ebe9bafc67b97aed091612f1b5e7c606079f7e6aaa805fba7ab', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.092c39b680f74p-1\x1aL\n\x0cabc_coursera\x12<\x08\x03\x128\n\x140x1.271ff92b172dfp-1\x12\x0513414\x1a\x08coursera"\x03abc2\x0234:\x0234J\x0245'}
+2020-10-12 10:16:05,301 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x800536de45c59728698b1890cc8700cd8c3205312a9cfeda97b662c86d3646110863231a0d8bd3382aa70555590976449e67fc5600bb6da66c0253fc0895558acfpskill_credentialX\xab\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.a53c591f32d9cp-2\x1aO\n\tafd_afadf\x12B\x08\x03\x12>\n\x140x1.b0636d0e68368p-1\x12\x071234234\x1a\x05afadf"\x03afd2\x0234:\x03234B\x03afaJ\x03234'
+2020-10-12 10:16:05,303 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:16:47,844 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:16:47,845 - digitalid_tp - DEBUG - transaction id: 3d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417d
+2020-10-12 10:16:47,846 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:16:47,850 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.da468343c1ab8p-1\x1aI\n\nafd_afadsf\x12;\x08\x03\x127\n\x140x1.bc9ce0f66f988p-4\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243'.
+2020-10-12 10:16:47,851 - digitalid_tp - DEBUG - digital_sig_str = 93d6f82101aa9e838e2bbe4c72b176fb83698ae699e1726be4ac134574484d5d3accdd85fbdf14045d4c12aa68c6479d6c0fc066e89a6ca5c9814987ee6bf48e.
+2020-10-12 10:16:47,851 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:16:47,852 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 10:16:47,853 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:16:47,955 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '0536de45c59728698b1890cc8700cd8c3205312a9cfeda97b662c86d3646110863231a0d8bd3382aa70555590976449e67fc5600bb6da66c0253fc0895558acf', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.a53c591f32d9cp-2\x1aO\n\tafd_afadf\x12B\x08\x03\x12>\n\x140x1.b0636d0e68368p-1\x12\x071234234\x1a\x05afadf"\x03afd2\x0234:\x03234B\x03afaJ\x03234'}
+2020-10-12 10:16:47,956 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x803d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417dpskill_credentialX\xa5\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.da468343c1ab8p-1\x1aI\n\nafd_afadsf\x12;\x08\x03\x127\n\x140x1.bc9ce0f66f988p-4\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243'
+2020-10-12 10:16:47,958 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:16:48,109 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:16:48,109 - digitalid_tp - DEBUG - transaction id: 3d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417d
+2020-10-12 10:16:48,110 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:16:48,112 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.da468343c1ab8p-1\x1aI\n\nafd_afadsf\x12;\x08\x03\x127\n\x140x1.bc9ce0f66f988p-4\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243'.
+2020-10-12 10:16:48,112 - digitalid_tp - DEBUG - digital_sig_str = 93d6f82101aa9e838e2bbe4c72b176fb83698ae699e1726be4ac134574484d5d3accdd85fbdf14045d4c12aa68c6479d6c0fc066e89a6ca5c9814987ee6bf48e.
+2020-10-12 10:16:48,114 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:16:48,115 - digitalid_tp - DEBUG - Inside _register_skill method
+2020-10-12 10:16:48,121 - digitalid_tp - DEBUG - request_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:16:48,220 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '0536de45c59728698b1890cc8700cd8c3205312a9cfeda97b662c86d3646110863231a0d8bd3382aa70555590976449e67fc5600bb6da66c0253fc0895558acf', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.a53c591f32d9cp-2\x1aO\n\tafd_afadf\x12B\x08\x03\x12>\n\x140x1.b0636d0e68368p-1\x12\x071234234\x1a\x05afadf"\x03afd2\x0234:\x03234B\x03afaJ\x03234'}
+2020-10-12 10:16:48,221 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x803d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417dpskill_credentialX\xa5\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.da468343c1ab8p-1\x1aI\n\nafd_afadsf\x12;\x08\x03\x127\n\x140x1.bc9ce0f66f988p-4\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243'
+2020-10-12 10:16:48,225 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:18:50,833 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:18:50,833 - digitalid_tp - DEBUG - transaction id: a1a412854679a2f1fb30695c6591a98f3934acbc9e4a71dbdea8b1c86a60e7737f0864c942430ee83aa7846367367b43af3c4be172b80540c89ba859d9d90e5e
+2020-10-12 10:18:50,834 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:18:50,834 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.ac3a50373a73bp-1\x1a\xb0\x02\n\nafd_afadsf\x12\xa1\x02\x08\x04\x12\x97\x01\n\x140x1.50b298f488150p-5\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:18:50.666951\x1a\x80\x01c9074ae2f9c8de03a4a7554aa1457df52cccf935398e10add01bf73d68f5671c00df003f8b1aa87aa4a1027caf830a3baf76b90b305c0c94d45af3e3faa391f3 2'.
+2020-10-12 10:18:50,834 - digitalid_tp - DEBUG - digital_sig_str = c954854ab0c1ad604fdb125c8e9bc5e986a85b26d94258dfd760e1f708d535381c5517d1928cf7f5ab98cb26786780d657ae19129747b5fea1fb527c9fe5aaea.
+2020-10-12 10:18:50,835 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:18:50,835 - digitalid_tp - DEBUG - header.dependencies: ['3d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417d']
+2020-10-12 10:18:50,835 - digitalid_tp - DEBUG - Inside _attest_skill method
+2020-10-12 10:18:50,916 - digitalid_tp - DEBUG - output_state_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:18:50,999 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '3d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417d', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.da468343c1ab8p-1\x1aI\n\nafd_afadsf\x12;\x08\x03\x127\n\x140x1.bc9ce0f66f988p-4\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243'}
+2020-10-12 10:18:50,999 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x80a1a412854679a2f1fb30695c6591a98f3934acbc9e4a71dbdea8b1c86a60e7737f0864c942430ee83aa7846367367b43af3c4be172b80540c89ba859d9d90e5epskill_credentialY\x01\x8d\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.ac3a50373a73bp-1\x1a\xb0\x02\n\nafd_afadsf\x12\xa1\x02\x08\x04\x12\x97\x01\n\x140x1.50b298f488150p-5\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:18:50.666951\x1a\x80\x01c9074ae2f9c8de03a4a7554aa1457df52cccf935398e10add01bf73d68f5671c00df003f8b1aa87aa4a1027caf830a3baf76b90b305c0c94d45af3e3faa391f3 2'
+2020-10-12 10:18:51,001 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:18:51,647 - digitalid_tp - DEBUG - to-address: ['cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f']
+2020-10-12 10:18:51,648 - digitalid_tp - DEBUG - transaction id: a1a412854679a2f1fb30695c6591a98f3934acbc9e4a71dbdea8b1c86a60e7737f0864c942430ee83aa7846367367b43af3c4be172b80540c89ba859d9d90e5e
+2020-10-12 10:18:51,651 - digitalid_tp - DEBUG - Inside _verify_digital_id_txn
+2020-10-12 10:18:51,666 - digitalid_tp - DEBUG - digital_id_byte = b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.ac3a50373a73bp-1\x1a\xb0\x02\n\nafd_afadsf\x12\xa1\x02\x08\x04\x12\x97\x01\n\x140x1.50b298f488150p-5\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:18:50.666951\x1a\x80\x01c9074ae2f9c8de03a4a7554aa1457df52cccf935398e10add01bf73d68f5671c00df003f8b1aa87aa4a1027caf830a3baf76b90b305c0c94d45af3e3faa391f3 2'.
+2020-10-12 10:18:51,667 - digitalid_tp - DEBUG - digital_sig_str = c954854ab0c1ad604fdb125c8e9bc5e986a85b26d94258dfd760e1f708d535381c5517d1928cf7f5ab98cb26786780d657ae19129747b5fea1fb527c9fe5aaea.
+2020-10-12 10:18:51,674 - digitalid_tp - DEBUG - Inside _verify_message_signature
+2020-10-12 10:18:51,675 - digitalid_tp - DEBUG - header.dependencies: ['3d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417d']
+2020-10-12 10:18:51,675 - digitalid_tp - DEBUG - Inside _attest_skill method
+2020-10-12 10:18:51,770 - digitalid_tp - DEBUG - output_state_address : cce1afefe5f19cd4068fc8908508b3c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:18:51,849 - digitalid_tp - DEBUG - Existing ID state_data : {'acting_transaction_id': '3d57858dd38c63a75958e22e5eb0a90642e13e9658586fbd8f5c2fa4b78e058a60e65272e469f025f4751d6792ad5e5122da7311914bdd30b0643bab9da0417d', 'skill_credential': b'\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.da468343c1ab8p-1\x1aI\n\nafd_afadsf\x12;\x08\x03\x127\n\x140x1.bc9ce0f66f988p-4\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243'}
+2020-10-12 10:18:51,850 - digitalid_tp - DEBUG - State-data : b'\xa2uacting_transaction_idx\x80a1a412854679a2f1fb30695c6591a98f3934acbc9e4a71dbdea8b1c86a60e7737f0864c942430ee83aa7846367367b43af3c4be172b80540c89ba859d9d90e5epskill_credentialY\x01\x8d\nB0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x12\x140x1.ac3a50373a73bp-1\x1a\xb0\x02\n\nafd_afadsf\x12\xa1\x02\x08\x04\x12\x97\x01\n\x140x1.50b298f488150p-5\x12\x0523413\x1a\x06afadsf"\x03afd2\x03134:\x0234J\x0243ZB03e93b1785dd8cf24b40e7abf6cb86780e5683885cb907929b4adf46f1320f7c22b\x1a2020-10-12T10:18:50.666951\x1a\x80\x01c9074ae2f9c8de03a4a7554aa1457df52cccf935398e10add01bf73d68f5671c00df003f8b1aa87aa4a1027caf830a3baf76b90b305c0c94d45af3e3faa391f3 2'
+2020-10-12 10:18:51,851 - digitalid_tp - DEBUG - state updated
+2020-10-12 10:44:57,652 - digitalid_tp - CRITICAL - verbose_level: 1

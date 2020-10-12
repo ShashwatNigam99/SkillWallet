@@ -20,7 +20,7 @@ DEFAULT_KEY_FILE_NAME = 'skill_wallet'
 
 # hard-coded for simplicity (otherwise get the URL from the args in main):
 DEFAULT_URL = 'http://localhost:8008'
-LOGGER = logging.getLogger('skillwallet')
+LOGGER = logging.getLogger('learnerwallet')
 LOGGER.setLevel(logging.INFO)  # TODO was set to logging.INFO this may be default level
 # TODO OVERRIDDEN IN setup_loggers() what are different verbosity levels?
 FAMILY_NAME_DIGITALID = "digitalid"
@@ -149,17 +149,17 @@ class LearnerWallet(Cmd):
         return self._client
 
     def do_register(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client class."""
+        """ Sub command to request ID.  Calls learnerwallet_client class."""
         response = self._client.register_pii()
         LOGGER.debug("Register Profile Response: {}".format(response))
 
     def do_register_skill(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client class."""
+        """ Sub command to register skill.  Calls learnerwallet_client class."""
         response = self._client.register_skill()
-        LOGGER.debug("Register Profile Response: {}".format(response))
+        LOGGER.debug("Register Skill Response: {}".format(response))
 
     def do_display(self, inp):
-        """ Sub command to request ID.  Calls userwallet_client class."""
+        """ Sub command to display PII.  Calls learnerwallet_client class."""
         LOGGER.debug("Display ID Response: ")
         self._client.display_id()
 

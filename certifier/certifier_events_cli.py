@@ -44,7 +44,7 @@ def _get_certification_address_prefix(public_address):
     The address is the first 6 hex characters from the hash SHA-512(TF name),
     plus the FAMILY_NAME_CERTIFY.
     """
-    return str(_hash(FAMILY_NAME_LEARNER.encode('utf-8'))[0:6] + public_address[0:24])
+    return str(_hash(FAMILY_NAME_LEARNER.encode('utf-8'))[0:6] + _hash(public_address.encode('utf-8'))[0:24])
 
 
 def create_console_handler(verbose_level=0):

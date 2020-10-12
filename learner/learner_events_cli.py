@@ -246,22 +246,12 @@ class LearnerEventsClient(object):
                             LOGGER.debug("event attribute transaction_id: {}".format(transaction_id))
                             event_attr['transaction_id'] = transaction_id
 
-                    # TODO Key format: event_type+'/transaction_id'.encode()
-                    # db_key = '{}/{}'.format(event.event_type, transaction_id)
                     db_key = event.event_type
                     events_db.put(db_key.encode(), cbor.dumps(event_attr))
-                    # TODO send command for peer verfication
                     events_db.close()
-                    print("Digital ID successfully registered. Please peer verify.")
-                    LOGGER.info("Digital ID successfully registered. Please peer verify.")
+                    print("Digital ID successfully registered.")
+                    LOGGER.info("Digital ID successfully registered.")
 
-                    # transaction_id = event_attribute.value
-                    # user_client = LearnerWalletClient(base_url=DEFAULT_API_URL)
-                    # TODO change the value of enable_confirm to true
-                    # user_client.get_id(event.event_type, address, transaction_id)
-                    # if self._user_client is None:
-                    #     user_client = LearnerWalletClient(base_url=DEFAULT_API_URL)
-                    #     user_client.change_id_status()
                     continue
 
     def disconnect(self):

@@ -2,3 +2,257 @@
 2020-10-11 20:02:12,209 - skillwallet - CRITICAL - verbose_level: 3
 2020-10-11 20:02:12,209 - skillwallet - DEBUG - User name: user1
 2020-10-11 20:02:12,210 - skillwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 08:41:21,879 - skillwallet - CRITICAL - verbose_level: 0
+2020-10-12 08:42:38,464 - skillwallet - CRITICAL - verbose_level: 0
+2020-10-12 08:43:21,929 - skillwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='user1', verbosity=3)
+2020-10-12 08:43:21,930 - skillwallet - CRITICAL - verbose_level: 3
+2020-10-12 08:43:21,930 - skillwallet - DEBUG - User name: user1
+2020-10-12 08:43:21,930 - skillwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 08:43:29,630 - skillwallet - DEBUG - Register Profile Response: None
+2020-10-12 08:44:44,195 - skillwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='user1', verbosity=3)
+2020-10-12 08:44:44,195 - skillwallet - CRITICAL - verbose_level: 3
+2020-10-12 08:44:44,196 - skillwallet - DEBUG - User name: user1
+2020-10-12 08:44:44,196 - skillwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 08:44:47,159 - skillwallet - DEBUG - Register Profile Response: None
+2020-10-12 08:52:20,736 - skillwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 08:52:20,737 - skillwallet - CRITICAL - verbose_level: 3
+2020-10-12 08:52:20,737 - skillwallet - DEBUG - User name: learner1
+2020-10-12 08:52:20,737 - skillwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 08:53:29,572 - skillwallet - DEBUG - Register Profile Response: None
+2020-10-12 08:58:42,703 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 08:58:42,703 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 08:58:42,703 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 08:58:42,704 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 08:58:42,704 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 08:58:42,705 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 08:58:42,705 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 08:58:42,705 - learnerwallet.client - DEBUG - {'enable_skill_register': False, 'enable_register': False, 'validation_req_sent': False}
+2020-10-12 08:58:42,705 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 08:58:42,706 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 08:58:42,801 - learnerwallet.client - DEBUG - _id_creation_state 75
+2020-10-12 08:58:42,802 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_pii
+2020-10-12 09:03:20,567 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 09:03:20,568 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 09:03:20,568 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 09:03:20,568 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 09:03:20,569 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 09:03:20,569 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:03:20,570 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 09:03:20,570 - learnerwallet.client - DEBUG - {'validation_req_sent': False, 'enable_register': False, 'enable_skill_register': False}
+2020-10-12 09:03:20,570 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 09:03:20,570 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 09:03:20,668 - learnerwallet.client - DEBUG - _id_creation_state 75
+2020-10-12 09:03:20,669 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_pii
+2020-10-12 09:03:20,669 - learnerwallet.client - DEBUG - self.refresh_exit False
+2020-10-12 09:03:20,669 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 09:03:40,541 - learnerwallet.client - DEBUG - inside _set_user_id
+2020-10-12 09:03:40,541 - learnerwallet.client - DEBUG - field_name: name
+2020-10-12 09:03:40,542 - learnerwallet.client - DEBUG - encoding code: b'Hp#\xd4Z\x18\xe69\xf6\x02\xe8\xdb@OV\x1d(\xb5\x85\xc8\xd4:&yG\xe7\xb6f\x02l\xe1\x85'
+2020-10-12 09:05:26,941 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 09:05:26,941 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 09:05:26,942 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 09:05:26,942 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 09:05:26,942 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 09:05:26,942 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:05:26,943 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 09:05:26,943 - learnerwallet.client - DEBUG - {'validation_req_sent': False, 'enable_skill_register': False, 'enable_register': False}
+2020-10-12 09:05:26,943 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 09:05:26,944 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 09:05:27,037 - learnerwallet.client - DEBUG - _id_creation_state 75
+2020-10-12 09:05:27,038 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_pii
+2020-10-12 09:05:27,038 - learnerwallet.client - DEBUG - self.refresh_exit False
+2020-10-12 09:05:27,038 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 09:05:27,038 - learnerwallet.client - DEBUG - inside _set_user_id
+2020-10-12 09:05:27,039 - learnerwallet.client - DEBUG - field_name: name
+2020-10-12 09:05:27,039 - learnerwallet.client - DEBUG - encoding code: b'd\xce\xc4W*\x1d\x11\xd5\x80\x8d\xbfVN\xec6e\xb99\xb1~\x9duL\x8c\xf2\x08\xcc\x00\x95r\xac\xe0'
+2020-10-12 09:05:37,862 - learnerwallet.client - DEBUG - field_name: date_of_birth
+2020-10-12 09:05:37,863 - learnerwallet.client - DEBUG - encoding code: b'\x86\xd6W\xf4\r\xafPA\xc5PMm\xf7\x8b^\xc4\x7f\xf3\xb4@\xec\xc1\x9b$\xb2\xa2\xd8\xbe\x138S\t'
+2020-10-12 09:06:02,011 - learnerwallet.client - DEBUG - field_name: address_permanent
+2020-10-12 09:06:02,012 - learnerwallet.client - DEBUG - encoding code: b'\xbe\xd2\x13"\x00X\x80r7r\xcb0\x85\xe3X\x0b^M \x9a\x84\xa4\xd7\'\xe7\xd5\xb4e\xb2\x0cw\x8b'
+2020-10-12 09:06:08,420 - learnerwallet.client - DEBUG - field_name: nationality
+2020-10-12 09:06:08,420 - learnerwallet.client - DEBUG - encoding code: b'Gb6\\O\xea\x1f\xccK4\xb9\x98vz\xf1S1\xa8\x80\xe03\x18\x9f\x8e\xb2\xadS\xcb\xe9\x8a\x05y'
+2020-10-12 09:06:10,392 - learnerwallet.client - DEBUG - field_name: gender
+2020-10-12 09:06:10,393 - learnerwallet.client - DEBUG - encoding code: b'\xaf\xbbq\x16R\x8b!\xbd\x9d5M\x182\xf2\xce\x12\xe7W2\xef\x8f\\\xd6\x99c\xee\\)\xcc\xa6\xbd\xe2'
+2020-10-12 09:06:14,679 - learnerwallet.client - DEBUG - field_name: email
+2020-10-12 09:06:14,687 - learnerwallet.client - DEBUG - encoding code: b'5]\xf2\xd5,\xe7\xc5\xb1$Mh%\x03\xee\xec\x9cW\x08\x01\xb8\xb03A\xeb)\xdf\x7f7\x9aT\x90\x91'
+2020-10-12 09:06:22,906 - learnerwallet.client - DEBUG - field_name: phone
+2020-10-12 09:06:22,907 - learnerwallet.client - DEBUG - encoding code: b'1}\xb2?)b\x95\xde\x96\xf7\x82&gL\xc2dhk\x0cp\x10E\ruD\xfeX]\x0e\xc2V\x0e'
+2020-10-12 09:06:26,957 - learnerwallet.client - DEBUG - serialized_code {"nationality": 32287738444793999462980040164030127689848286788155214656166564360647621608825, "gender": 79485929402334033265356884064585774890889310277692755041501396378659219488226, "address_permanent": 86310611164279257709257717837019936259914298390984408443157035772447380240267, "name": 45596610445905391818076104850037931451245210279964129332528665566768566283488, "phone": 22385415677362079473387356428410632524000631173123954519954246727077380380174, "email": 24138573721751158146293936212258291187018084310820784171277039297928929513617, "date_of_birth": 60988634013620607436329196956280061372316062513140473718277762188538317132553}
+2020-10-12 09:08:04,087 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 09:08:04,087 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 09:08:04,088 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 09:08:04,088 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 09:08:04,088 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 09:08:04,088 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:08:04,089 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 09:08:04,089 - learnerwallet.client - DEBUG - {'validation_req_sent': False, 'enable_skill_register': False, 'enable_register': False}
+2020-10-12 09:08:04,089 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 09:08:04,090 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 09:08:04,195 - learnerwallet.client - DEBUG - _id_creation_state 75
+2020-10-12 09:08:04,196 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_pii
+2020-10-12 09:08:04,197 - learnerwallet.client - DEBUG - self.refresh_exit False
+2020-10-12 09:08:04,197 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 09:08:04,197 - learnerwallet.client - DEBUG - inside _set_user_id
+2020-10-12 09:08:04,197 - learnerwallet.client - DEBUG - field_name: name
+2020-10-12 09:08:04,198 - learnerwallet.client - DEBUG - encoding code: b'c\xc1\x8c\xa1\x8b{;\xf5\xb2\xe9Q\xfdf`O?\xbb\xb7\xd2^\x0bk\x964\x94\xdf\xe1\x8b.\xc5\xc1\x85'
+2020-10-12 09:08:13,100 - learnerwallet.client - DEBUG - field_name: date_of_birth
+2020-10-12 09:08:13,101 - learnerwallet.client - DEBUG - encoding code: b'\xf9\xc3\x00\xff\xa5\xc1\x8e\x01/\xa7\xffe\x9e\x04\x9a\xed\x84\xf1\x14\xa8\xe6\\\xaeC\xbe\x85A\xc6\xa0\x1d\xa1\xcb'
+2020-10-12 09:08:17,959 - learnerwallet.client - DEBUG - field_name: address_permanent
+2020-10-12 09:08:17,959 - learnerwallet.client - DEBUG - encoding code: b'i\xf12\xb7<\xf7j\x85Q\x00\xef\xb4k\xcc\x93\xf5\xd8wNi\x8e\x7fJ3\x9f\x90\x9f\x99\xf8\x02\xa7\xe9'
+2020-10-12 09:08:20,011 - learnerwallet.client - DEBUG - field_name: nationality
+2020-10-12 09:08:20,012 - learnerwallet.client - DEBUG - encoding code: b'\x93S\xecp\xce\xea\x07\xf6R7\x84\xd0A\xf6i\x90y \x9d\xb6.\xc2\x82\xdfwR?dm\x91\xac\xb8'
+2020-10-12 09:08:21,327 - learnerwallet.client - DEBUG - field_name: gender
+2020-10-12 09:08:21,327 - learnerwallet.client - DEBUG - encoding code: b'v\x86\xc1\xd6\x1b\x9e_K\xa2=}\x8a\x90^\xda "\xde?\xf5\xa7Z`\x88*\xce\xd9\x81\xfc\xf9\xcb\x7f'
+2020-10-12 09:08:22,597 - learnerwallet.client - DEBUG - field_name: email
+2020-10-12 09:08:22,597 - learnerwallet.client - DEBUG - encoding code: b'\xcfH(0\xb7\x04\x16\x8d1A\x1f\xa2\x9f=\xbc\xa9\n\xd7\xde*\x07xr\xb4\xfc\xc2\x15Xi\xf3\xc1\xe1'
+2020-10-12 09:08:24,442 - learnerwallet.client - DEBUG - field_name: phone
+2020-10-12 09:08:24,443 - learnerwallet.client - DEBUG - encoding code: b'\xc9]\x94D=\t-\x93Q\xdc\xe6\x1e\x94F\xf0\xc2n\x84\xb5-,T\x971\xeaH\x96\xb5\x86\xb3\xc6\x04'
+2020-10-12 09:08:27,192 - learnerwallet.client - DEBUG - serialized_code {"gender": 53611011448887837116204488223488189104760223086679994832731690639887336852351, "address_permanent": 47919009271262659598186507519045557277427836440391180131232342793605473282025, "email": 93756250028605328829609624976065636997878408155731019148496677968959516164577, "nationality": 66638268901559241179234916371370956551183582395581720968021557642378016304312, "date_of_birth": 112970441367107667685490204673066183435911142385891457365156492988819156345291, "name": 45120944092974668873440423513394214945482777647889272145143105578538669293957, "phone": 91080222640424457589362629238150735286094555679055947450352710016092679161348}
+2020-10-12 09:08:27,307 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=24e453fabb3497d4c6e2ef224c9025d16e840c696fb0702cb7e3bdb5caa0a51a4f598ce6b8cedf624dba13ec45456e83407f1b712366682f0a58bb6d1e7bef36"
+}
+2020-10-12 09:08:28,969 - learnerwallet.client - DEBUG - {
+  "data": [
+    {
+      "id": "24e453fabb3497d4c6e2ef224c9025d16e840c696fb0702cb7e3bdb5caa0a51a4f598ce6b8cedf624dba13ec45456e83407f1b712366682f0a58bb6d1e7bef36",
+      "invalid_transactions": [],
+      "status": "COMMITTED"
+    }
+  ],
+  "link": "http://localhost:8008/batch_statuses?id=24e453fabb3497d4c6e2ef224c9025d16e840c696fb0702cb7e3bdb5caa0a51a4f598ce6b8cedf624dba13ec45456e83407f1b712366682f0a58bb6d1e7bef36&wait=100"
+}
+2020-10-12 09:10:00,075 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 09:10:00,076 - learnerwallet - DEBUG - Register Profile Response: None
+2020-10-12 09:14:25,156 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 09:14:25,157 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 09:14:25,157 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 09:14:25,157 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 09:14:25,157 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 09:14:25,158 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:14:25,158 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 09:14:25,159 - learnerwallet.client - DEBUG - {'enable_register': True, 'validation_req_sent': False, 'enable_register_skill': True, 'enable_skill_register': False}
+2020-10-12 09:14:25,159 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 09:14:25,159 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 09:14:25,252 - learnerwallet.client - DEBUG - _id_creation_state {'acting_transaction_id': 'd948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7', 'pii_credential': b'\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"'}
+2020-10-12 09:14:32,654 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 09:14:32,654 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 09:14:32,654 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 09:16:19,020 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=293d583993a341c9ce1c0757529c061ad32fc586b04f4cfd8eee45a46cd3e94265bf68fa9677a1835b38bef48ffcc2d9a6646613a2fe1c188cf49aa09a697b51"
+}
+2020-10-12 09:17:59,221 - learnerwallet.client - DEBUG - Transaction Timed Out
+2020-10-12 09:17:59,227 - learnerwallet - DEBUG - Register Skill Response: False
+2020-10-12 09:22:30,514 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 09:22:30,514 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 09:22:30,515 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 09:23:15,189 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=fe837999ab08fd6aa7cd6034c7542f2eace6c1557f54902ad45567e9849fc8ca013d4dc573f80cc99e80a9042feaef5d68887d5eebdf86616a7ab3943b6c9c07"
+}
+2020-10-12 09:24:55,406 - learnerwallet.client - DEBUG - Transaction Timed Out
+2020-10-12 09:24:55,406 - learnerwallet - DEBUG - Register Skill Response: False
+2020-10-12 09:26:07,730 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 09:26:07,730 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 09:26:07,731 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 09:26:07,731 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 09:26:07,731 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 09:26:07,732 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 09:26:07,732 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 09:26:07,732 - learnerwallet.client - DEBUG - {'enable_register_skill': True, 'enable_register': None, 'enable_skill_register': True, 'validation_req_sent': False}
+2020-10-12 09:26:07,733 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 09:26:07,733 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 09:26:07,827 - learnerwallet.client - DEBUG - _id_creation_state {'pii_credential': b'\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"', 'acting_transaction_id': 'd948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7'}
+2020-10-12 09:26:15,211 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 09:26:15,212 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 09:26:15,212 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 09:26:56,645 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=64f7a00755725fb765c3d42dbfed2276da30284b27cd62cf40a1d522ec96fb9366697bce33bdd5b56ba6ad991d0612bc76203d77212722ec33b39dbdc1f63d82"
+}
+2020-10-12 09:26:58,533 - learnerwallet.client - DEBUG - {
+  "data": [
+    {
+      "id": "64f7a00755725fb765c3d42dbfed2276da30284b27cd62cf40a1d522ec96fb9366697bce33bdd5b56ba6ad991d0612bc76203d77212722ec33b39dbdc1f63d82",
+      "invalid_transactions": [],
+      "status": "COMMITTED"
+    }
+  ],
+  "link": "http://localhost:8008/batch_statuses?id=64f7a00755725fb765c3d42dbfed2276da30284b27cd62cf40a1d522ec96fb9366697bce33bdd5b56ba6ad991d0612bc76203d77212722ec33b39dbdc1f63d82&wait=100"
+}
+2020-10-12 09:26:58,535 - learnerwallet - DEBUG - Register Skill Response: True
+2020-10-12 10:09:15,773 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 10:09:15,774 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 10:09:15,774 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 10:09:15,774 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 10:09:15,774 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 10:09:15,801 - learnerwallet.client - DEBUG - Public key hash : c248434a17795ec9ae926e5068dc32189e67e37f
+2020-10-12 10:09:15,828 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 10:09:15,828 - learnerwallet.client - DEBUG - {'enable_register': None, 'enable_register_skill': True, 'enable_skill_register': True, 'validation_req_sent': False}
+2020-10-12 10:09:15,828 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 10:09:15,829 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 10:09:15,930 - learnerwallet.client - DEBUG - _id_creation_state {'pii_credential': b'\x08\x01\x12B0310c23b6e24c6e5d2d8933a86cd8545b5218e8998f1f7e83a7ebbf6c46fd13487\x1a\x140x1.a0ac81caa89f6p-2"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14{\xa3\x97\xf3\x81C\xe9\x1b\x8c\x10\x1b\nKh\x1d\xd15\xd3\x06\xbd\x12\x1a\x08\x01\x12\x16\n\x14\xc4\xa1\xa4M\x81V\x9c)>/\x83!\xa3\x80z\xd8q\xecZ\xaf\x1a\x1a\x08\x01\x12\x16\n\x14\xb1\xdb$\xec`\xad\x0c$v\x0c\r\xda\x0e\xa1\xa9\xbfh\xe0\xc1\xa9"\x1a\x08\x01\x12\x16\n\x14\xed\x94\xda\xbeD(P\xe8\xcbm\xbc\xad\xcd\xe7IA\xa0\xa4/p*\x1a\x08\x01\x12\x16\n\x14\x18O\xffqTn&\x9e\\\x8f#n\xaf\xf1\xdaA\xd4\xbc$\xd42\x1a\x08\x01\x12\x16\n\x14\xc5s\x8dj\xe5\xbe\xa8q\x91\xb9\xbf\x94\xa6\x85\x03\xd6\x06\xe9\xab^:\x1a\x08\x01\x12\x16\n\x14\x82\xad\x8f8\'\x9a\xa7Xq\x8f\xf1\xba\x9d:\x90\x17\xa4%\xae"', 'acting_transaction_id': 'd948aef180d211669ec505dabd160f751b9af5a4b81c551140ead2300cbcdb2337930444ad64afa19f6209a73656d22f098848209945037043fb989eb633d6a7'}
+2020-10-12 10:09:21,979 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 10:09:21,980 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 10:09:21,980 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 10:10:07,378 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=838d910b0093e27ce0aa2bcccf31126f095a3267c119a2321dab12da0a63629c4af5056ab3bee40fe0e2c7851e8b6dab334db8738d0082ad1df02de199b1cf82"
+}
+2020-10-12 10:10:08,870 - learnerwallet.client - DEBUG - {
+  "data": [
+    {
+      "id": "838d910b0093e27ce0aa2bcccf31126f095a3267c119a2321dab12da0a63629c4af5056ab3bee40fe0e2c7851e8b6dab334db8738d0082ad1df02de199b1cf82",
+      "invalid_transactions": [],
+      "status": "COMMITTED"
+    }
+  ],
+  "link": "http://localhost:8008/batch_statuses?id=838d910b0093e27ce0aa2bcccf31126f095a3267c119a2321dab12da0a63629c4af5056ab3bee40fe0e2c7851e8b6dab334db8738d0082ad1df02de199b1cf82&wait=100"
+}
+2020-10-12 10:10:08,883 - learnerwallet - DEBUG - Register Skill Response: True
+2020-10-12 10:15:36,362 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 10:15:36,363 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 10:15:36,363 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 10:16:05,055 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=3e290baa04292614dd2558ddc5199d462f12143dbc80783dc392fc6069a1371028cc00b7f0abc392e798d72bae26239967c65775c1aad012efb94ad6037d4962"
+}
+2020-10-12 10:16:05,655 - learnerwallet.client - DEBUG - {
+  "data": [
+    {
+      "id": "3e290baa04292614dd2558ddc5199d462f12143dbc80783dc392fc6069a1371028cc00b7f0abc392e798d72bae26239967c65775c1aad012efb94ad6037d4962",
+      "invalid_transactions": [],
+      "status": "COMMITTED"
+    }
+  ],
+  "link": "http://localhost:8008/batch_statuses?id=3e290baa04292614dd2558ddc5199d462f12143dbc80783dc392fc6069a1371028cc00b7f0abc392e798d72bae26239967c65775c1aad012efb94ad6037d4962&wait=100"
+}
+2020-10-12 10:16:05,658 - learnerwallet - DEBUG - Register Skill Response: True
+2020-10-12 10:16:30,805 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 10:16:30,806 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 10:16:30,806 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 10:16:47,756 - learnerwallet.client - DEBUG - Result from Rest-API {
+  "link": "http://localhost:8008/batch_statuses?id=9a48f69b1254e464d0a92e7ffe4c7250a875d3202ff107dcb5926ab1299b96c971d4ae9516fb688a3f7e83dd7a7d902f0e45134d405dc9e5d7eb86adb1b09e7d"
+}
+2020-10-12 10:16:48,665 - learnerwallet.client - DEBUG - {
+  "data": [
+    {
+      "id": "9a48f69b1254e464d0a92e7ffe4c7250a875d3202ff107dcb5926ab1299b96c971d4ae9516fb688a3f7e83dd7a7d902f0e45134d405dc9e5d7eb86adb1b09e7d",
+      "invalid_transactions": [],
+      "status": "COMMITTED"
+    }
+  ],
+  "link": "http://localhost:8008/batch_statuses?id=9a48f69b1254e464d0a92e7ffe4c7250a875d3202ff107dcb5926ab1299b96c971d4ae9516fb688a3f7e83dd7a7d902f0e45134d405dc9e5d7eb86adb1b09e7d&wait=100"
+}
+2020-10-12 10:16:48,669 - learnerwallet - DEBUG - Register Skill Response: True
+2020-10-12 10:55:25,659 - learnerwallet - CRITICAL - verbose_level: 1
+2020-10-12 10:57:44,973 - learnerwallet - DEBUG - args: Namespace(command='skill_wallet', rest_api_url=None, user='learner1', verbosity=3)
+2020-10-12 10:57:44,974 - learnerwallet - CRITICAL - verbose_level: 3
+2020-10-12 10:57:44,974 - learnerwallet - DEBUG - User name: learner1
+2020-10-12 10:57:44,975 - learnerwallet - DEBUG - REST-API URL: http://localhost:8008
+2020-10-12 10:57:44,975 - learnerwallet.client - DEBUG - Inside LearnerWalletClient.__init__
+2020-10-12 10:57:44,975 - learnerwallet.client - DEBUG - Public key hash : e3c3f722a8dbd97cbcf9b46124c9e128d7bef8f5
+2020-10-12 10:57:44,976 - learnerwallet.client - DEBUG - From user_wallet_db -> read self.state_info_dict: 
+2020-10-12 10:57:44,976 - learnerwallet.client - DEBUG - {'enable_register_skill': True, 'validation_req_sent': False, 'enable_register': True, 'enable_skill_register': False}
+2020-10-12 10:57:44,976 - learnerwallet.client - DEBUG - Inside learnerwallet_client._refresh_state()
+2020-10-12 10:57:44,976 - learnerwallet.client - DEBUG - inside LearnerWalletClient.load_id_status
+2020-10-12 10:57:45,060 - learnerwallet.client - DEBUG - _id_creation_state {'acting_transaction_id': '67e724ef459cdf2005b8d86752f839681ae239d2adbcd68b01560fe4a7f774df4ce2be854c2d67c5083a6abb03cd34ef8c3f53fd06ccf0a06ea58777deb96157', 'pii_credential': b'\x08\x01\x12B02c851b927ea5c571b1d95a04013aa355eac268b2d759686d6c7bb34c2390a4913\x1a\x140x1.560e89df06185p-1"\xc4\x01\n\x1a\x08\x01\x12\x16\n\x14\xd0\x83\xb5c\x8a6\x947\x07JX\xe4\xdf\xe9\xef\xdbRH\x90\x11\x12\x1a\x08\x01\x12\x16\n\x14z\x1cXb\x9co\x81r\xfcP\xd1\x0e\xf8~\x8djh\xcam-\x1a\x1a\x08\x01\x12\x16\n\x14\x87\x04\\\x05\xce\x06|+\x90\xa1\xe9\x84\xd6\xe5\xa2Jp\xfa\xe9)"\x1a\x08\x01\x12\x16\n\x14\xba\xef:B\xe5{\xdeyl\x8e\xae\xea\xe8\xd7\xb9E\xd2\xa5\x0b\xf7*\x1a\x08\x01\x12\x16\n\x14\xaa\xe9\xae\xf0\x1c\xed\xb0\x9b\xee\x164\xe0\xf0N\xf8\xc7P\x85\xed\xfa2\x1a\x08\x01\x12\x16\n\x14\x0e$\x1a\x1b\xabf1+vdi\xc7\r\xdfX\x1b*\\\xda\xf3:\x1a\x08\x01\x12\x16\n\x14\x88\x12l\xf6\xb0\x9c\xe6J\\^\xf1\x13\xe5XE\x0e\xa6[\x1a\xd1'}
+2020-10-12 10:57:50,459 - learnerwallet.client - DEBUG - inside LearnerWalletClient.register_skill
+2020-10-12 10:57:50,460 - learnerwallet.client - DEBUG - inside LearnerWalletClient._send_digital_id_txn
+2020-10-12 10:57:50,460 - learnerwallet.client - DEBUG - inside _set_learning_credentials
+2020-10-12 10:58:07,849 - learnerwallet - CRITICAL - verbose_level: 1

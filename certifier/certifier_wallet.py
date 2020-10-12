@@ -13,11 +13,6 @@ import traceback
 from colorlog import ColoredFormatter
 from cmd import Cmd
 
-# sys.path.append('/home/suchira/digital-id/certifier')
-# home = os.path.expanduser("~")
-# proj_dir = os.path.join(home, "digital-id")
-# sys.path.append(proj_dir)
-
 sys.path.append(os.getcwd())
 from certifier.certifier_client import CertifierWalletClient
 

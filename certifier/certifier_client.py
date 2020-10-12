@@ -30,7 +30,6 @@ from constants import digital_id_constants
 from protobuf import digital_id_pb2, id_attribute_pb2, digital_id_transaction_pb2
 from protobuf.digital_id_transaction_pb2 import DigitalIdTransaction
 from util import hashing, chain_access_util
-# from certifier.certifier_events_cli import CertifierEventsClient
 from util.transaction_generator import TransactionGenerator
 
 # The transaction family name
@@ -44,7 +43,7 @@ REGISTRY_DB_FILE = 'user_registry_db'
 
 LOGGER = logging.getLogger('certifier_wallet.client')
 # LOGGER.setLevel(logging.INFO)
-SKILL_POINTS = 50   # any value
+SKILL_POINTS = 50  # any value
 
 STATUS_ENUM = {0: 'DEFAULT',
                1: 'REGISTERED',
@@ -108,8 +107,6 @@ class CertifierWalletClient(object):
     def __del__(self):
         LOGGER.debug("Inside destructor method")
 
-
-
     def _issue_certificate(self, id_attribute, attribute_data):
         LOGGER.debug("inside _issue_certificate")
 
@@ -122,7 +119,6 @@ class CertifierWalletClient(object):
         id_attribute.skill_point = SKILL_POINTS
         id_attribute.course_details = attribute_data_bytes
         id_attribute.certificate = self._signer.sign(hashing.get_hash_from_bytes(attribute_data_bytes))
-
 
     def attest_skill(self, request_txn_id=None):
 
@@ -216,13 +212,15 @@ class CertifierWalletClient(object):
             return False
 
     def _get_attested_credential(self, learning_credential):
+        LOGGER.debug("Inside _get_attested_credential()")
 
         course_map = learning_credential.course_attribute_set
 
         for course_key in course_map:
-            attribute_bytes = course_map[course_key]
-            course_attribute = id_attribute_pb2.CourseAttributeDataType()
-            course_attribute.ParseFromString(attribute_bytes)
+            course_attribute = course_map[course_key]
+            # course_attribute = id_attribute_pb2.CourseAttributeDataType()
+            # course_attribute.ParseFromString(attribute_bytes)
+            # LOGGER.debug("course_attribute {}".format(course_attribute))
             value_attr_data = course_attribute.course_details
             course_details = id_attribute_pb2.CourseDetails()
             course_details.ParseFromString(value_attr_data)
@@ -262,16 +260,16 @@ class CertifierWalletClient(object):
         # Verifiable using the transaction signing public key in the digitalid_tp
         digital_id_transaction.certifier_signature = self._signer.sign(hashing.get_hash_from_bytes(digital_id_bytes))
 
-        if "issue_certificate" == action:
-            LOGGER.debug("Sending Transaction for issue_certificate")
-            digital_id_transaction.status = id_attribute_pb2.Status.ON_VERIFICATION
+        if "attest_skill" == action:
+            LOGGER.debug("Sending Transaction for attest_skill")
+            digital_id_transaction.status = id_attribute_pb2.SKILL_ATTESTED
 
         payload = digital_id_transaction.SerializeToString()
 
         transaction = self.txn_generator.make_transaction(family=FAMILY_NAME_LEARNER, payload=payload,
-                                                              input_address_list=input_address_list,
-                                                              output_address_list=output_address_list,
-                                                              dependency_list=dependency_txn_list)
+                                                          input_address_list=input_address_list,
+                                                          output_address_list=output_address_list,
+                                                          dependency_list=dependency_txn_list)
         transaction_list = [transaction]
         batch_list = self.txn_generator.make_batch(transaction_list)
         batch_id = batch_list.batches[0].header_signature
