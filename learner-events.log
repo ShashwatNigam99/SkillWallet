@@ -1,0 +1,11 @@
+2020-10-11 19:49:50,338 - learner-events-cli - DEBUG - results: Namespace(learner=None, rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-11 19:49:50,338 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-11 19:52:44,203 - learner-events-cli - DEBUG - results: Namespace(learner='user1', rest_api_url=None, validator_url=None, verbosity=3)
+2020-10-11 19:52:44,206 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-11 19:55:55,452 - learner-events-cli - DEBUG - results: Namespace(rest_api_url=None, user='user1', validator_url=None, verbosity=3)
+2020-10-11 19:55:55,453 - learner-events-cli - CRITICAL - verbose_level: 3
+2020-10-11 19:55:55,454 - learner-events-cli - DEBUG - User name: user1
+2020-10-11 19:55:55,454 - learner-events-cli - DEBUG - Validator URL: tcp://localhost:4004
+2020-10-11 19:55:55,454 - learner-events-cli - DEBUG - REST API URL: http://localhost:8008
+2020-10-11 19:55:55,588 - learner-events-cli - DEBUG - Listening to events.
+2020-10-11 20:03:45,053 - learner-events-cli - DEBUG - inside UserEventsCli.disconnect

@@ -94,7 +94,7 @@ def create_parser(prog_name):
     """Create the command line argument parser for the digital-ID application for learner."""
     parent_parser = argparse.ArgumentParser(prog=prog_name, add_help=False)
     parent_parser.add_argument('-l', '--url', dest='rest_api_url', type=str, help="Rest-API URL")
-    parent_parser.add_argument('-u', '--learner', dest='learner', type=str, help='learner name')
+    parent_parser.add_argument('-u', '--user', dest='user', type=str, help='learner name')
     parent_parser.add_argument('-v', '--verbosity1', action='store_const', const=1, default=0, dest='verbosity',
                                help='sets verbosity level to 1')
     parent_parser.add_argument('-vv', '--verbosity2', action='store_const', const=2, dest='verbosity',

@@ -1,0 +1,4 @@
+2020-10-11 20:02:12,208 - skillwallet - DEBUG - args: Namespace(command='register', rest_api_url=None, user='user1', verbosity=3)
+2020-10-11 20:02:12,209 - skillwallet - CRITICAL - verbose_level: 3
+2020-10-11 20:02:12,209 - skillwallet - DEBUG - User name: user1
+2020-10-11 20:02:12,210 - skillwallet - DEBUG - REST-API URL: http://localhost:8008

@@ -20,8 +20,10 @@ from sawtooth_sdk.processor.handler import TransactionHandler
 from sawtooth_signing import create_context
 from sawtooth_signing.secp256k1 import Secp256k1PublicKey
 
+from constants import digital_id_constants
+
 path.append(os.getcwd())
-from protobuf import digital_id_transaction_pb2, digital_id_pb2, id_attribute_pb2
+from protobuf import digital_id_transaction_pb2, digital_id_pb2, id_attribute_pb2, client_pb2
 from util import chain_access_util, hashing
 
 DEFAULT_VALIDATOR_URL = 'tcp://localhost:4004'
@@ -360,11 +362,26 @@ class DigitalIdTransactionHandler(TransactionHandler):
         LOGGER.debug("digital_id_byte = %s.", digital_id_byte)
         status = digital_id_transaction.status
         digital_id = None
+        digital_sig_str = None
         # verify the digital_id status and owner's public key with the transaction level information
         try:
             if status == id_attribute_pb2.PII_REGISTERED:
+                if digital_id_transaction.owner_signature == '':
+                    LOGGER.error('DigitalIdTransaction.owner_signature invalid')
+                    raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
                 digital_id = digital_id_pb2.PII_credential()
+                digital_sig_str = digital_id_transaction.owner_signature
             elif status == id_attribute_pb2.SKILL_REGISTERED:
+                if digital_id_transaction.owner_signature == '':
+                    LOGGER.error('DigitalIdTransaction.owner_signature invalid')
+                    raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
+                digital_id = digital_id_pb2.learning_credential()
+                digital_sig_str = digital_id_transaction.owner_signature
+            elif status == id_attribute_pb2.SKILL_ATTESTED:
+                if digital_id_transaction.certifier_signature == '':
+                    LOGGER.error('DigitalIdTransaction.certifier_signature invalid')
+                    raise InvalidTransaction('DigitalIdTransaction.certifier_signature invalid')
+                digital_sig_str = digital_id_transaction.certifier_signature
                 digital_id = digital_id_pb2.learning_credential()
 
             digital_id.ParseFromString(digital_id_byte)
@@ -374,24 +391,34 @@ class DigitalIdTransactionHandler(TransactionHandler):
         except BaseException as err:
             raise Exception(err)
 
-        owner_sig_str = digital_id_transaction.owner_signature
-        LOGGER.debug("owner_sig_str = %s.", owner_sig_str)
+        LOGGER.debug("digital_sig_str = %s.", digital_sig_str)
 
-        is_verified = _verify_message_signature(digital_id_byte, owner_sig_str, signer_pub_key_hex)
+        is_verified = _verify_message_signature(digital_id_byte, digital_sig_str, signer_pub_key_hex)
         if is_verified == 0:
             LOGGER.error('DigitalIdTransaction.owner_signature invalid')
             raise InvalidTransaction('DigitalIdTransaction.owner_signature invalid')
 
+        try:
+            client_info_transaction = client_pb2.ClientInfoSetupTransaction()
+            client_info_transaction.ParseFromString(payload)
+        except BaseException as err:
+            raise Exception(err)
+
         if status == id_attribute_pb2.PII_REGISTERED:
             self._register_pii(context, to_address_list, transaction_id,
-                               digital_id_byte,  # owner_sig_str,
-                               signer_pub_key_hex)
+                               digital_id_byte, signer_pub_key_hex)
 
         elif status == id_attribute_pb2.SKILL_REGISTERED:
             certifier_address = digital_id_transaction.receiver_address
 
             self._register_skill(context, to_address_list, transaction_id,
                                  digital_id_byte, signer_pub_key_hex, certifier_address)
+        elif status == id_attribute_pb2.SKILL_ATTESTED:
+            dependency_list = header.dependencies
+            LOGGER.debug("header.dependencies: {}".format(dependency_list))
+
+            self._attest_skill(context, digital_id_byte, to_address_list,
+                               transaction_id, signer_pub_key_hex, dependency_list)
 
     @classmethod
     def _register_pii(cls, context, to_address_list, transaction_id, digital_id_byte,
@@ -433,7 +460,7 @@ class DigitalIdTransactionHandler(TransactionHandler):
     def _register_skill(cls, context, to_address_list, transaction_id, digital_id_byte,
                         signer_pub_key_hex, certifier_address):
 
-        LOGGER.debug("Inside _register_id method")
+        LOGGER.debug("Inside _register_skill method")
 
         # TODO verify if the certifier_address is authorized using global registry
 
@@ -464,6 +491,85 @@ class DigitalIdTransactionHandler(TransactionHandler):
                 ('sent_from', str(signer_pub_key_hash)),
                 ('transaction_id', str(transaction_id)),
                 ('send_to', str(certifier_address))
+            ]
+        )
+
+    @classmethod
+    def _attest_skill(cls, context, digital_id_byte, to_address_list,
+                      transaction_id, signer_pub_key_hex, dependency_list):
+
+        LOGGER.debug("Inside _attest_skill method")
+
+        # TODO verify if the certifier_address is authorized using global registry
+
+        if len(dependency_list) > 0:
+            requesting_txn_id = dependency_list[0]
+        else:
+            LOGGER.error("Dependency of transaction {} is empty".format(transaction_id))
+            raise InvalidTransaction("Transaction dependency cannot be empty")
+
+        # Fetch header data from requesting_txn_id
+        txn_response = chain_access_util.get_transaction(base_url=cls.rest_api_url, requesting_txn_id=requesting_txn_id)
+        txn_header = txn_response['header']
+        id_owner_pub_key = txn_header['signer_public_key']
+        id_owner_pub_key_hash = hashing.get_pub_key_hash(id_owner_pub_key)
+
+        # Verify if the output state address is valid for this action
+        signer_pub_key_hash = hashing.get_pub_key_hash(signer_pub_key_hex)
+        output_state_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
+                                                             pub_key_hash=id_owner_pub_key_hash,
+                                                             key=signer_pub_key_hash)
+        LOGGER.debug("output_state_address : {}".format(output_state_address))
+        if output_state_address not in to_address_list:
+            raise InvalidTransaction("Output Address not valid")
+
+        # verify validity of dependent transaction with state information
+        id_state_data = chain_access_util.get_state(cls.rest_api_url, output_state_address)
+        LOGGER.debug("Existing ID state_data : {}".format(id_state_data))
+
+        if id_state_data == digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE or \
+                id_state_data['acting_transaction_id'] != requesting_txn_id:
+            LOGGER.debug("expected dependency : {}".format(id_state_data['acting_transaction_id']))
+            raise InvalidTransaction("Invalid dependency given")
+
+        if txn_response.status != id_attribute_pb2.SKILL_REGISTERED:
+            LOGGER.debug(
+                "Dependency transaction status is {}. Skill Attest operation is not allowed".format(
+                    txn_response.status))
+            raise InvalidTransaction(
+                "Dependency transaction status is {}. Skill Attest operation is not allowed".format(
+                    txn_response.status))
+
+        id_state_data['skill_credential'] = digital_id_byte
+        id_state_data['acting_transaction_id'] = transaction_id
+        state_data = cbor.dumps(id_state_data)
+        LOGGER.debug("State-data : {}".format(state_data))
+
+        # update owner's self-state data
+
+        # owner_state_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
+        #                                                     pub_key_hash='self',
+        #                                                     key=id_owner_pub_key_hash)
+        # LOGGER.debug("output_state_address : {}".format(owner_state_address))
+        # if owner_state_address not in to_address_list:
+        #     LOGGER.debug('owner state cannot be updated')
+        # else:
+        #     id_state_data = chain_access_util.get_state(cls.rest_api_url, output_state_address)
+        #     LOGGER.debug("Existing ID state_data : {}".format(id_state_data))
+
+        addresses = context.set_state({output_state_address: state_data})
+
+        if len(addresses) < 1:
+            raise InternalError("State Error")
+        LOGGER.debug("state updated")
+
+        context.add_event(
+            event_type='learner/skill_attest',
+            attributes=[
+                ('address', str(output_state_address)),
+                ('sent_from', str(signer_pub_key_hash)),
+                ('transaction_id', str(transaction_id)),
+                ('send_to', str(id_owner_pub_key_hash))
             ]
         )
 

@@ -5,7 +5,7 @@ enum Status {
         REGISTERED = 1;
         PII_REGISTERED = 2;
         SKILL_REGISTERED = 3;
-        CONFIRMED = 4;
+        SKILL_ATTESTED = 4;
         EXPIRED = 5;
         ACK_CONFIRMED = 6;
         INVALID = 7;
@@ -40,16 +40,17 @@ message CourseDetails{
     string content_creator_list = 8;
     string score = 9;
     string course_cert_hash = 10;
+    string attestor_pub_key = 11;
+    string sign_timestamp = 12;
+    string valid_till = 13;
 
 }
 
 message CourseAttributeDataType {
 
-    bytes course_details = 1;
-    string attestor_pub_key = 2;
-    string sign_timestamp = 3;
-    string valid_till = 4;
-    // string learner_name = 5;
-    string skill_point = 6;
+    Status status = 1;
+    bytes course_details = 2;
+    string certificate = 3;
+    string skill_point = 4;
 
 }

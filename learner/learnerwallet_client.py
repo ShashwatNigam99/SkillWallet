@@ -46,7 +46,7 @@ STATUS_ENUM = {0: 'DEFAULT',
                1: 'REGISTERED',
                2: 'PII_REGISTERED',
                3: 'SKILL_REGISTERED',
-               4: 'CONFIRMED',
+               4: 'SKILL_ATTESTED',
                5: 'EXPIRED',
                6: 'ACK_CONFIRMED',
                7: 'INVALID',
@@ -306,136 +306,6 @@ class LearnerWalletClient(object):
             print("ID not found")
         return
 
-    # def save_ack_receipt(self):
-    #     LOGGER.debug("inside LearnerWalletClient.save_ack_receipt")
-    #     # check validity of self-state
-    #     # is_self_state_valid = False
-    #     self_state_data = chain_access_util.get_state(base_url=self.base_url, address=self._self_state_address)
-    #     if self_state_data == digital_id_constants.SAWTOOTH_STATE_NOT_FOUND_CODE:
-    #         print("Self-state not valid for save_ack_receipt operation.")
-    #         return False
-    #     else:
-    #         digital_id_bytes = self_state_data['digital_id']
-    #         digital_id = digital_id_pb2.DigitalId()
-    #         digital_id.ParseFromString(digital_id_bytes)
-    #         if digital_id.status == id_attribute_pb2.Status.CONFIRMED \
-    #                 and self_state_data['ack_number'] is None \
-    #                 and self_state_data['trust_score'] == digital_id_constants.CONFIRMED_ID_TRUST_SCORE:
-    #
-    #             # is_self_state_valid = True
-    #             print("\nProcessing to save ID acknowledgement number...\n")
-    #             ack_event_found = False
-    #             # try:
-    #             LOGGER.debug("Looking for an acknowledgement event in the event database")
-    #             events_db = db.DB()
-    #             try:
-    #                 events_db.open(self.events_db_file, None, db.DB_HASH, db.DB_RDWRMASTER)
-    #                 key = "digitalid_certifier/acknowledged"
-    #                 event_data = events_db.get(key.encode())
-    #                 if event_data is not None:
-    #                     even_attr = cbor.loads(event_data)
-    #                     # txn_id = even_attr['transaction_id']
-    #                     # certifier_address = even_attr['sent_from']
-    #                     address = even_attr['address']
-    #                     ack_txn_id = even_attr['transaction_id']
-    #                     if address == self._id_creation_address:
-    #                         ack_event_found = True
-    #                         is_success = self._send_save_update(event_data, ack_txn_id)
-    #                         if is_success is True:
-    #                             events_db.delete(key.encode())
-    #                     else:
-    #                         print("Invalid acknowledgement event found in the database")
-    #             except DBNoSuchFileError:
-    #                 LOGGER.debug('events_db_file not present')
-    #             except BaseException as err:
-    #                 LOGGER.error("Error while reading event db {}".format(err))
-    #                 raise Exception(err)
-    #
-    #             if not ack_event_found:
-    #                 LOGGER.debug("Corresponding acknowledgement event not present in the event database")
-    #                 print("Looking for acknowledgement transaction in the ID_creation state")
-    #                 if self._id_status == id_attribute_pb2.CONFIRMED and \
-    #                         self._id_creation_state['user_confirmation_txn'] == self_state_data[
-    #                     'user_confirmation_txn']:
-    #                     # check if self._last_acting_txn_id has status id_attribute_pb2.ACK_CONFIRMED
-    #                     txn_response = chain_access_util.get_transaction(base_url=self.base_url,
-    #                                                                      requesting_txn_id=self._last_acting_txn_id)
-    #                     try:
-    #                         txn_payload = txn_response['payload']
-    #                         digital_id_transaction = DigitalIdTransaction()
-    #                         digital_id_transaction.ParseFromString(base64.b64decode(txn_payload))
-    #                         txn_status = digital_id_transaction.status
-    #                         LOGGER.debug("txn_status {}".format(txn_status))
-    #                     except BaseException as err:
-    #                         LOGGER.error("Error while reading transaction data {}".format(err))
-    #                         raise Exception("Error while reading transaction data {}".format(err))
-    #                     if txn_status == id_attribute_pb2.ACK_CONFIRMED:
-    #                         txn_data = {'address': self._id_creation_address,
-    #                                     'transaction_id': self._last_acting_txn_id}
-    #                         txn_data_bytes = cbor.dumps(txn_data)
-    #                         is_success = self._send_save_update(txn_data_bytes, self._last_acting_txn_id)
-    #                         return is_success
-    #                     else:
-    #                         print("Acknowledgement not yet present for last confirmed ID.")
-    #                 else:
-    #                     print("ID creation state not congruent to save_ack_receipt operation")
-    #
-    #             events_db.close()
-    #             # except BaseException as err:
-    #             #     LOGGER.error("Error while reading event db {}".format(err))
-    #             #     raise Exception(err)
-    #
-    #         elif digital_id.status == id_attribute_pb2.Status.CONFIRMED \
-    #                 and self_state_data['ack_number'] is not None \
-    #                 and self_state_data['trust_score'] == digital_id_constants.CONFIRMED_ID_TRUST_SCORE:
-    #             # TODO check the _last_txn_id as well
-    #             self._id_finalized = True
-    #             self.state_info_dict['finalized_id_present'] = self._id_finalized  # added 2nd Jul, 2020
-    #             print("\nDigital-ID is confirmed and acknowledged. No action required.")
-    #             return False
-
-    # def _send_save_update(self, data, ack_txn_id):
-    #     LOGGER.debug("inside LearnerWalletClient.send_save_update")
-    #     state_update_transaction = client_pb2.StateUpdateTransaction()
-    #     state_update_transaction.action = digital_id_constants.UPDATE_STATE_ACK
-    #     state_update_transaction.data = data
-    #     payload = state_update_transaction.SerializeToString()
-    #     input_address_list = [self._id_creation_address]
-    #     output_address_list = [self._self_state_address, self._quorum_address]
-    #     transaction = self.txn_generator.make_transaction(family=FAMILY_NAME_CLIENT,
-    #                                                       payload=payload,
-    #                                                       input_address_list=input_address_list,
-    #                                                       output_address_list=output_address_list,
-    #                                                       dependency_list=[ack_txn_id])
-    #     transaction_list = [transaction]
-    #     batch_list = self.txn_generator.make_batch(transaction_list)
-    #     batch_id = batch_list.batches[0].header_signature
-    #     result = None
-    #     try:
-    #         # Send batch_list to the REST API
-    #         response = self.txn_generator.send_to_rest_api("batches", batch_list.SerializeToString(),
-    #                                                        'application/octet-stream')
-    #         LOGGER.debug("Response from Rest-API {}".format(response))
-    #
-    #         result = self.txn_generator.wait_for_status(batch_id, LearnerWalletClient.wait_time, result)
-    #     except InvalidTransaction:
-    #         return False
-    #
-    #     LOGGER.debug(result)
-    #     print(result)
-    #     if result != digital_id_constants.TRANSACTION_TIMED_OUT_ERROR:
-    #         status = yaml.safe_load(result)['data'][0]['status']
-    #         if status == 'COMMITTED':
-    #             print("Acknowledgement successfully saved")
-    #             return True
-    #         elif status == 'UNKNOWN':
-    #             print("Transaction status unknown")
-    #             return True
-    #         else:
-    #             print("Failed to save Acknowledgement")
-    #             return False
-    #     else:
-    #         return False
 
     def _send_digital_id_txn(self, action, owner_info=None):
         LOGGER.debug("inside LearnerWalletClient._send_digital_id_txn")
@@ -490,7 +360,6 @@ class LearnerWalletClient(object):
             shared_certifier_address = hashing.get_digitalid_address(family_name=FAMILY_NAME_LEARNER,
                                                                      key=certifier_address,
                                                                      pub_key_hash=self.public_address)
-            learning_cred.status = id_attribute_pb2.REGISTERED
             learning_cred.id_owner_public_key = self.public_key
             learning_cred.enc_code_id = random.random().hex().encode()
 
@@ -540,6 +409,7 @@ class LearnerWalletClient(object):
         user_wallet_db.close()
         self.refresh_exit = True
 
+
     def _set_learning_credentials(self, course_attribute_set):
         LOGGER.debug("inside _set_learning_credentials")
         code_dict = {}
@@ -552,92 +422,47 @@ class LearnerWalletClient(object):
 
         val = input("{}: ".format('course_ID: '))
         val = val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.course_ID = _get_encoded_hash('course_ID', val, code_dict)
-        else:
-            course_details_struct.course_ID = val.lower().encode('utf-8')
+        course_details_struct.course_ID = val.lower().encode('utf-8')
 
         course_provider_name = input("{}: ".format('course provider name: '))
         course_provider_name = course_provider_name.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.course_provider_name = _get_encoded_hash('course_provider_name',
-                                                                           course_provider_name, code_dict)
-        else:
-            course_details_struct.course_provider_name = course_provider_name.lower().encode('utf-8')
+        course_details_struct.course_provider_name = course_provider_name.lower().encode('utf-8')
 
         course_name_val = input("{}: ".format('course name: '))
         course_name_val = course_name_val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.course_name = _get_encoded_hash('course_name', course_name_val, code_dict)
-        else:
-            course_details_struct.course_name = course_name_val.lower().encode('utf-8')
+        course_details_struct.course_name = course_name_val.lower().encode('utf-8')
 
         val = input("{}: ".format('course description: '))
         val = val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.course_description = _get_encoded_hash('course_description', val, code_dict)
-        else:
-            course_details_struct.course_description = val.lower().encode('utf-8')
+        course_details_struct.course_description = val.lower().encode('utf-8')
 
         val = input("{}: ".format('course start date: '))
         val = val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.course_start_date = _get_encoded_hash('course_start_date', val, code_dict)
-        else:
-            course_details_struct.course_start_date = val.lower().encode('utf-8')
+        course_details_struct.course_start_date = val.lower().encode('utf-8')
 
         val = input("{}: ".format('course finish date: '))
         val = val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.course_finish_date = _get_encoded_hash('course_finish_date', val, code_dict)
-        else:
-            course_details_struct.course_finish_date = val.lower().encode('utf-8')
+        course_details_struct.course_finish_date = val.lower().encode('utf-8')
 
         val = input("{}: ".format('content creators: '))
         val = val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.content_creator_list = _get_encoded_hash('content_creator_list', val, code_dict)
-        else:
-            course_details_struct.content_creator_list = val.lower().encode('utf-8')
+        course_details_struct.content_creator_list = val.lower().encode('utf-8')
 
         val = input("{}: ".format('score: '))
         val = val.strip()
-        resp = input("Do you want to keep the information confidential? Y/N: ")
-        if resp.capitalize().strip() == 'Y':
-            course_details_struct.score = _get_encoded_hash('score', val, code_dict)
-        else:
-            course_details_struct.score = val.lower().encode('utf-8')
+        course_details_struct.score = val.lower().encode('utf-8')
 
         val = input("{}: ".format('course_cert_hash: '))
         val = val.strip()
-        if val != '':
-            resp = input("Do you want to keep the information confidential? Y/N: ")
-            if resp.capitalize().strip() == 'Y':
-                course_details_struct.course_cert_hash = _get_encoded_hash('course_cert_hash', val, code_dict)
-            else:
-                course_details_struct.course_cert_hash = val.lower().encode('utf-8')
+        course_details_struct.course_cert_hash = val.lower().encode('utf-8')
 
         course_key = course_name_val.lower() + '_' + course_provider_name.lower()
-
-        # write random codes to the course-specific code file
-        serialized_code = json.dumps(code_dict)
-        LOGGER.debug("serialized_code {}".format(serialized_code))
-        code_file = '{}/{}'.format(self.user_dir, course_key)
-        file_handle = open(code_file, "w+")
-        file_handle.write(serialized_code)
-        file_handle.close()
 
         # populate course data
         course_attribute_set.get_or_create(course_key)
         course_data = course_attribute_set[course_key]
         course_data.course_details = course_details_struct.SerializeToString()
+        course_data.status = id_attribute_pb2.SKILL_REGISTERED
 
     def _set_user_id(self, id_attribute_set):
         LOGGER.debug("inside _set_user_id")

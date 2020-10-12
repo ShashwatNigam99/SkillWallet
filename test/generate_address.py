@@ -58,7 +58,7 @@ def main():
     digital_id_bytes = '\b001'
     _owner_signature = _signer.sign(hashing.get_hash_from_bytes(digital_id_bytes.encode("utf-8")))
     print(_owner_signature)
-    # print(hashing.get_digitalid_address(FAMILY_NAME, '608f3dba2bc689b4d88038f5f8333f955fc23215', 'self'))
+    # print(hashing.get_digitalid_address(FAMILY_NAME_LEARNER, '608f3dba2bc689b4d88038f5f8333f955fc23215', 'self'))
 
 
 if __name__ == '__main__':

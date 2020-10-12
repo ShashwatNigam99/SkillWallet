@@ -10,10 +10,10 @@ message PII_credential {
 }
 
 message learning_credential {
-    Status status = 1;
-    string id_owner_public_key = 2;
-    string enc_code_id = 3;
-    map<string, CourseAttributeDataType> course_attribute_set = 4;
+    // Status status = 1;
+    string id_owner_public_key = 1;
+    string enc_code_id = 2;
+    map<string, CourseAttributeDataType> course_attribute_set = 3;
     // map key: courseTitle_CourseProvider
 }
 

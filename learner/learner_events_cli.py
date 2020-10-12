@@ -156,7 +156,7 @@ class LearnerEventsClient(object):
         # )
 
         verified_id_subscription = events_pb2.EventSubscription(
-            event_type="certifier/confirmed",
+            event_type="learner/skill_attest",
             filters=self._filters['certification_filters']
         )
         register_event_subscription = events_pb2.EventSubscription(
@@ -218,10 +218,10 @@ class LearnerEventsClient(object):
 
                     continue
 
-                if event.event_type == "certifier/confirmed":
+                if event.event_type == "learner/skill_attest":
 
-                    LOGGER.debug("digitalid_certifier/verified")
-                    print("digitalid_certifier/verified")
+                    LOGGER.debug("learner/skill_attest")
+                    print("learner/skill_attest")
                     # creating database with hash access method
                     events_db = db.DB()
                     # events_db.open(EVENTS_DB_FILE, None, db.DB_HASH, db.DB_CREATE)
@@ -287,7 +287,7 @@ def create_parser(prog_name):
     parser = argparse.ArgumentParser(prog=prog_name, add_help=False)
     parser.add_argument('-C', '--connect', dest='validator_url', type=str, help="Url to connect to validator")
     parser.add_argument('-l', '--url', dest='rest_api_url', type=str, help="Rest-API URL")
-    parser.add_argument('-u', '--learner', dest='learner', type=str, help='learner name')
+    parser.add_argument('-u', '--user', dest='user', type=str, help='learner name')
     parser.add_argument('-v', '--verbosity1', action='store_const', const=1, default=0, dest='verbosity',
                         help='sets verbosity level to 1')
     parser.add_argument('-vv', '--verbosity2', action='store_const', const=2, dest='verbosity',
@@ -318,6 +318,8 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
         LOGGER.critical("verbose_level: %s", verbose_level)
         key_file_name = results.user
         validator_url = results.validator_url
+        if key_file_name is None:
+            key_file_name = DEFAULT_KEY_FILE_NAME
         if validator_url is None:
             validator_url = DEFAULT_VALIDATOR_URL
         api_url = results.rest_api_url

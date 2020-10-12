@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="68ab66ad-5f54-4375-a707-75d2fe0a0691" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/certifier/certifier_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/certifier_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/certifier/certifier_events_cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/certifier_events_cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/certifier/certifier_wallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/certifier/certifier_wallet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learner/learner_events_cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learner_events_cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learner/learnerwallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learnerwallet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learner/learnerwallet_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learnerwallet_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learner/skillwallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/learner/learnerwallet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/digital_id_transaction.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id_transaction.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/digital_id_transaction_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id_transaction_pb2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/digital_id.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/digital_id_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/digital_id_pb2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/id_attribute.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/id_attribute.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/id_attribute_pb2.py" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/id_attribute_pb2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/generate_address.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/generate_address.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tfprocessor/digitalid_tp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tfprocessor/digitalid_tp.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,5 +50,13 @@
       <screen x="65" y="24" width="735" height="576" />
     </state>
     <state x="65" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/65.24.735.576@65.24.735.576" timestamp="1602354180477" />
+    <state x="218" y="214" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602440527716">
+      <screen x="65" y="24" width="735" height="576" />
+    </state>
+    <state x="218" y="214" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/65.24.735.576@65.24.735.576" timestamp="1602440527716" />
+    <state x="162" y="213" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602441387829">
+      <screen x="65" y="24" width="735" height="576" />
+    </state>
+    <state x="162" y="213" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/65.24.735.576@65.24.735.576" timestamp="1602441387829" />
   </component>
 </project>

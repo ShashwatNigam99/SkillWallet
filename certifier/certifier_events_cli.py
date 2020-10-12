@@ -2,7 +2,6 @@
 import argparse
 import hashlib
 import logging
-import multiprocessing
 import sys
 import os
 import traceback
@@ -17,14 +16,12 @@ from sawtooth_signing import ParseError, CryptoFactory, create_context
 from sawtooth_signing.secp256k1 import Secp256k1PrivateKey
 
 sys.path.append(os.getcwd())
-from certifier.certifier_client import CertifierWalletClient
 from util import hashing
 
 DEFAULT_VALIDATOR_URL = 'tcp://localhost:4004'
 DEFAULT_API_URL = 'http://localhost:8008'
-FAMILY_NAME = "digitalid"
-CERTIFY_FAMILY_NAME = "digitalid_certifier"
-FAMILY_NAME_PEER_VERIFY = "peer_verification"
+FAMILY_NAME_LEARNER = "learner"
+FAMILY_NAME_CERTIFY = "certifier"
 EVENTS_DB_FILE = "certifier_events_db"
 DEFAULT_KEY_FILE_NAME = "certifier1"
 
@@ -40,24 +37,14 @@ def _hash(data):
     return hashlib.sha512(data).hexdigest()
 
 
-def _get_certification_address_prefix():
+def _get_certification_address_prefix(public_address):
     """
     Return the address of a digital id object from the digitalid TF.
 
     The address is the first 6 hex characters from the hash SHA-512(TF name),
     plus the FAMILY_NAME_CERTIFY.
     """
-    return str(_hash(FAMILY_NAME.encode('utf-8'))[0:6] + _hash(CERTIFY_FAMILY_NAME.encode('utf-8'))[0:24])
-
-
-def _get_peer_verification_address_prefix():
-    """
-    Return the address of a digital id object from the digitalid TF.
-
-    The address is the first 6 hex characters from the hash SHA-512(TF name),
-    plus the FAMILY_NAME_CERTIFY.
-    """
-    return str(_hash(FAMILY_NAME_PEER_VERIFY.encode('utf-8'))[0:6])
+    return str(_hash(FAMILY_NAME_LEARNER.encode('utf-8'))[0:6] + public_address[0:24])
 
 
 def create_console_handler(verbose_level=0):
@@ -155,20 +142,6 @@ class CertifierEventsClient(object):
         # creating database with hash access method
         # self.events_db.open(EVENTS_DB_FILE, None, db.DB_HASH, db.DB_CREATE)
 
-    def _send_ack_from_client(self, signer_address):  # signature,
-        # address, signer_public_key, transaction_id):
-        # self.proc_event_listener.start()
-        LOGGER.debug("Inside _send_ack_from_client()")
-        # print("\nSending acknowledgement for {}".format(transaction_id))
-        certifier_client = CertifierWalletClient(base_url=self.rest_api_url,
-                                                 key_file_name=self.user_name)
-        # added transaction_id as parameter of process_request
-
-        # certifier_client.process_request(id_attribute_pb2.Status.CONFIRMED, address,  # signature, #
-        #                                  signer_public_key, transaction_id)
-        # signer_address = hashing.get_pub_key_hash(signer_public_key)
-        certifier_client.send_ack(address=signer_address)
-
     def listen_events(self):
         # subscribe to events
 
@@ -176,47 +149,12 @@ class CertifierEventsClient(object):
         #     event_type="sawtooth/state-delta",
         #     filters=filter_dict['id_filters']
         # )
-        request_id_subscription = events_pb2.EventSubscription(
-            event_type="digitalid/request",
-            filters=self._filters['id_filters']
-        )
-        confirm_id_subscription = events_pb2.EventSubscription(
-            event_type="digitalid/confirm",
-            filters=self._filters['id_filters']
-        )
-        update_id_subscription = events_pb2.EventSubscription(
-            event_type="digitalid/update",
-            filters=self._filters['id_filters']
-        )
-        peer_request_subscription = events_pb2.EventSubscription(
-            event_type="peer_verification/request",
-            filters=self._filters['peer_filters']
-        )
-        share_id_request_subscription = events_pb2.EventSubscription(
-            event_type="shareid/request",
-            filters=self._filters['share_filters']
-        )
-        share_id_response_subscription = events_pb2.EventSubscription(
-            event_type="shareid/response",
-            filters=self._filters['share_filters']
-        )
-        invalidation_request_subscription = events_pb2.EventSubscription(
-            event_type="digitalid/invalidate",
-            filters=self._filters['invalidation_filters']
-        )
-        recovery_request_subscription = events_pb2.EventSubscription(
-            event_type="digitalid/recovery",
+        skill_register_subscription = events_pb2.EventSubscription(
+            event_type="learner/skill_register",
             filters=self._filters['id_filters']
         )
         subscription_req = client_event_pb2.ClientEventsSubscribeRequest(
-            subscriptions=[request_id_subscription,
-                           confirm_id_subscription,
-                           peer_request_subscription,
-                           update_id_subscription,
-                           invalidation_request_subscription,
-                           recovery_request_subscription,
-                           share_id_request_subscription,
-                           share_id_response_subscription]
+            subscriptions=[skill_register_subscription]
         )
 
         # Send the subscription request
@@ -245,9 +183,7 @@ class CertifierEventsClient(object):
             for event in event_list.events:
                 LOGGER.debug(event)
 
-                if event.event_type == "digitalid/request" \
-                        or event.event_type == "digitalid/update":
-                    # or event.event_type == "digitalid/recovery":
+                if event.event_type == "learner/skill_register":
 
                     LOGGER.info(event.event_type)
                     print(event.event_type)
@@ -257,20 +193,20 @@ class CertifierEventsClient(object):
                     event_attr = {}
                     for event_attribute in attribute_list:
 
-                        if event_attribute.key == 'address':
+                        if event_attribute.key == 'address':  # state address
                             LOGGER.debug("event attribute address: {}".format(event_attribute.value))
                             event_attr['address'] = event_attribute.value
-                        elif event_attribute.key == 'signer_public_key':
-                            LOGGER.debug("event attribute signer_public_key: {}".format(event_attribute.value))
-                            event_attr['signer_public_key'] = event_attribute.value
+                        elif event_attribute.key == 'sent_from':
+                            LOGGER.debug("event attribute sent_from: {}".format(event_attribute.value))
+                            event_attr['sent_from'] = event_attribute.value
                         # Code added to retrieve value of 'transaction_id' attribute
                         elif event_attribute.key == 'transaction_id':
                             LOGGER.debug("event attribute transaction_id: {}".format(event_attribute.value))
                             event_attr['transaction_id'] = event_attribute.value
+                        elif event_attribute.key == 'send_to':
+                            LOGGER.debug("event attribute send_to: {}".format(event_attribute.value))
+                            event_attr['send_to'] = event_attribute.value
 
-                    # if event.HasField('data'):
-                    # LOGGER.debug("event data: {}".format(event.data.decode('utf-8')))
-                    # TODO remove: event_attr['owner_signature'] = event.data.decode('utf-8')
                     db_key = event.event_type
                     value = events_db.get(db_key.encode())
                     if value is None:
@@ -284,221 +220,13 @@ class CertifierEventsClient(object):
                     LOGGER.debug(request_list)
                     events_db.put(db_key.encode(), cbor.dumps(request_list))
                     events_db.close()
-                    if event.event_type == "digitalid/request":
-                        print("New request for ID registered from address {} in transaction {}".format(
-                            hashing.get_pub_key_hash(event_attr['signer_public_key']),
-                            event_attr['transaction_id']))
-                        LOGGER.info("New request for ID registered from address {} in transaction {}".format(
-                            hashing.get_pub_key_hash(event_attr['signer_public_key']),
-                            event_attr['transaction_id']))
-                    elif event.event_type == "digitalid/update":
-                        print("Request for ID update registered from address {} in transaction {}".format(
-                            hashing.get_pub_key_hash(event_attr['signer_public_key']),
-                            event_attr['transaction_id']))
-                        LOGGER.info("Request for ID update registered from address {} in transaction {}".format(
-                            hashing.get_pub_key_hash(event_attr['signer_public_key']),
-                            event_attr['transaction_id']))
-                    # elif event.event_type == "digitalid/recovery":
-                    #     print("Request for ID recovery registered from address {} in transaction {}".format(
-                    #         hashing.get_pub_key_hash(event_attr['signer_public_key']),
-                    #         event_attr['transaction_id']))
 
-                    # certifier_client = CertifierWalletClient(base_url=DEFAULT_API_URL)
-                    # added transaction_id as parameter of process_request
-                    # certifier_client.process_request(id_attribute_pb2.Status.REQUESTED, address,
-                    #                                  signature, signer_public_key, transaction_id)
-                    continue
-
-                if event.event_type == "digitalid/recovery":
-                    LOGGER.info(event.event_type)
-                    print(event.event_type)
-                    signer_public_key = None
-                    transaction_id = ''
-                    for event_attribute in event.attributes:
-                        if event_attribute.key == 'signer_public_key':
-                            signer_public_key = event_attribute.value
-                        elif event_attribute.key == 'transaction_id':
-                            transaction_id = event_attribute.value
-
-                    print("Request for ID recovery recieved from address {} in transaction {}".format(
-                        hashing.get_pub_key_hash(signer_public_key),
-                        transaction_id))
-                    LOGGER.info("Request for ID recovery recieved from address {} in transaction {}".format(
-                        hashing.get_pub_key_hash(signer_public_key),
-                        transaction_id))
-                    continue
-
-                if event.event_type == "digitalid/confirm":
-
-                    LOGGER.info("digitalid/confirm")
-                    print("digitalid/confirm")
-                    signer_public_key = None
-                    transaction_id = None
-                    # event_attr = {}
-                    attribute_list = event.attributes
-                    for event_attribute in attribute_list:
-
-                        if event_attribute.key == 'address':
-                            LOGGER.debug("event attribute address: {}".format(event_attribute.value))
-                            # event_attr['address'] = event_attribute.value
-                        elif event_attribute.key == 'signer_public_key':
-                            LOGGER.debug("event attribute signer_public_key: {}".format(event_attribute.value))
-                            # event_attr['signer_public_key'] = event_attribute.value
-                            signer_public_key = event_attribute.value
-                        # added Code added to retrieve value of 'transaction_id' attribute
-                        elif event_attribute.key == 'transaction_id':
-                            LOGGER.debug("event attribute transaction_id: {}".format(event_attribute.value))
-                            # event_attr['transaction_id'] = event_attribute.value
-                            transaction_id = event_attribute.value
-
-                    # signature = event.data.decode('utf-8')
-                    # LOGGER.debug("event data: {}".format(event.data.decode('utf-8')))
-                    signer_address = hashing.get_pub_key_hash(signer_public_key)
-                    print("ID confirmation received from address {} in transaction {}".format(
-                        hashing.get_pub_key_hash(signer_public_key),
-                        transaction_id))
-                    LOGGER.info("ID confirmation received from address {} in transaction {}".format(
-                        hashing.get_pub_key_hash(signer_public_key),
-                        transaction_id))
-                    # event_attr['owner_signature'] = event.data.decode('utf-8')
-                    # process_client = multiprocessing.Process(target=self._send_ack_from_client,
-                    #                                          args=(address,  # signature,
-                    #                                                signer_public_key, transaction_id,))
-                    process_client = multiprocessing.Process(target=self._send_ack_from_client,
-                                                             args=(signer_address,))
-                    process_client.daemon = True
-                    process_client.start()
-                    LOGGER.debug("certifier_client is_alive {}".format(process_client.is_alive()))
-                    process_client.join()
-                    LOGGER.debug("Process for sending acknowledgement finished operation")
-                    print("Process for sending acknowledgement finished operation")
-                    LOGGER.info("Process for sending acknowledgement finished operation")
-                    LOGGER.debug("certifier_client is_alive {}".format(process_client.is_alive()))
-                    if process_client.is_alive():
-                        process_client.terminate()
-                    # certifier_client = CertifierWalletClient(base_url=DEFAULT_API_URL,
-                    #                                          key_file_name=DEFAULT_KEY_FILE_NAME)
-                    # # added transaction_id as parameter of process_request
-                    #
-                    # certifier_client.process_request(id_attribute_pb2.Status.CONFIRMED, address, signature,
-                    #                                  signer_public_key, transaction_id)
-
-                    continue
-
-                if event.event_type == "shareid/response":
-
-                    LOGGER.info("shareid/response")
-                    received_from = None
-                    transaction_id = None
-
-                    LOGGER.debug("event of type {} received".format(event.event_type))
-                    attribute_list = event.attributes
-                    for event_attribute in attribute_list:
-
-                        if event_attribute.key == 'to_address':
-                            to_address = event_attribute.value
-                            # event_attr['address'] = address
-                            LOGGER.debug("event attribute to_address: {}".format(to_address))
-                        elif event_attribute.key == 'received_from':
-                            received_from = event_attribute.value
-                            # event_attr['signer_public_key'] = signer_public_key
-                            LOGGER.debug("event attribute received_from: {}".format(received_from))
-                        elif event_attribute.key == 'transaction_id':
-                            transaction_id = event_attribute.value
-                            # event_attr['transaction_id'] = transaction_id
-                            LOGGER.debug("event attribute transaction_id: {}".format(transaction_id))
-
-                    # Key format: event_type+'/transaction_id'.encode()
-                    # db_key = '{}/{}'.format(event.event_type, transaction_id)
-                    # events_db.put(db_key.encode(), cbor.dumps(event_attr))
-
-                    print("ID share response received from {} in transaction {}".format(received_from, transaction_id))
-                    LOGGER.info("ID share response received from {} in transaction {}".format(received_from, transaction_id))
-                    continue
-
-                if event.event_type == "peer_verification/request" or \
-                        event.event_type == "digitalid/invalidate":
-
-                    LOGGER.info(event.event_type)
-                    print(event.event_type)
-                    events_db = db.DB()
-                    events_db.open(self.events_db_file, None, db.DB_HASH, db.DB_CREATE)
-                    # address = None
-                    # event_attr = {}
-                    transaction_id = None
-                    sent_from = None
-                    LOGGER.debug("event of type {} received".format(event.event_type))
-                    attribute_list = event.attributes
-                    for event_attribute in attribute_list:
-
-                        if event_attribute.key == 'transaction_id':
-                            transaction_id = event_attribute.value
-                            LOGGER.debug("event attribute transaction_id: {}".format(transaction_id))
-                        elif event_attribute.key == 'sent_from':
-                            sent_from = event_attribute.value
-                            LOGGER.debug("event attribute sent_from: {}".format(sent_from))
-
-                        # if event_attribute.key == 'address':
-                        #     address = event_attribute.value
-                        #     event_attr['address'] = event_attribute.value
-                        #     LOGGER.debug("event attribute address: {}".format(event_attr['address']))
-                        # elif event_attribute.key == 'signer_public_key':
-                        #     # signer_public_key = event_attribute.value
-                        #     event_attr['signer_public_key'] = event_attribute.value
-                        #     LOGGER.debug(
-                        #         "event attribute signer_public_key: {}".format(event_attr['signer_public_key']))
-                        # elif event_attribute.key == 'transaction_id':
-                        #     # transaction_id = event_attribute.value
-                        #     event_attr['transaction_id'] = event_attribute.value
-                        #     LOGGER.debug("event attribute transaction_id: {}".format(event_attr['transaction_id']))
-                        # elif event_attribute.key == 'send_to':
-                        #     # send_to = event_attribute.value
-                        #     event_attr['send_to'] = event_attribute.value
-                        #     LOGGER.debug("event attribute send_to: {}".format(event_attr['send_to']))
-                        # elif event_attribute.key == 'sent_from':
-                        #     # sent_from = event_attribute.value
-                        #     event_attr['sent_from'] = event_attribute.value
-                        #     LOGGER.debug("event attribute sent_from: {}".format(event_attr['sent_from']))
-
-                    # Key format: event_type+'/transaction_id'.encode()
-                    # db_key = '{}/{}'.format(event.event_type, transaction_id)
-                    db_key = event.event_type
-                    value = events_db.get(db_key.encode())
-                    if value is None:
-                        request_list = []
-                    else:
-                        request_list = cbor.loads(value)
-                        if request_list is None:
-                            request_list = []
-
-                    # request_list.append(event_attr)
-                    if transaction_id not in request_list:
-                        request_list.append(transaction_id)
-
-                    LOGGER.debug(request_list)
-                    events_db.put(db_key.encode(), cbor.dumps(request_list))
-                    events_db.close()
-                    # TODO execute command for peer verification for ID state at 'address'
-                    # command that calls verify_peer_data(self, peer_address)
-                    # print("Peer verification request received for ID at {}".format(address))
-                    if event.event_type == "peer_verification/request":
-                        # print("ID attestation request received from address {} in transaction {}".format(
-                        #     event_attr['sent_from'],
-                        #     event_attr['transaction_id']))
-                        print("ID attestation request received from address {} in transaction {}".format(
-                            sent_from,
-                            transaction_id))
-                        LOGGER.info("ID attestation request received from address {} in transaction {}".format(
-                            sent_from,
-                            transaction_id))
-                    elif event.event_type == "digitalid/invalidate":
-                        print("ID invalidation request received from address {} in transaction {}".format(
-                            sent_from,
-                            transaction_id))
-                        LOGGER.info("ID invalidation request received from address {} in transaction {}".format(
-                            sent_from,
-                            transaction_id))
-                    continue
+                    print("New request for credential validation from address {} in transaction {}".format(
+                        event_attr['sent_from'],
+                        event_attr['transaction_id']))
+                    LOGGER.info("New request for credential validation from address {} in transaction {}".format(
+                        event_attr['sent_from'],
+                        event_attr['transaction_id']))
 
     def disconnect(self):
         # Unsubscribe from events
@@ -520,7 +248,7 @@ def create_parser(prog_name):
     parser = argparse.ArgumentParser(prog=prog_name, add_help=False)
     parser.add_argument('-C', '--connect', dest='validator_url', type=str, help="Url to connect to validator")
     parser.add_argument('-l', '--url', dest='rest_api_url', type=str, help="Rest-API URL")
-    parser.add_argument('-u', '--learner', dest='learner', type=str, required=True, help='learner name')
+    parser.add_argument('-u', '--user', dest='user', type=str, required=True, help='learner name')
     parser.add_argument('-v', '--verbosity1', action='store_const', const=1, default=0, dest='verbosity',
                         help='sets verbosity level to 1')
     parser.add_argument('-vv', '--verbosity2', action='store_const', const=2, dest='verbosity',
@@ -569,51 +297,14 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
     # setup_loggers(verbose_level=0)
     # events_db = db.DB()
     filter_dict = {}
-    # if key_file_name is None:
-    #     crypto_obj = CryptoKeyManager(DEFAULT_KEY_FILE_NAME)
-    # else:
-    #     crypto_obj = CryptoKeyManager(key_file_name)
     id_filters = [events_pb2.EventFilter(key="address",
-                                         match_string=_get_certification_address_prefix() + '.*',
+                                         match_string=_get_certification_address_prefix(public_address) + '.*',
                                          filter_type=events_pb2.EventFilter.REGEX_ANY),
                   events_pb2.EventFilter(key="send_to",
                                          match_string=public_address,
                                          filter_type=events_pb2.EventFilter.SIMPLE_ALL),
                   ]
-    peer_filters = [
-        # filter to match prefix for peer_verification family
-        events_pb2.EventFilter(key="address",
-                               match_string=_get_peer_verification_address_prefix() + '.*',
-                               filter_type=events_pb2.EventFilter.REGEX_ANY),
-
-        # filter to receive verification requests coming to or verification responses received
-        # for requests that generated from the corresponding client
-
-        events_pb2.EventFilter(key="send_to",
-                               match_string=public_address,  # get this information frm metadata
-                               filter_type=events_pb2.EventFilter.SIMPLE_ALL),
-    ]
-    share_filters = [
-
-        # filter to receive verification responses and requests coming to the corresponding client
-
-        events_pb2.EventFilter(key="to_address",
-                               match_string=public_address,  # get this information frm metadata
-                               # match_string=crypto_obj.public_key_hash,  # get this information frm metadata
-                               filter_type=events_pb2.EventFilter.SIMPLE_ALL),
-    ]
-    invalidation_filters = [
-
-        # filter to receive ID invalidation requests/responses
-
-        events_pb2.EventFilter(key="send_to",
-                               match_string=".*'" + public_address + "'.*",  # TODO test
-                               filter_type=events_pb2.EventFilter.REGEX_ANY),  # use regex pattern
-    ]
     filter_dict['id_filters'] = id_filters
-    filter_dict['peer_filters'] = peer_filters
-    filter_dict['share_filters'] = share_filters
-    filter_dict['invalidation_filters'] = invalidation_filters
 
     events_client = CertifierEventsClient(filter_dict=filter_dict, user_name=key_file_name,
                                           validator=validator_url, rest_api=api_url)
