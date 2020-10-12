@@ -41,5 +41,40 @@ sudo ./certifier/certifier_wallet.py [certifier_wallet, attest_skill [-t] reques
         --url [-l] rest-api-url \ 
         [-v/-vv/-vvv]
 ```                                    
-
-
+## Screenshots
+<p align="middle">
+ <img src="test_screenshots/keygen.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/validator.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/devmode_consensus.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/sawtooth_rest_api.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/setting_tp.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/register_pii.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/register_pii_1.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/register_pii_2.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/digital_id_processor.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/learner_PII_registration_event.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/register_skill.PNG" alt=""/>
+</p>
+<p align="middle">
+ <img src="images/course_validation.PNG" alt=""/>
+</p>
